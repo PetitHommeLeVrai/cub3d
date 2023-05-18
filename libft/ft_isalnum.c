@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 13:29:15 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 14:59:47 by aboyer           ###   ########.fr       */
+/*   Created: 2022/11/07 13:49:28 by aboyer            #+#    #+#             */
+/*   Updated: 2022/11/07 13:49:30 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
-
-# include "tools.h"
-# include "mlx.h"
-# include "mlx_int.h"
-
-# include <fcntl.h>
-# include <sys/stat.h>
-
-#endif
+int	ft_isalnum(int c)
+{
+	if (((c >= 65 && c <= 90) || (c >= 97 && c <= 122)) || (c >= 48 && c <= 57))
+		return (1);
+	return (0);
+}

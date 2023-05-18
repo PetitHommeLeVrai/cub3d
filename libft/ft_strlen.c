@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 13:29:15 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 14:59:47 by aboyer           ###   ########.fr       */
+/*   Created: 2022/11/07 13:16:09 by aboyer            #+#    #+#             */
+/*   Updated: 2022/11/07 13:16:13 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "libft.h"
 
-# include "tools.h"
-# include "mlx.h"
-# include "mlx_int.h"
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
-# include <fcntl.h>
-# include <sys/stat.h>
-
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
