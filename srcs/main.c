@@ -3,18 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 14:52:42 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/18 15:21:26 by mmeguedm         ###   ########.fr       */
+/*   Created: 2023/05/18 14:28:56 by aboyer            #+#    #+#             */
+/*   Updated: 2023/05/18 17:34:50 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
-	(void)argc;
-	(void)argv;
-	parse_main("Hello");
+	t_data	data;
+
+	if (ac != 2)
+	{
+		printf("Error\nOnly 1 argument is needed\n");
+		return (1);
+	}
+	if (init(&data, ac, av) == 0)
+		return (1);
 }
+
