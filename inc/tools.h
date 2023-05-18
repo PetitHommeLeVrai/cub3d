@@ -6,16 +6,16 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 17:52:42 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 18:15:55 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOOLS_H
 # define TOOLS_H
 
-#include "cub3d.h"
+# include "cub3d.h"
 
-typedef	enum	e_err_msg
+typedef enum e_err_msg
 {
 	E_ACCESS,
 	E_IMAP,
