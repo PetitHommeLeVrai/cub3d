@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 11:16:41 by aboyer            #+#    #+#             */
-/*   Updated: 2022/11/08 11:16:44 by aboyer           ###   ########.fr       */
+/*   Created: 2022/04/23 19:18:58 by mmeguedm          #+#    #+#             */
+/*   Updated: 2023/05/18 17:18:02 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *str, int searchedChar )
 {
 	int	i;
 
-	i = 0;
-	while (s[i])
-		i++;
-	while (i >= 0)
+	i = ft_strlen((char *)str);
+	if (!str)
+		return (NULL);
+	str += ft_strlen((char *)str);
+	while (i-- >= 0)
 	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			return ((char *)s + i);
-		i--;
+		if (*str == (unsigned char)searchedChar)
+			return ((char *)&(*str));
+		str--;
 	}
 	return (NULL);
 }

@@ -3,38 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 13:43:57 by aboyer            #+#    #+#             */
-/*   Updated: 2022/11/08 13:43:59 by aboyer           ###   ########.fr       */
+/*   Created: 2022/04/24 18:28:16 by mmeguedm          #+#    #+#             */
+/*   Updated: 2023/05/18 17:17:54 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
-	size_t	i2;
-	size_t	little_len;
+	size_t	j;
 
 	i = 0;
-	i2 = 0;
-	little_len = 0;
-	while (little[little_len])
-		little_len++;
-	if (little_len == 0)
-		return ((char *)big);
-	while (big[i] && i < len)
+	if (!*s2 || !s2)
+		return ((char *)s1);
+	if (n == 0)
+		return (NULL);
+	while (s1[i] && (i < n))
 	{
-		while (little[i2] == big[i + i2] && i + i2 < len)
+		j = 0;
+		while ((s1[i + j] == s2[j] && (i + j) < n))
 		{
-			if (i2 == little_len - 1)
-				return ((char *)big + i);
-			i2++;
+			if (s2[j + 1] == '\0')
+				return ((char *)&s1[i]);
+			j++;
 		}
-		i2 = 0;
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

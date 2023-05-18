@@ -3,34 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 14:59:25 by aboyer            #+#    #+#             */
-/*   Updated: 2022/11/08 14:59:27 by aboyer           ###   ########.fr       */
+/*   Created: 2022/04/27 08:51:16 by mmeguedm          #+#    #+#             */
+/*   Updated: 2023/05/18 17:18:20 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+
+static size_t	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
+}
+
+static int	ft_checkmalloc(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while ((i < len) && start < ft_strlen(s) && s[start])
+	{
+		i++;
+		start++;
+	}
+	return (i);
+}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*str;
+	char	*p;
+	int		i;
+	size_t	smalloc;
 
-	i = start;
-	j = 0;
-	if (s == NULL)
+	smalloc = ft_checkmalloc((char *)s, start, len);
+	i = 0;
+	p = malloc(sizeof(char) * (smalloc + 1));
+	if (!p || !s)
 		return (NULL);
-	str = (char *)malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (NULL);
-	while (i < ft_strlen(s) && j < len)
+	while (s[i] && len-- && ft_strlen((char *)s) > start)
 	{
-		str[j] = s[i];
-		j++;
+		p[i] = s[start];
+		start++;
 		i++;
 	}
-	str[j] = 0;
-	return (str);
+	p[i] = '\0';
+	return (p);
 }

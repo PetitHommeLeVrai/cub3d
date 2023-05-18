@@ -3,42 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:14:26 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 16:35:30 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/18 17:20:03 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_file(char *file)
+void	check_file(char *file)
 {
 	int	fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-	{
-		printf("Error\nFile does not exist\n");
-		return (0);
-	}
+		exit_error(E_ACCESS);
 	close(fd);
-	if (!ft_strnstr(file + (ft_strlen(file) - 4), ".cub", 4))
-	{
-		printf("Error\nInvalid map extension (.cub required)\n");
-		return (0);
-	}
-	return (1);
+	if (!(ft_strnstr(file + (ft_strlen(file) - 4), ".cub", 4)))
+		exit_error(E_IMAP);
 }
 
-int	parse_main(char *file)
+void	parse_main(char *file)
 {
 	if (!file)
-	{
-		printf("Error\nGiven File is Null\n");
-		return (0);
-	}
-	if (check_file(file) == 0)
-		return (0);
-	return (1);
+		exit_error(E_ACCESS);
+	check_file(file);
 }

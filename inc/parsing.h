@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.h                                            :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 14:52:13 by aboyer           ###   ########.fr       */
+/*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
+/*   Updated: 2023/05/18 16:50:27 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOOLS_H
-# define TOOLS_H
+#ifndef PARSING_H
+# define PARSING_H
 
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_north;
-	void	*img_south;
-	void	*img_west;
-	void	*img_east;
-}			t_data;
+/*	<parse_main.c>  */
+void	check_file(char *file);
+void	parse_main(char *file);
+
+/*	<error.c>  */
+void	exit_error(int err_msg);
 
 #endif

@@ -3,74 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:34:03 by aboyer            #+#    #+#             */
-/*   Updated: 2022/11/08 15:34:06 by aboyer           ###   ########.fr       */
+/*   Created: 2022/04/27 09:54:24 by mmeguedm          #+#    #+#             */
+/*   Updated: 2023/05/18 17:18:14 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-int	check_sep(char ch, const char *charset)
+static int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (charset[i])
+	while (str[i])
+		i++;
+	return (i);
+}
+
+static int	ft_charinset(char c, char const *s1)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i])
 	{
-		if (ch == charset[i])
+		if (s1[i] == c)
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int	ind_right(char const *s1, char const *set)
-{
-	int	i;
-
-	i = 0;
-	while (s1[i] && check_sep(s1[i], set))
-		i++;
-	return (i);
-}
-
-int	ind_left(char const *s1, char const *set)
-{
-	int	i;
-
-	i = ft_strlen(s1);
-	while (i > 0 && check_sep(s1[i - 1], set))
-		i--;
-	return (i);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
 	int		start;
 	int		end;
-	char	*str;
+	int		i;
+	char	*s1trim;
 
 	i = 0;
-	start = ind_right(s1, set);
-	end = ind_left(s1, set);
-	if (start > end)
-	{
-		str = malloc(sizeof(char));
-		str[0] = 0;
-		return (str);
-	}
-	str = (char *)malloc(sizeof(char) * (end - start) + 1);
-	if (!str)
+	end = ft_strlen((char *)s1);
+	start = 0;
+	while (s1[start] && ft_charinset(s1[start], set))
+		start++;
+	while ((end > start) && (ft_charinset(s1[end - 1], set)))
+		end--;
+	s1trim = malloc(sizeof(char) * (end - start + 1));
+	if (!s1trim)
 		return (NULL);
 	while (start < end)
-	{
-		str[i] = s1[start];
-		i++;
-		start++;
-	}
-	str[i] = 0;
-	return (str);
+		s1trim[i++] = s1[start++];
+	s1trim[i] = '\0';
+	return (s1trim);
 }
