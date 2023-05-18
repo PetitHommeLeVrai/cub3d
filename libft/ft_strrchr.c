@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:18:58 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/05 12:19:26 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:18:02 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,34 +29,3 @@ char	*ft_strrchr(const char *str, int searchedChar )
 	}
 	return (NULL);
 }
-
-// #ifdef MAIN
-
-// #include <string.h>
-
-// static void	ft_KO(int c)
-// {
-// 	printf("\033[1;31m%d. KO\033[00m\n", c);
-// }
-
-// static void	ft_OK(int c)
-// {
-// 	printf("\033[1;32m%d. OK\033[00m\n", c);
-// }
-
-// int	main(void)
-// {
-// 	char	*s = "bEWIUSAD";
-// 	int		c = 256;
-// 	s = ft_strrchr(s, c);
-//	if (!strcmp(ft_strrchr(s, c), strrchr(s, c)))
-// 	// {
-// 		// ft_KO(1);
-// 		printf("ft_strr : %s\n", ft_strrchr(s, c));
-// 		printf("strr : %s\n", strrchr(s, c));
-// 	// }	
-// 	// else
-// 		// ft_OK(1);
-// }
-
-// #endif

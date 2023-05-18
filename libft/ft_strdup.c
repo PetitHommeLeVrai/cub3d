@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:44:22 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/05 12:17:27 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:16:50 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,3 @@ char	*ft_strdup(const char *src)
 	p[i] = '\0';
 	return (p);
 }
-
-// #include <string.h>
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	*s = "Beautiful World";
-// 	char	*p = ft_strdup(s);
-
-// 	printf("%s\n", ft_strdup(p));
-// }

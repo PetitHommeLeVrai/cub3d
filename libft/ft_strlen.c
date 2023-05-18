@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 13:37:03 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/06 15:36:15 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:17:32 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,3 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-// #include <stdio.h>
-
-// int main(void)
-// {
-// 	char	*str;
-
-// 	str = "Hello World";
-// 	printf("%d\n", ft_strlen(str));
-// }

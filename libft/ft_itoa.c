@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 17:50:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/16 14:05:50 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:14:27 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,3 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char *s = ft_itoa(0);
-// 	// printf("%s\n", s);
-// 	free(s);
-// }

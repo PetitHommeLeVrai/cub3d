@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 18:41:43 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/16 15:23:39 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:17:18 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,3 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	dest[i + j] = '\0';
 	return (ft_strlen(src) + lendest);
 }
-
-// #include <bsd/string.h>
-// #include <stdio.h>
-
-// int    main()
-// {
-//     char string[1] = "h";
-//     char s[] = "eys";
-
-//     printf("real : %li\n", strlcat(string, s, 10));
-
-//     char dtring[1] = "h";
-//     char d[] = "eys";
-//     printf("stan : %li\n", ft_strlcat(dtring, d, 10));
-// }

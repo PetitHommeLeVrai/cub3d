@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 09:18:18 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/05 12:18:11 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:17:08 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	p[i] = '\0';
 	return (p);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	*s1 = "Beautiful ";
-// 	char	*s2 = "World";
-
-// 	printf("%s\n", ft_strjoin(s1, s2));
-// 	printf("%d\n", ft_strlen(s2));
-
-// }

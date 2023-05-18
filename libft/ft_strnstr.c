@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:28:16 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/07 18:59:46 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:17:54 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,3 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 	}
 	return (NULL);
 }
-
-// #include <string.h>
-// #include <bsd/string.h>
-
-// int	main(void)
-// {
-// 	char *s1 = "co";
-// 	char *s2 = "co";
-// 	// int	lenght = ft_strlen(s1);
-
-// 	printf("strnstr     : %s\n", strnstr(s1, s2, 2));
-// 	printf("ft_strnstr  : %s\n", ft_strnstr(s1, s2, 2));
-// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 22:51:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/05 12:22:14 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:16:10 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,3 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(nb + 48, fd);
 }
-
-// #include <stdio.h>
-// #include<fcntl.h>
-// #include<errno.h>
-// #include <stdlib.h>
-
-// int	main(void)
-// {
-// 	int	fd;
-
-// 	fd = open("test", O_RDWR);
-// 	ft_putnbr_fd(-2147483648, fd);
-// }

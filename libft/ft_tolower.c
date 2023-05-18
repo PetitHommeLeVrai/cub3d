@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:02:46 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/04/23 19:04:19 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:18:27 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,3 @@ int	ft_tolower( int character )
 		return (character + 32);
 	return (character);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	printf("%c\n", ft_tolower('A'));
-// }

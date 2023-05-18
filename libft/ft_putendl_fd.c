@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 22:38:26 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/05 12:21:56 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:16:01 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,3 @@ void	ft_putendl_fd(char *s, int fd)
 	}
 	ft_putchar_fd('\n', fd);
 }
-
-// #include <stdio.h>
-// #include<fcntl.h>
-// #include<errno.h>
-// #include <stdlib.h>
-
-// int	main(void)
-// {
-// 	int	fd;
-
-// 	fd = open("test", O_RDWR);
-// 	ft_putendl_fd("Beautiful World", fd);
-// }

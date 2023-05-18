@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:06:35 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/04 20:51:00 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:14:44 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,3 @@ int	ft_memcmp(const void *pointer1, const void *pointer2, size_t size )
 	}
 	return (0);
 }
-
-// #include <string.h>
-
-// int main(void)
-// {
-// 	char	*s1 = "Beautiful World";
-// 	char	*s2 = "Beautiful Korld";
-
-// 	printf("memcmp    : %d\n", memcmp(s1, s2, 15));
-// 	printf("ft_memcmp : %d\n", ft_memcmp(s1, s2, 15));
-// }

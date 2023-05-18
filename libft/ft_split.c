@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 18:15:03 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/16 14:06:50 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:16:34 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,3 @@ char	**ft_split(char const *s, char c)
 	split[index] = NULL;
 	return (split);
 }
-
-// #include <stdio.h>
-// #include "libft.h"
-
-// int	main()
-// {
-// 	char	*splitme = ft_strdup("Tripouille");
-// 	char	**str = ft_split(splitme, ' ');
-
-// 	free(str[0]);
-// 	free(str);
-// }

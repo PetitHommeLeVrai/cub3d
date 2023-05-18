@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 09:54:24 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/16 14:07:58 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:18:14 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	s1trim[i] = '\0';
 	return (s1trim);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	*s = "uBeautiful WorldBW";
-// 	char	*set = "BuW";
-
-// 	printf("%s\n", ft_strtrim(s, set));
-// }

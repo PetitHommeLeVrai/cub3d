@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:25:06 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/04 15:23:42 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:14:36 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,3 @@ void	*ft_memchr(const void *memoryBlock, int searchedChar, size_t size )
 	}
 	return (NULL);
 }
-
-// #include <string.h>
-// #include <stdio.h>
-
-// int main(void)
-// {
-// 	char	str[] = "Beautiful World\200";
-
-// 	printf("%p\n", memchr(str, '\0', 14));
-// 	printf("%p\n", ft_memchr(str, '\0', 14));
-// }

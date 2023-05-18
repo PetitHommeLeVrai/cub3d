@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 08:51:16 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/05/16 14:08:12 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:18:20 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	p[i] = '\0';
 	return (p);
 }
-
-// #include <stdio.h>
-// #ifdef MAIN
-
-// int	main(void)
-// {
-// 	char *s = ft_substr("tripouille", 0, 42000);
-// 	free(s);
-// }
-
-// #endif
