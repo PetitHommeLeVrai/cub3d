@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 13:29:15 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 14:38:46 by aboyer           ###   ########.fr       */
+/*   Created: 2023/05/18 14:28:56 by aboyer            #+#    #+#             */
+/*   Updated: 2023/05/18 14:34:29 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "includes/cub3d.h"
 
-# include <fcntl.h>
-# include <sys/stat.h>
-
-typedef struct s_data
+int main(int ac, char **av)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_north;
-	void	*img_south;
-	void	*img_west;
-	void	*img_east;
-}			t_data;
+	t_data data;
 
-#endif
+	data.mlx_ptr = mlx_init();
+	if (!data.mlx_ptr)
+		return (0);
+	data.win_ptr = mlx_new_window(data.mlx_ptr, 1920, 1080, "./cub3d");
+	if (!data.win_ptr)
+		return (0);
+}

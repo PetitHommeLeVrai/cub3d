@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 13:29:15 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 14:38:46 by aboyer           ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "mlx_int.h"
 
-# include <fcntl.h>
-# include <sys/stat.h>
-
-typedef struct s_data
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_north;
-	void	*img_south;
-	void	*img_west;
-	void	*img_east;
-}			t_data;
-
-#endif
+	XCloseDisplay(xvar->display);
+}
