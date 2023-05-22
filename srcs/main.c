@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:28:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 17:34:50 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/22 14:38:06 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av)
 		printf("Error\nOnly 1 argument is needed\n");
 		return (1);
 	}
+	parse_main(av[1], &data);
 	if (init(&data, ac, av) == 0)
 		return (1);
 }
-

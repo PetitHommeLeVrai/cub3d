@@ -6,7 +6,7 @@
 #    By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/18 17:42:39 by aboyer           ###   ########.fr        #
+#    Updated: 2023/05/22 14:13:39 by aboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CC			= cc
 
 # --------- Compilation flags -------------------------------------------------------
 
-CFLAGS		= -Wall -Wextra -I $(INC_PATH) -I $(MLX_PATH) -I $(LIBFT_PATH)
+CFLAGS		= -Wall -Wextra -I $(INC_PATH) -I $(MLX_PATH) -I $(LIBFT_PATH) -g3
 MLX_FLAGS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 L_FLAGS		= -L libft/ -lft
 
@@ -58,7 +58,11 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						init.c								\
 						window_handler.c					\
 					)										\
-				)
+				)											\
+				$(addprefix get_next_line/,					\
+						get_next_line.c						\
+						get_next_line_utils.c				\
+				)											\
 
 # --------- Object files ------------------------------------------------------------
 
