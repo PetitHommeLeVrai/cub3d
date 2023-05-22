@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:29:15 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 17:49:51 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:54:00 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@
 # include "libft.h"
 # include "tools.h"
 # include "parsing.h"
+# include "get_next_line.h"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 16:07:07 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:39:19 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef enum e_err_msg
 	E_ARG,
 	E_MLX,
 	E_LENGHT
-}	t_err_msg;
+}			t_err_msg;
 
 typedef struct s_mlx
 {
@@ -33,6 +33,13 @@ typedef struct s_mlx
 	void	*win_ptr;
 	void	*img_ptr;
 	char	*addr;
+	char	*n_path;
+	char	*s_path;
+	char	*w_path;
+	char	*e_path;
+	char	*f_color;
+	char	*c_color;
+	char	**map;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
