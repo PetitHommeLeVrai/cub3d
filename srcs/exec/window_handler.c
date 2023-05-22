@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:12 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 17:00:33 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/22 17:23:22 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 
 int	destroy_win(t_data *data)
 {
+	mlx_destroy_image(data->img.mlx_ptr, data->img.img_ptr);
 	mlx_destroy_window(data->img.mlx_ptr, data->img.win_ptr);
 	mlx_destroy_display(data->img.mlx_ptr);
 	free(data->img.mlx_ptr);
-	free(data->img.n_path);
-	free(data->img.s_path);
-	free(data->img.w_path);
-	free(data->img.e_path);
-	free(data->img.c_color);
-	free(data->img.f_color);
+	free_map(data);
 	exit(0);
 }

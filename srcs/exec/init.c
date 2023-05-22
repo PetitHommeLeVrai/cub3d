@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 16:49:59 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/22 17:03:37 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@ static void	init_mlx(t_data *data)
 	data->img.mlx_ptr = mlx_init();
 	if (!data->img.mlx_ptr)
 		return (exit_error(E_MLX));
-	data->img.win_ptr = mlx_new_window(data->img.mlx_ptr, WIDTH, HEIGHT, "./cub3d");
+	data->img.win_ptr = mlx_new_window(data->img.mlx_ptr, WIDTH, HEIGHT,
+			"./cub3d");
 	if (!data->img.win_ptr)
 		return (exit_error(E_MLX));
 	data->img.img_ptr = mlx_new_image(data->img.mlx_ptr, WIDTH, HEIGHT);
 	if (!data->img.img_ptr)
 		return (exit_error(E_MLX));
-	data->img.addr = mlx_get_data_addr(data->img.img_ptr, &data->img.bits_per_pixel,
-			&data->img.line_length, &data->img.endian);
+	data->img.addr = mlx_get_data_addr(data->img.img_ptr,
+			&data->img.bits_per_pixel, &data->img.line_length,
+			&data->img.endian);
 	if (!data->img.addr)
 		return (exit_error(E_MLX));
 }

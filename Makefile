@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
+#    By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/22 16:36:53 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/05/22 17:14:07 by aboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 					main.c									\
 					$(addprefix parsing/,					\
 						parse_main.c						\
+						parse_ftc.c							\
 						error.c								\
 					)										\
 					$(addprefix exec/,						\

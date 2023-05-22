@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:14:26 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 17:00:55 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/22 17:07:40 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,67 +22,6 @@ void	check_file(char *file)
 	close(fd);
 	if (!(ft_strnstr(file + (ft_strlen(file) - 4), ".cub", 4)))
 		exit_error(E_IMAP);
-}
-
-void	free_map(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->img.map[i])
-	{
-		free(data->img.map[i]);
-		i++;
-	}
-	free(data->img.map[i]);
-	free(data->img.map);
-	free(data->img.n_path);
-	free(data->img.s_path);
-	free(data->img.e_path);
-	free(data->img.w_path);
-	free(data->img.c_color);
-	free(data->img.f_color);
-}
-
-void	ftc_allocator(char *file, t_data *data)
-{
-	int		fd;
-	char	*line;
-	int		i;
-
-	fd = open(file, O_RDONLY);
-	line = get_next_line(fd);
-	i = 0;
-	while (line)
-	{
-		free(line);
-		line = get_next_line(fd);
-		i++;
-	}
-	close(fd);
-	data->img.map = (char **)malloc(sizeof(char *) * (i + 1));
-	if (!data->img.map)
-		exit_error(E_ACCESS);
-}
-
-void	init_ftc(char *file, t_data *data)
-{
-	int		fd;
-	char	*line;
-	int		i;
-
-	ftc_allocator(file, data);
-	fd = open(file, O_RDONLY);
-	line = get_next_line(fd);
-	i = 0;
-	while (line)
-	{
-		data->img.map[i] = line;
-		line = get_next_line(fd);
-		i++;
-	}
-	data->img.map[i] = NULL;
-	close(fd);
 }
 
 void	set_path(t_data *data, char *key, char *path)
