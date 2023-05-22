@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:14:26 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 16:21:29 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/22 16:30:09 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	free_map(t_data *data)
 	free(data->f_color);
 }
 
-void	map_allocator(char *file, t_data *data)
+void	ftc_allocator(char *file, t_data *data)
 {
 	int		fd;
 	char	*line;
@@ -65,13 +65,13 @@ void	map_allocator(char *file, t_data *data)
 		exit_error(E_ACCESS);
 }
 
-void	init_map(char *file, t_data *data)
+void	init_ftc(char *file, t_data *data)
 {
 	int		fd;
 	char	*line;
 	int		i;
 
-	map_allocator(file, data);
+	ftc_allocator(file, data);
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
 	i = 0;
@@ -150,7 +150,7 @@ void	parse_main(char *file, t_data *data)
 	if (!file)
 		exit_error(E_ACCESS);
 	check_file(file);
-	init_map(file, data);
+	init_ftc(file, data);
 	get_textures(data);
 	printf("%s\n", data->c_color);
 }
