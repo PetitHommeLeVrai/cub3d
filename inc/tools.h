@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 16:39:19 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:49:37 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_txtr
 	void	*img_east;
 }			t_txtr;
 
-typedef	s_player
+typedef	struct s_player
 {
 	double	pos_x;
 	double	pos_y;

@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 14:55:59 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:49:59 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	init_hook(t_data *data)
 
 void	init(t_data *data, int ac, char **av)
 {
-	parse_main(ac, av[1]);
+	parse_main(ac, av[1], data);
 	init_mlx(data);
 	init_hook(data);
 }

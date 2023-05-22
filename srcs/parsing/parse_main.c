@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:14:26 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 16:45:21 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:48:18 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void	get_textures(t_data *data)
 	}
 }
 
-void	parse_main(char *file, t_data *data)
+void	parse_main(int ac, char *file, t_data *data)
 {
 	if (ac != 2)
 		exit_error(E_ARG);
