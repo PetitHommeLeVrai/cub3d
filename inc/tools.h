@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 14:05:44 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/22 14:50:02 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define TOOLS_H
 
 # include "cub3d.h"
+
+# define WIDTH 900
+# define HEIGHT 900
 
 typedef enum e_err_msg
 {
@@ -24,14 +27,29 @@ typedef enum e_err_msg
 	E_LENGHT
 }	t_err_msg;
 
-typedef struct s_data
+typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*img_ptr;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_mlx;
+
+typedef struct s_txtr
+{
 	void	*img_north;
 	void	*img_south;
 	void	*img_west;
 	void	*img_east;
+}			t_txtr;
+
+typedef struct s_data
+{
+	t_mlx	img;
+	t_txtr	txtr;
 }			t_data;
 
 #endif
