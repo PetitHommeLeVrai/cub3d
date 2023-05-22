@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 14:50:05 by aboyer           ###   ########.fr       */
+/*   Created: 2022/11/28 12:45:16 by aboyer            #+#    #+#             */
+/*   Updated: 2023/05/22 14:00:29 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOOLS_H
-# define TOOLS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include "cub3d.h"
+# include <stdlib.h>
+# include <unistd.h>
 
-typedef enum e_err_msg
-{
-	E_ACCESS,
-	E_IMAP,
-	E_LENGHT
-}			t_err_msg;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-typedef struct s_data
-{
-	char	*n_path;
-	char	*s_path;
-	char	*w_path;
-	char	*e_path;
-	char	*f_color;
-	char	*c_color;
-	char	**map;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_north;
-	void	*img_south;
-	void	*img_west;
-	void	*img_east;
-}			t_data;
+char	*get_next_line(int fd);
+char	*ft_strchr(const char *s, int c);
+char	*gnl_ft_strjoin(char *nl_str, char *buff);
+size_t	ft_strlen(const char *s);
 
 #endif
