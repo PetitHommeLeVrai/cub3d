@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 16:51:46 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/22 14:03:27 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,8 @@ static void	init_hook(t_data *data)
 
 int	init(t_data *data, int ac, char **av)
 {
-	if (init_mlx(data) == 0)
-	{
-		printf("Error\nSomething went wrong initializing mlx\n");
-		return (0);
-	}
+	parse_main(ac, av[1]);
+	if (!init_mlx(data))
+		exit_error(E_MLX);
 	init_hook(data);
 }

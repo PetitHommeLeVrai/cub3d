@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 18:15:55 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/22 14:05:44 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 
 typedef enum e_err_msg
 {
-	E_ACCESS,
+	E_ACCESS = 1,
 	E_IMAP,
+	E_ARG,
+	E_MLX,
 	E_LENGHT
 }	t_err_msg;
 

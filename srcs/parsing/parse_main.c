@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:14:26 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 17:20:03 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:52:00 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ void	check_file(char *file)
 		exit_error(E_IMAP);
 }
 
-void	parse_main(char *file)
+void	parse_main(int ac, char *file)
 {
+	if (ac != 2)
+		exit_error(E_ARG);
 	if (!file)
 		exit_error(E_ACCESS);
 	check_file(file);

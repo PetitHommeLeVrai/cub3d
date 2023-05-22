@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:28:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 17:34:50 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/22 13:54:01 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac != 2)
-	{
-		printf("Error\nOnly 1 argument is needed\n");
-		return (1);
-	}
-	if (init(&data, ac, av) == 0)
-		return (1);
+	init(&data, ac, av);
 }
 
