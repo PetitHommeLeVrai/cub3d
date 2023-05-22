@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.h                                            :+:      :+:    :+:   */
+/*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 14:52:13 by aboyer           ###   ########.fr       */
+/*   Created: 2023/05/18 16:49:56 by aboyer            #+#    #+#             */
+/*   Updated: 2023/05/18 17:52:02 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOOLS_H
-# define TOOLS_H
+#ifndef WINDOW_H
+# define WINDOW_H
 
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_north;
-	void	*img_south;
-	void	*img_west;
-	void	*img_east;
-}			t_data;
+# include "tools.h"
+
+int	init(t_data *data, int ac, char **av);
+int	destroy_win(t_data *data);
+int	draw(t_data *data);
+int	handle_keyrelease(int keysym, t_data *data);
+int	handle_input(int keysym, t_data *data);
 
 #endif

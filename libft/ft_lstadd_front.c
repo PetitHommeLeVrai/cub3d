@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 14:28:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 17:00:17 by aboyer           ###   ########.fr       */
+/*   Created: 2022/05/16 13:50:25 by mmeguedm          #+#    #+#             */
+/*   Updated: 2022/07/13 17:55:41 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_data	data;
-
-	if (ac != 2)
-	{
-		printf("Error\nOnly 1 argument is needed\n");
-		return (1);
-	}
-	if (init(&data, ac, av) == 0)
-		return (1);
+	new->next = *lst;
+	*lst = new;
 }

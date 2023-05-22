@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 19:02:46 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/18 17:18:27 by mmeguedm         ###   ########.fr       */
+/*   Created: 2023/05/18 13:29:15 by aboyer            #+#    #+#             */
+/*   Updated: 2023/05/18 17:49:51 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower( int character )
-{
-	if (character >= 'A' && character <= 'Z')
-		return (character + 32);
-	return (character);
-}
+#ifndef CUB3D_H
+# define CUB3D_H
+
+/*	GNU C Library*/
+# include <fcntl.h>
+# include <sys/stat.h>
+# include <unistd.h>
+
+/*	Personal Library  */
+# include "window.h"
+# include "mlx.h"
+# include "mlx_int.h"
+# include "libft.h"
+# include "tools.h"
+# include "parsing.h"
+
+#endif

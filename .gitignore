@@ -1,0 +1,8 @@
+# Submodules
+./mlx_linux/
+
+# Program
+cub3d
+
+# Object Files
+*.o

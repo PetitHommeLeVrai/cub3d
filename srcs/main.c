@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_handler.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 16:43:06 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 16:45:30 by aboyer           ###   ########.fr       */
+/*   Created: 2023/05/18 14:28:56 by aboyer            #+#    #+#             */
+/*   Updated: 2023/05/18 17:34:50 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	handle_input(int keysym, t_data *data)
+int	main(int ac, char **av)
 {
-	return (1);
+	t_data	data;
+
+	if (ac != 2)
+	{
+		printf("Error\nOnly 1 argument is needed\n");
+		return (1);
+	}
+	if (init(&data, ac, av) == 0)
+		return (1);
 }
 
-int	handle_keyrelease(int keysym, t_data *data)
-{
-	if (keysym == XK_Escape)
-		destroy_win(data);
-	return (1);
-}

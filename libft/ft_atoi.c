@@ -3,35 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 14:17:08 by aboyer            #+#    #+#             */
-/*   Updated: 2022/11/07 14:17:12 by aboyer           ###   ########.fr       */
+/*   Created: 2022/04/26 12:43:14 by mmeguedm          #+#    #+#             */
+/*   Updated: 2023/05/18 17:12:53 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
-	int	result;
-	int	neg;
-	int	i;
+	int			i;
+	long long	res;
+	int			neg;
 
-	result = 0;
 	neg = 1;
+	res = 0;
 	i = 0;
-	while ((nptr[i] == ' ') || (nptr[i] >= 9 && nptr[i] <= 13))
+	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == ' '))
 		i++;
-	if (nptr[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 	{
-		neg = neg * -1;
+		if (str[i] == '-')
+			neg *= -1;
 		i++;
 	}
-	else if (nptr[i] == '+')
-		i++;
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result = result * 10 + (nptr[i] - '0');
+		if (res * neg > 2147483647)
+			return (-1);
+		else if (res * neg < -2147483648)
+			return (0);
+		res = res * 10 + (str[i] - 48);
 		i++;
 	}
-	return (result * neg);
+	return (res * neg);
 }

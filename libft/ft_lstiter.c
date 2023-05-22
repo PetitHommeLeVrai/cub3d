@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 13:29:15 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/18 16:51:55 by aboyer           ###   ########.fr       */
+/*   Created: 2022/05/16 13:57:49 by mmeguedm          #+#    #+#             */
+/*   Updated: 2022/05/16 13:58:49 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "libft.h"
 
-# include "libft.h"
-# include "mlx.h"
-# include "mlx_int.h"
-# include "tools.h"
-# include "window.h"
-# include <fcntl.h>
-# include <sys/stat.h>
-
-#endif
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+}

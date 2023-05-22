@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 19:02:46 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/18 17:18:27 by mmeguedm         ###   ########.fr       */
+/*   Created: 2022/05/16 13:51:53 by mmeguedm          #+#    #+#             */
+/*   Updated: 2022/05/16 14:19:45 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower( int character )
+#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
 {
-	if (character >= 'A' && character <= 'Z')
-		return (character + 32);
-	return (character);
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

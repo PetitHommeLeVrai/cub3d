@@ -1,18 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 19:02:46 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/18 17:18:27 by mmeguedm         ###   ########.fr       */
+/*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
+/*   Updated: 2023/05/18 18:15:55 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower( int character )
+#ifndef TOOLS_H
+# define TOOLS_H
+
+# include "cub3d.h"
+
+typedef enum e_err_msg
 {
-	if (character >= 'A' && character <= 'Z')
-		return (character + 32);
-	return (character);
-}
+	E_ACCESS,
+	E_IMAP,
+	E_LENGHT
+}	t_err_msg;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*img_north;
+	void	*img_south;
+	void	*img_west;
+	void	*img_east;
+}			t_data;
+
+#endif

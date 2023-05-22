@@ -3,32 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 13:14:24 by aboyer            #+#    #+#             */
-/*   Updated: 2022/11/09 13:14:25 by aboyer           ###   ########.fr       */
+/*   Created: 2022/04/30 17:50:01 by mmeguedm          #+#    #+#             */
+/*   Updated: 2023/05/18 17:14:27 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-int	get_len(int n)
+static int	len(long nb)
 {
 	int	i;
 
 	i = 0;
-	if (n == -2147483648)
-		return (11);
-	if (n == 0)
-		return (1);
-	if (n < 0)
+	if (nb == 0)
+		i++;
+	else if (nb < 0)
 	{
-		n = -n;
+		nb = -nb;
 		i++;
 	}
-	while (n > 0)
+	while (nb > 0)
 	{
-		n = n / 10;
+		nb /= 10;
 		i++;
 	}
 	return (i);
@@ -36,28 +35,27 @@ int	get_len(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*result;
-	int		len;
+	char	*str;
 	long	nb;
+	int		i;
 
-	len = get_len(n);
-	nb = (long)n;
-	result = (char *)malloc(sizeof(char) * len + 1);
-	if (!result)
+	nb = n;
+	i = len(nb);
+	str = malloc(sizeof(char) * i + 1);
+	if (!str)
 		return (NULL);
-	result[len--] = '\0';
+	str[i--] = '\0';
 	if (nb == 0)
-		result[0] = '0';
+		str[0] = 48;
 	if (nb < 0)
 	{
-		result[0] = '-';
 		nb = -nb;
+		str[0] = '-';
 	}
 	while (nb > 0)
 	{
-		result[len] = '0' + (nb % 10);
-		nb = nb / 10;
-		len--;
+		str[i--] = (nb % 10) + 48;
+		nb /= 10;
 	}
-	return (result);
+	return (str);
 }
