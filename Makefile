@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+         #
+#    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/22 14:13:39 by aboyer           ###   ########.fr        #
+#    Updated: 2023/05/22 16:36:53 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,12 +95,15 @@ $(NAME) : $(OBJ)
 all : $(NAME)
 
 clean :
-		rm -rf $(OBJ_PATH)
+		@echo "Deleting all objects files..."
+		@rm -rf $(OBJ_PATH)
 		@make clean -sC $(MLX_PATH)
 		@make clean -sC $(LIBFT_PATH)
+		@echo "\033[1;32mCleaning done !"
 
 fclean : clean
-		rm -rf $(NAME)
+		@echo "Deleting $(NAME)..."
+		@rm -f $(NAME)
 
 re : fclean $(NAME)
 
