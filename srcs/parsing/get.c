@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:57:32 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/23 16:59:20 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:59:10 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,12 @@ static void	get_map(t_data *data)
 
 void	get_position_player(t_data *data)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	int		k;
+	char	*start_pos_player;
 
+	start_pos_player = "NSEW";
 	i = 0;
 	get_map(data);
 	while (data->img.map[i])
@@ -83,9 +86,19 @@ void	get_position_player(t_data *data)
 		j = 0;
 		while (data->img.map[i][j])
 		{
-			
+			k = 0;
+			while (start_pos_player[k])
+			{
+				if (start_pos_player[k] == data->img.map[i][j])
+					return ;
+				k++;
+			}
+			data->player.pos_x++;
 			j++;
 		}
+		data->player.pos_x = 0;
+		data->player.pos_y++;
 		i++;
 	}
 }
+

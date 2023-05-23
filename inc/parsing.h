@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/23 17:06:55 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:11:50 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*	<parse_main.c>  */
 void	check_file(char *file);
 void	parse_main(int ac, char *file, t_data *data);
-void	init_paths_to_null(t_data *data);
+void	init_data(t_data *data);
 
 /*	<parse_ftc.c>  */
 void	free_map(t_data *data);

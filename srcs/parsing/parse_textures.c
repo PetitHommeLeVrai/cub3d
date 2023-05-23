@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:16:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/23 16:14:28 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/23 17:58:58 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,19 +100,19 @@ void	get_textures(t_data *data)
 
 	key = init_key();
 	i = 0;
-	while (data->img.map[i])
+	while (data->img.file[i])
 	{
 		k = 0;
 		j = 0;
 		while (key[j])
 		{
-			if (ft_strncmp(data->img.map[i], key[j], 2) == 0)
+			if (ft_strncmp(data->img.file[i], key[j], 2) == 0)
 			{
-				while (data->img.map[i][k] && data->img.map[i][k] != ' ')
+				while (data->img.file[i][k] && data->img.file[i][k] != ' ')
 					k++;
-				while (data->img.map[i][k] && data->img.map[i][k] == ' ')
+				while (data->img.file[i][k] && data->img.file[i][k] == ' ')
 					k++;
-				set_path(data, key[j], data->img.map[i] + k);
+				set_path(data, key[j], data->img.file[i] + k);
 			}
 			j++;
 		}

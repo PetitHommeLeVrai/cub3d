@@ -6,11 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2023/05/22 17:41:48 by mmeguedm         ###   ########.fr        #
-=======
-#    Updated: 2023/05/23 16:24:07 by aboyer           ###   ########.fr        #
->>>>>>> main
+#    Updated: 2023/05/23 18:13:00 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +59,7 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 					)										\
 					$(addprefix exec/,						\
 						event_handler.c						\
+						free.c								\
 						init.c								\
 						window_handler.c					\
 					)										\
@@ -80,7 +77,7 @@ OBJ			=	$(patsubst srcs/%.c, obj/%.o, $(SRC))
 
 obj/%.o: srcs/%.c $(INC)
 	@ mkdir -p $(dir $@)
-	@ printf "%-60s\r" "Compiling $<"
+	@ printf "\033[1;32m%-60s\r" "Compiling $<"
 	@ $(CC) $(CFLAGS) -c $< -o $@
 
 # --------- Linking -----------------------------------------------------------------
