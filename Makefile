@@ -6,7 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/22 16:36:53 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/05/22 17:41:48 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,9 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 					main.c									\
 					$(addprefix parsing/,					\
 						parse_main.c						\
+						parse_ftc.c							\
+						get_textures.c						\
+						get.c								\
 						error.c								\
 					)										\
 					$(addprefix exec/,						\
@@ -100,6 +103,7 @@ clean :
 		@make clean -sC $(MLX_PATH)
 		@make clean -sC $(LIBFT_PATH)
 		@echo "\033[1;32mCleaning done !"
+		@echo "\033[1;36m"
 
 fclean : clean
 		@echo "Deleting $(NAME)..."
