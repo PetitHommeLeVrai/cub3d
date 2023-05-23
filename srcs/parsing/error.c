@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:56:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/22 18:22:03 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:07:03 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	exit_error(int err_msg)
 		or the file does not yet exist.\n",
 		"Invalid file extension (.cub required).\n",
 		"Only 1 argument is required.\n",
-		"Something went wrong initializing mlx.\n"
+		"Something went wrong initializing mlx.\n",
+		"It seems like some textures or colors are missing.\n"
 	};
 
 	ft_putstr_fd("Error\n", STDOUT_FILENO);
