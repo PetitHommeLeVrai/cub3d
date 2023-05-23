@@ -6,7 +6,7 @@
 #    By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/22 17:14:07 by aboyer           ###   ########.fr        #
+#    Updated: 2023/05/23 16:24:07 by aboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,8 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 					$(addprefix parsing/,					\
 						parse_main.c						\
 						parse_ftc.c							\
+						parse_textures.c					\
+						parse_colors.c						\
 						error.c								\
 					)										\
 					$(addprefix exec/,						\

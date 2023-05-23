@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:07:16 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/22 17:08:37 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/23 13:57:46 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,18 @@ void	free_map(t_data *data)
 	}
 	free(data->img.map[i]);
 	free(data->img.map);
-	free(data->img.n_path);
-	free(data->img.s_path);
-	free(data->img.e_path);
-	free(data->img.w_path);
-	free(data->img.c_color);
-	free(data->img.f_color);
+	if (data->img.n_path)
+		free(data->img.n_path);
+	if (data->img.s_path)
+		free(data->img.s_path);
+	if (data->img.e_path)
+		free(data->img.e_path);
+	if (data->img.w_path)
+		free(data->img.w_path);
+	if (data->img.c_color)
+		free(data->img.c_color);
+	if (data->img.f_color)
+		free(data->img.f_color);
 }
 
 void	ftc_allocator(char *file, t_data *data)
