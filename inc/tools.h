@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/23 17:24:07 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:36:41 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,24 @@
 
 # include "cub3d.h"
 
+/*	Macroconstant required by the window management  */
 # define WIDTH 900
 # define HEIGHT 900
 
+# define NEWLINE '\n'
+# define SPACE 32
+
 typedef enum e_err_msg
 {
-	E_ACCESS = 1,
+	E_ACCESS,
 	E_IMAP,
 	E_ARG,
 	E_MLX,
 	E_TEXTURES,
+	E_ELEMENT,
 	E_LENGHT
 }				t_err_msg;
+
 
 typedef struct s_mlx
 {
@@ -40,6 +46,8 @@ typedef struct s_mlx
 	char		*e_path;
 	char		*f_color;
 	char		*c_color;
+	int			f_rgb[3];
+	int			c_rgb[3];
 	char		**file;
 	char		**map;
 	int			bits_per_pixel;
@@ -47,13 +55,15 @@ typedef struct s_mlx
 	int			endian;
 }				t_mlx;
 
-typedef struct s_txtr
+typedef struct s_txt
 {
 	void		*img_north;
 	void		*img_south;
 	void		*img_west;
 	void		*img_east;
-}				t_txtr;
+	int			count;
+	int			index_file;
+}				t_txt;
 
 typedef struct s_player
 {
@@ -64,7 +74,7 @@ typedef struct s_player
 typedef struct s_data
 {
 	t_mlx		img;
-	t_txtr		txtr;
+	t_txt		txt;
 	t_player	player;
 }				t_data;
 

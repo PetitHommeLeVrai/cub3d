@@ -6,7 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/23 18:13:00 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/05/24 12:50:40 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,8 +53,11 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						parse_main.c						\
 						parse_ftc.c							\
 						get.c								\
-						parse_textures.c					\
+						parse_texture.c						\
+						get_texture.c						\
+						get_colors.c						\
 						parse_colors.c						\
+						utils.c								\
 						error.c								\
 					)										\
 					$(addprefix exec/,						\

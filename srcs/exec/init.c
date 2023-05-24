@@ -6,11 +6,27 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/23 18:59:02 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:22:11 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_data(t_data *data)
+{
+	data->img.n_path = NULL;
+	data->img.s_path = NULL;
+	data->img.e_path = NULL;
+	data->img.w_path = NULL;
+	data->img.c_color = NULL;
+	data->img.f_color = NULL;
+	data->player.pos_x = 0;
+	data->player.pos_y = 0;
+	data->txt.count = 0;
+	data->txt.index_file = 0;
+	data->img.map = NULL;
+	data->img.file = NULL;
+}
 
 static void	init_mlx(t_data *data)
 {

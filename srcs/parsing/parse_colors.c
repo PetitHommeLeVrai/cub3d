@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:21:47 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/23 16:28:17 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/24 12:32:10 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	isnumber(char **rgb, char *str, t_data *data)
 	{
 		free_split_rgb(rgb);
 		free_map(data);
+		printf("Test\n");
 		exit_error(E_TEXTURES);
 	}
 }
@@ -76,3 +77,4 @@ void	check_colors(t_data *data)
 		i--;
 	}
 }
+

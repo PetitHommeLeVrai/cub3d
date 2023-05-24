@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:07:16 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/23 18:03:49 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:17:38 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,22 @@ void	ftc_allocator(char *file, t_data *data)
 		exit_error(E_ACCESS);
 }
 
+static char *rm_nl(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			str[i] = 0;
+		i++;
+	}
+	return (str);
+}
+
 void	init_ftc(char *file, t_data *data)
 {
 	int		fd;
@@ -41,12 +57,12 @@ void	init_ftc(char *file, t_data *data)
 
 	ftc_allocator(file, data);
 	fd = open(file, O_RDONLY);
-	line = get_next_line(fd);
+	line = rm_nl(get_next_line(fd));
 	i = 0;
 	while (line)
 	{
 		data->img.file[i] = line;
-		line = get_next_line(fd);
+		line = rm_nl(get_next_line(fd));
 		i++;
 	}
 	data->img.file[i] = NULL;

@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:57:32 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/23 18:59:10 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:22:19 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ static int	get_size_map(char **file)
 {
 	int	i;
 	int	s_malloc;
+	int	j;
 
+	j = 22;
 	s_malloc = 0;
 	i = 0;
-	while (file[i])
+	while (file && file[i])
 		i++;
 	i--;
-	while (file[i][0] != '\n')
+	while (j && file && file[i] && file[i][0])
 	{
+		j--;
 		s_malloc++;
 		i--;
 	}
@@ -61,7 +64,7 @@ static void	get_map(t_data *data)
 	while (data->img.file[i])
 		i++;
 	i--;
-	while (data->img.file[i][0] != '\n')
+	while (data->img.file[i][0])
 	{
 		tmp_map[j] = ft_strdup(data->img.file[i]);
 		i--;
