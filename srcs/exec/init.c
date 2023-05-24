@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/24 12:22:11 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:57:38 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ static void	init_hook(t_data *data)
 
 void	init(t_data *data, int ac, char **av)
 {
-	parse_main(ac, av[1], data);
+	main_parsing(ac, av[1], data);
 	init_mlx(data);
-	get_position_player(data);
 	init_hook(data);
 }

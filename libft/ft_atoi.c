@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 12:43:14 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/18 17:12:53 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:16:01 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(const char *str)
 		if (res * neg > 2147483647)
 			return (-1);
 		else if (res * neg < -2147483648)
-			return (0);
+			return (-1);
 		res = res * 10 + (str[i] - 48);
 		i++;
 	}

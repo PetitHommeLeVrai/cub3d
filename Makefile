@@ -6,7 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/24 12:50:40 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/05/24 15:58:06 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,13 +50,13 @@ INC			= $(addprefix $(INC_PATH),		\
 SRC			=	$(addprefix $(SRC_PATH),					\
 					main.c									\
 					$(addprefix parsing/,					\
-						parse_main.c						\
+						main_parsing.c						\
 						parse_ftc.c							\
-						get.c								\
+						get_map.c							\
 						parse_texture.c						\
 						get_texture.c						\
 						get_colors.c						\
-						parse_colors.c						\
+						fill_colors.c						\
 						utils.c								\
 						error.c								\
 					)										\

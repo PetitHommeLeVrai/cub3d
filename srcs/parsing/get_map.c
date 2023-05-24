@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get.c                                              :+:      :+:    :+:   */
+/*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:57:32 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/23 21:22:19 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:00:22 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,11 @@
 static int	get_size_map(char **file)
 {
 	int	i;
-	int	s_malloc;
-	int	j;
-
-	j = 22;
-	s_malloc = 0;
+	
 	i = 0;
 	while (file && file[i])
 		i++;
-	i--;
-	while (j && file && file[i] && file[i][0])
-	{
-		j--;
-		s_malloc++;
-		i--;
-	}
-	return (s_malloc);
+	return (i);
 }
 
 void	reverse_map(t_data *data, char **tmp_map, int j)
@@ -52,7 +41,7 @@ void	reverse_map(t_data *data, char **tmp_map, int j)
 	data->img.map[i] = NULL;
 }
 
-static void	get_map(t_data *data)
+void	get_map(t_data *data)
 {
 	int		i;
 	int		j;
@@ -60,18 +49,21 @@ static void	get_map(t_data *data)
 	
 	j = 0;
 	i = 0;
+	printf("data->img.count : %d\n", data->txt.count);
 	tmp_map = malloc((sizeof(char *) * (get_size_map(data->img.file) + 1)));
 	while (data->img.file[i])
-		i++;
-	i--;
-	while (data->img.file[i][0])
 	{
-		tmp_map[j] = ft_strdup(data->img.file[i]);
-		i--;
-		j++;
+		i++;
 	}
-	tmp_map[j] = NULL;
-	reverse_map(data, tmp_map, j);
+	// i--;
+	// while (data->img.file[i][0])
+	// {
+	// 	tmp_map[j] = ft_strdup(data->img.file[i]);
+	// 	i--;
+	// 	j++;
+	// }
+	// tmp_map[j] = NULL;
+	// reverse_map(data, tmp_map, j);
 }
 
 void	get_position_player(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:56:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/23 22:02:51 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:44:02 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	exit_error(int err_msg)
 		"Only 1 argument is required.\n",
 		"Something went wrong initializing mlx.\n",
 		"It seems like some textures or colors are missing.\n",
-		"Invalid type of element.\n"
+		"Invalid type of element.\n",
+		"Color syntax is invalid.\n",
+		"Color value not allowed.\n",
+		"Out  of  memory.\n"
 	};
 
 	ft_putstr_fd("Error\n", STDOUT_FILENO);

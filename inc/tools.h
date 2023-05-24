@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/24 12:36:41 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:44:29 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ typedef enum e_err_msg
 	E_MLX,
 	E_TEXTURES,
 	E_ELEMENT,
+	E_COLORS,
+	E_CVAL,
+	E_NOMEM,
 	E_LENGHT
 }				t_err_msg;
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_main.c                                       :+:      :+:    :+:   */
+/*   main_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:14:26 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/24 12:47:59 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:57:21 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_file(char *file)
 		exit_error(E_IMAP);
 }
 
-void	parse_main(int ac, char *file, t_data *data)
+void	main_parsing(int ac, char *file, t_data *data)
 {
 	if (ac != 2)
 		exit_error(E_ARG);
@@ -35,5 +35,5 @@ void	parse_main(int ac, char *file, t_data *data)
 	init_ftc(file, data);
 	get_textures(data);
 	get_colors(data);
-	check_colors(data);
+	get_map(data);
 }

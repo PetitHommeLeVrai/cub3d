@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:26:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/24 13:02:26 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:55:48 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static bool	is_in_colors_map(char *str)
 
 	i = 0;
 	colors_map = create_colors_map();
-	printf("str : %s\n", str);
 	while (colors_map[i])
 	{
 		if (!(ft_strncmp(colors_map[i], str, 2)))
@@ -66,6 +65,8 @@ void	get_colors(t_data *data)
 			exit_error(E_ELEMENT);
 		i++;
 	}
-	printf("f_color : %s\n", data->img.f_color);
-	printf("c_color : %s\n", data->img.c_color);
+	data->txt.count = i;
+	printf("f_color : |%s|\n", data->img.f_color);
+	printf("c_color : |%s|\n", data->img.c_color);
+	fill_colors(data);
 }
