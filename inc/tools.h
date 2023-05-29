@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/23 14:11:22 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/29 14:44:39 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_mlx
 	char		*f_color;
 	char		*c_color;
 	char		**map;
+	char		**map_cp;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
@@ -56,6 +57,8 @@ typedef struct s_txtr
 
 typedef struct s_player
 {
+	int			p_y;
+	int			p_x;
 	double		pos_x;
 	double		pos_y;
 }				t_player;
