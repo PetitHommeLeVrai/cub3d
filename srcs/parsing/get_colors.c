@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:26:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/24 15:55:48 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:47:34 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,5 @@ void	get_colors(t_data *data)
 		i++;
 	}
 	data->txt.count = i;
-	printf("f_color : |%s|\n", data->img.f_color);
-	printf("c_color : |%s|\n", data->img.c_color);
 	fill_colors(data);
 }

@@ -6,13 +6,13 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:57:32 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/24 16:00:22 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:47:15 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	get_size_map(char **file)
+static int	get_size_map(char **file, int index)
 {
 	int	i;
 	
@@ -22,23 +22,16 @@ static int	get_size_map(char **file)
 	return (i);
 }
 
-void	reverse_map(t_data *data, char **tmp_map, int j)
+static	void	skip_newline(t_data *data)
 {
 	int	i;
-	int	size;
 
-	size = 0;
-	i = 0;
-	data->img.map = malloc(sizeof(char *) * (get_size_map(data->img.file) + 1));
-	j--;
-	while (j >= 0)
-	{
-		data->img.map[i] = tmp_map[j];
-		size++;
-		j--;
+	i = data->txt.count;
+	while (data->img.file[i] && data->img.file[i][0] == '\n')
 		i++;
-	}
-	data->img.map[i] = NULL;
+	if (!check_begin_map(data->img.file[i])) 
+		exit_error(E_IMAP);
+	data->txt.count = i;
 }
 
 void	get_map(t_data *data)
@@ -48,22 +41,17 @@ void	get_map(t_data *data)
 	char	**tmp_map;
 	
 	j = 0;
-	i = 0;
-	printf("data->img.count : %d\n", data->txt.count);
-	tmp_map = malloc((sizeof(char *) * (get_size_map(data->img.file) + 1)));
+	i = data->txt.count;
+	while (data->img.file[i][0] == 0)
+		i++;
+	data->img.map = malloc((sizeof(char *) * (get_size_map(data->img.file, data->txt.count) + 1)));
+	data->txt.count = i;
 	while (data->img.file[i])
 	{
+		data->img.map[j] = ft_strdup(data->img.file[i]);
 		i++;
+		j++;
 	}
-	// i--;
-	// while (data->img.file[i][0])
-	// {
-	// 	tmp_map[j] = ft_strdup(data->img.file[i]);
-	// 	i--;
-	// 	j++;
-	// }
-	// tmp_map[j] = NULL;
-	// reverse_map(data, tmp_map, j);
 }
 
 void	get_position_player(t_data *data)
