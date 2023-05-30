@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/23 16:23:12 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/30 14:19:11 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ void	init_ftc(char *file, t_data *data);
 void	free_split_rgb(char **rgb);
 void	isnumber(char **rgb, char *str, t_data *data);
 void	check_colors(t_data *data);
+
+/*	<parse_map.c>  */
+void	check_map(t_data *data, char **map);
+void	dfs(t_data *data, char **map, int y, int x);
+void	create_map_copy(t_data *data, char **map);
+void	is_map_surrouded_by_wall(t_data *data, char **map);
+void	check_first_and_last_line(t_data *data, char **map);
+
+/*	get.c>  */
+int		get_bigger_len(char **map);
+int		get_map_last_line(char **map);
+void	get_player_pos(t_data *data, char **map);
 
 /*	<parse_textures.c>  */
 void	get_textures(t_data *data);
