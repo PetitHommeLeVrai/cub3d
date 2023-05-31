@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/31 15:44:26 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/31 16:31:03 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	dfs(t_data *data, char **map, int y, int x);
 void	check_map(t_data *data, char **map);
 
 /*	<get.c>  */
-void	get_player_pos(t_data *data, char **map);
+int	get_player_pos(t_data *data, char **map);
 int		get_map_last_line(char **map);
 int		get_bigger_len(char **map);
 

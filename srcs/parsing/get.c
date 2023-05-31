@@ -6,13 +6,13 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:57:32 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/31 13:37:03 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/05/31 16:41:26 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	get_player_pos(t_data *data, char **map)
+int	get_player_pos(t_data *data, char **map)
 {
 	int	x;
 	int	y;
@@ -23,18 +23,18 @@ void	get_player_pos(t_data *data, char **map)
 	{
 		while (map[y][x])
 		{
-			if (map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'E'
-				|| map[y][x] == 'W')
+			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'W' || map[y][x] == 'E')
 			{
 				data->player.p_x = x;
 				data->player.p_y = y;
-				break ;
+				return (1);
 			}
 			x++;
 		}
 		y++;
 		x = 0;
 	}
+	return (0);
 }
 
 int	get_map_last_line(char **map)
