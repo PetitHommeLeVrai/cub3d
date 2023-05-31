@@ -6,7 +6,7 @@
 #    By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/30 14:23:39 by aboyer           ###   ########.fr        #
+#    Updated: 2023/05/31 13:32:25 by aboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,16 +50,21 @@ INC			= $(addprefix $(INC_PATH),		\
 SRC			=	$(addprefix $(SRC_PATH),					\
 					main.c									\
 					$(addprefix parsing/,					\
-						parse_main.c						\
+						main_parsing.c						\
 						parse_ftc.c							\
-						parse_textures.c					\
-						parse_colors.c						\
-						parse_map.c							\
+						get_map.c							\
+						parse_texture.c						\
+						get_texture.c						\
+						get_colors.c						\
+						fill_colors.c						\
+						utils.c								\
 						error.c								\
 						get.c								\
+						parse_map.c							\
 					)										\
 					$(addprefix exec/,						\
 						event_handler.c						\
+						free.c								\
 						init.c								\
 						window_handler.c					\
 					)										\
@@ -77,7 +82,7 @@ OBJ			=	$(patsubst srcs/%.c, obj/%.o, $(SRC))
 
 obj/%.o: srcs/%.c $(INC)
 	@ mkdir -p $(dir $@)
-	@ printf "%-60s\r" "Compiling $<"
+	@ printf "\033[1;32m%-60s\r" "Compiling $<"
 	@ $(CC) $(CFLAGS) -c $< -o $@
 
 # --------- Linking -----------------------------------------------------------------
@@ -105,6 +110,7 @@ clean :
 		@make clean -sC $(MLX_PATH)
 		@make clean -sC $(LIBFT_PATH)
 		@echo "\033[1;32mCleaning done !"
+		@echo "\033[1;36m"
 
 fclean : clean
 		@echo "Deleting $(NAME)..."
