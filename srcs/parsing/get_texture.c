@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:16:17 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/24 12:55:56 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:56:14 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	**create_texture_map(void)
 		"WE ",
 		"EA ",
 	};
-	
+
 	return (texture_map);
 }
 
@@ -55,8 +55,8 @@ static bool	is_in_texture_map(char *str)
 
 void	get_textures(t_data *data)
 {
-	int			i;
-	int			j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (data->img.file[i] && data->txt.count < 4)
@@ -65,7 +65,8 @@ void	get_textures(t_data *data)
 		while (is_wspace(data->img.file[i][j]))
 			j++;
 		if (is_in_texture_map(data->img.file[i] + j))
-			init_texture_path(data, data->img.file[i][j], data->img.file[i] + j);
+			init_texture_path(data, data->img.file[i][j], data->img.file[i]
+					+ j);
 		else if (data->img.file[i][0] != 0 && !only_wspace(data->img.file[i]))
 			exit_error(E_ELEMENT);
 		i++;

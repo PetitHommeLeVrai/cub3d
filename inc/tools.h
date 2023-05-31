@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/24 15:44:29 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:51:34 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef enum e_err_msg
 	E_COLORS,
 	E_CVAL,
 	E_NOMEM,
+	E_MAP,
 	E_LENGHT
 }				t_err_msg;
 
@@ -53,6 +54,7 @@ typedef struct s_mlx
 	int			c_rgb[3];
 	char		**file;
 	char		**map;
+	char		**map_cp;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
@@ -72,6 +74,8 @@ typedef struct s_player
 {
 	double		pos_x;
 	double		pos_y;
+	int			p_x;
+	int			p_y;
 }				t_player;
 
 typedef struct s_data

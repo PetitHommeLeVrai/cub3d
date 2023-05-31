@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:26:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/30 17:47:34 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:53:16 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	**create_colors_map(void)
 		"F ",
 		"C "
 	};
-	
+
 	return (colors_map);
 }
 
@@ -49,8 +49,8 @@ static bool	is_in_colors_map(char *str)
 
 void	get_colors(t_data *data)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	j = 0;
 	i = data->txt.index_file;

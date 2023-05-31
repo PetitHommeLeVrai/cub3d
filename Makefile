@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
+#    By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/24 15:58:06 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/05/31 16:59:01 by aboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						fill_colors.c						\
 						utils.c								\
 						error.c								\
+						parse_map.c							\
 					)										\
 					$(addprefix exec/,						\
 						event_handler.c						\

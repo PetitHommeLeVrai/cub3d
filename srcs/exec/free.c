@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 18:03:42 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/23 18:07:48 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:51:52 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	free_img(t_data *data)
 {
+	free(data->img.file);
 	free(data->img.map);
+	free(data->img.map_cp);
 	free(data->img.n_path);
 	free(data->img.s_path);
 	free(data->img.e_path);
@@ -27,23 +29,23 @@ void	free_map(t_data *data)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (data->img.file)
 	{
-		while (data->img.file[i])
-		{
+		while (data->img.file[++i])
 			free(data->img.file[i]);
-			i++;
-		}
 	}
-	i = 0;
+	i = -1;
 	if (data->img.map)
 	{
-		while (data->img.map[i])
-		{
+		while (data->img.map[++i])
 			free(data->img.map[i]);
-			i++;
-		}
+	}
+	i = -1;
+	if (data->img.map_cp)
+	{
+		while (++i < get_map_last_line(data->img.map))
+			free(data->img.map_cp[i]);
 	}
 	free_img(data);
 }

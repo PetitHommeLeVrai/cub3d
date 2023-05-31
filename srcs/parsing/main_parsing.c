@@ -36,4 +36,5 @@ void	main_parsing(int ac, char *file, t_data *data)
 	get_textures(data);
 	get_colors(data);
 	get_map(data);
+	check_map(data, data->img.map);
 }

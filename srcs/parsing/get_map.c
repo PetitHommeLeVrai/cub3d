@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:57:32 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/30 17:47:15 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:55:32 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,20 @@
 static int	get_size_map(char **file, int index)
 {
 	int	i;
-	
 	i = 0;
 	while (file && file[i])
 		i++;
 	return (i);
 }
 
-static	void	skip_newline(t_data *data)
+static void	skip_newline(t_data *data)
 {
 	int	i;
 
 	i = data->txt.count;
 	while (data->img.file[i] && data->img.file[i][0] == '\n')
 		i++;
-	if (!check_begin_map(data->img.file[i])) 
+	if (!check_begin_map(data->img.file[i]))
 		exit_error(E_IMAP);
 	data->txt.count = i;
 }
@@ -39,12 +38,12 @@ void	get_map(t_data *data)
 	int		i;
 	int		j;
 	char	**tmp_map;
-	
 	j = 0;
 	i = data->txt.count;
 	while (data->img.file[i][0] == 0)
 		i++;
-	data->img.map = malloc((sizeof(char *) * (get_size_map(data->img.file, data->txt.count) + 1)));
+	data->img.map = malloc((sizeof(char *) * (get_size_map(data->img.file,
+						data->txt.count) + 1)));
 	data->txt.count = i;
 	while (data->img.file[i])
 	{
@@ -52,6 +51,7 @@ void	get_map(t_data *data)
 		i++;
 		j++;
 	}
+	data->img.map[j] = NULL;
 }
 
 void	get_position_player(t_data *data)
@@ -84,4 +84,3 @@ void	get_position_player(t_data *data)
 		i++;
 	}
 }
-

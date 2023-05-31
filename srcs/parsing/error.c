@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:56:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/24 15:44:02 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:52:08 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	exit_error(int err_msg)
 		"Invalid type of element.\n",
 		"Color syntax is invalid.\n",
 		"Color value not allowed.\n",
-		"Out  of  memory.\n"
+		"Out  of  memory.\n",
+		"Given map is invalid.\n"
 	};
 
 	ft_putstr_fd("Error\n", STDOUT_FILENO);

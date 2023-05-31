@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/24 15:57:38 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:51:22 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ void	init_data(t_data *data);
 void	free_map(t_data *data);
 void	ftc_allocator(char *file, t_data *data);
 void	init_ftc(char *file, t_data *data);
+
+/*	<parse_map.c>  */
+void	check_first_and_last_line(t_data *data, char **map);
+void	is_map_surrouded_by_wall(t_data *data, char **map);
+void	create_map_copy(t_data *data, char **map);
+void	dfs(t_data *data, char **map, int y, int x);
+void	check_map(t_data *data, char **map);
+
+/*	<get.c>  */
+int	get_player_pos(t_data *data, char **map);
+int		get_map_last_line(char **map);
+int		get_bigger_len(char **map);
 
 /*	<parse_colors.c>  */
 void	free_split_rgb(char **rgb);
@@ -49,7 +61,7 @@ void	get_textures(t_data *data);
 void	get_colors(t_data *data);
 
 /*	<utils.c>  */
-int	is_wspace(char c);
-int	only_wspace(char *str);
+int		is_wspace(char c);
+int		only_wspace(char *str);
 
 #endif
