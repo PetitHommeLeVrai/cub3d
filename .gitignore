@@ -1,6 +1,8 @@
 # Submodules
 ./mlx_linux/
 
+./.vscode
+
 # Program
 cub3d
 

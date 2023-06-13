@@ -6,7 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/06/13 16:15:20 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/06/13 21:56:30 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,24 +50,31 @@ INC			= $(addprefix $(INC_PATH),		\
 SRC			=	$(addprefix $(SRC_PATH),					\
 					main.c									\
 					$(addprefix parsing/,					\
-						parse_main.c						\
+						main_parsing.c						\
 						parse_ftc.c							\
-						get.c								\
-						parse_textures.c					\
-						parse_colors.c						\
+						get_map.c							\
+						parse_texture.c						\
+						get_texture.c						\
+						get_colors.c						\
+						fill_colors.c						\
+						utils.c								\
 						error.c								\
+						parse_map.c							\
 					)										\
 					$(addprefix exec/,						\
-						draw_map.c							\
 						event_handler.c						\
 						free.c								\
 						init.c								\
 						window_handler.c					\
 					)										\
-				)											\
-				$(addprefix get_next_line/,					\
+					$(addprefix get_next_line/,				\
 						get_next_line.c						\
 						get_next_line_utils.c				\
+					)										\
+					$(addprefix graphics/,					\
+						draw_map.c							\
+						ray.c								\
+					)										\
 				)											\
 
 # --------- Object files ------------------------------------------------------------

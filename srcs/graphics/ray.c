@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 13:29:15 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/24 11:08:34 by mmeguedm         ###   ########.fr       */
+/*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
+/*   Updated: 2023/06/13 22:10:45 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-/*	GNU C Library*/
-# include <fcntl.h>
-# include <sys/stat.h>
-# include <unistd.h>
-# include <stdbool.h>
 
-/*	Personal Library  */
-# include "window.h"
-# include "mlx.h"
-# include "mlx_int.h"
-# include "libft.h"
-# include "tools.h"
-# include "parsing.h"
-# include "get_next_line.h"
+void	raycasting(t_data *data)
+{
+	int	i;
 
-#endif
+	i = 0;
+	// draw_line(data, data->player.pos_x, data->player.pos_y, GREEN);
+	// while (i < 100)
+	// {
+		
+	// }
+}

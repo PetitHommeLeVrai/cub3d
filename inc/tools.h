@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/13 16:48:26 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/13 22:26:51 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,34 @@
 
 # include "cub3d.h"
 
-/*	Dimensions of window  */
-# define WIDTH 900
-# define HEIGHT 900
+/*	Macroconstant required by the window management  */
+# define WIDTH 360
+# define HEIGHT 200
 
-/*	Hexadecimal for color use  */
-# define BLACK  0x000000
-# define WHITE  0xFFFFFF
-# define RED    0xFF0000
-# define BLUE   0x0000FF
+# define NEWLINE '\n'
+# define SPACE 32
+
+# define BLACK	0x000000
+# define RED	0xFF0000
+# define BLUE	0x0000FF
+# define WHITE	0xFFFFFF
+# define GREEN	0x00FF00
 
 typedef enum e_err_msg
 {
-	E_ACCESS = 1,
+	E_ACCESS,
 	E_IMAP,
 	E_ARG,
 	E_MLX,
 	E_TEXTURES,
+	E_ELEMENT,
+	E_COLORS,
+	E_CVAL,
+	E_NOMEM,
+	E_MAP,
 	E_LENGHT
 }				t_err_msg;
+
 
 typedef struct s_mlx
 {
@@ -47,31 +56,40 @@ typedef struct s_mlx
 	char		*e_path;
 	char		*f_color;
 	char		*c_color;
+	int			f_rgb[3];
+	int			c_rgb[3];
 	char		**file;
 	char		**map;
+	char		**map_cp;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
 }				t_mlx;
 
-typedef struct s_txtr
+typedef struct s_txt
 {
 	void		*img_north;
 	void		*img_south;
 	void		*img_west;
 	void		*img_east;
-}				t_txtr;
+	int			count;
+	int			index_file;
+}				t_txt;
 
 typedef struct s_player
 {
 	double		pos_x;
 	double		pos_y;
+	int			case_width;
+	int			case_height;
+	int			p_x;
+	int			p_y;
 }				t_player;
 
 typedef struct s_data
 {
 	t_mlx		img;
-	t_txtr		txtr;
+	t_txt		txt;
 	t_player	player;
 }				t_data;
 
