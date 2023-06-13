@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/23 18:59:02 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:30:59 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ static void	init_hook(t_data *data)
 	mlx_hook(data->img.win_ptr, 33, 0, &destroy_win, data);
 	mlx_hook(data->img.win_ptr, KeyPress, KeyPressMask, &handle_input, data);
 	mlx_hook(data->img.win_ptr, KeyRelease, 1L << 1, &handle_keyrelease, data);
-	mlx_loop(data->img.mlx_ptr);
-	destroy_win(data);
 }
 
 void	init(t_data *data, int ac, char **av)

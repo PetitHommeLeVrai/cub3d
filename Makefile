@@ -6,7 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/23 18:13:00 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/06/13 16:15:20 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						error.c								\
 					)										\
 					$(addprefix exec/,						\
+						draw_map.c							\
 						event_handler.c						\
 						free.c								\
 						init.c								\

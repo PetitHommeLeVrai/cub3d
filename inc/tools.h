@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/23 17:24:07 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:48:26 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 
 # include "cub3d.h"
 
+/*	Dimensions of window  */
 # define WIDTH 900
 # define HEIGHT 900
+
+/*	Hexadecimal for color use  */
+# define BLACK  0x000000
+# define WHITE  0xFFFFFF
+# define RED    0xFF0000
+# define BLUE   0x0000FF
 
 typedef enum e_err_msg
 {
