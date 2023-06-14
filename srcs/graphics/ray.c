@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/14 19:24:23 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/14 19:51:38 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,26 @@
 
 void	draw_line(t_data *data)
 {
-	int	dx;
-	int dy;
-	int i;
-	float x;
-	float y;
-	float xinc;
-	float yinc;
+	int		dx;
+	int		dy;
+	int		i;
+	float	x;
+	float	y;
+	float	xinc;
+	float	yinc;
 
 	dx = data->player.x2 - data->player.x1;
 	dy = data->player.y2 - data->player.y1;
 	x = data->player.pos_x;
 	y = data->player.pos_y;
-	i = 0;
+	i = -1;
 	if (abs(dx) > abs(dy))
 		i = abs(dx);
 	else
 		i = abs(dy);
 	xinc = dx / (float)i;
 	yinc = dy / (float)i;
-	while (i--)
+	while (--i)
 	{
 		my_mlx_pixel_put(data, x, y, GREEN);
 		x += xinc;
@@ -49,11 +49,11 @@ void	draw_line(t_data *data)
 
 void	rotate_line(t_data *data)
 {
-	float radians;
-	int x1;
-	int y1;
-	int x2;
-	int y2;
+	float	radians;
+	int		x1;
+	int		y1;
+	int		x2;
+	int		y2;
 
 	radians = data->player.p_a * (3.14159f / 180.0f);
 	x1 = data->player.pos_x - 300 / 2;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/14 18:35:29 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/14 19:59:11 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,15 @@
 # define GREEN	0x00FF00
 
 /* Key code for mlx_instance  */
-# define KEY_UP 65362
-# define KEY_RIGHT 65363
-# define KEY_DOWN 65364
-# define KEY_LEFT 65361
-# define KEY_ESC 65307
+# define KEY_UP		65362
+# define KEY_RIGHT	65363
+# define KEY_DOWN	65364
+# define KEY_LEFT	65361
+# define KEY_ESC	65307
+# define KEY_W		119
+# define KEY_A		97
+# define KEY_S		115
+# define KEY_D		100
 
 typedef enum e_err_msg
 {

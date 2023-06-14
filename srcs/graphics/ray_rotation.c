@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ray_rotation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/14 17:30:37 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/14 20:06:33 by mmeguedm         ###   ########.fr       */
+/*   Created: 2023/06/14 20:03:16 by mmeguedm          #+#    #+#             */
+/*   Updated: 2023/06/14 20:04:54 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	up_move(t_data *data)
+void	rray_rotate(t_data *data)
 {
-	data->player.pos_y--;
+	data->player.p_a += 1.0f;
 }
 
-void	down_move(t_data *data)
+void	lray_rotate(t_data *data)
 {
-	data->player.pos_y++;
-}
-
-void	right_move(t_data *data)
-{
-	data->player.pos_x++;
-}
-
-void	left_move(t_data *data)
-{
-	data->player.pos_x--;
+	data->player.p_a -= 1.0f;
 }
