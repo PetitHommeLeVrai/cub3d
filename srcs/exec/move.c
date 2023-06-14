@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 17:30:37 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/14 18:04:07 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/14 19:23:19 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	up_move(t_data *data)
 {
-	printf("Test\n");
 	data->player.pos_y--;
 }
 
@@ -25,10 +24,12 @@ void	down_move(t_data *data)
 
 void	right_move(t_data *data)
 {
+	data->player.p_a += 1.0f;
 	data->player.pos_x++;
 }
 
 void	left_move(t_data *data)
 {
+	data->player.p_a -= 1.0f;
 	data->player.pos_x--;
 }

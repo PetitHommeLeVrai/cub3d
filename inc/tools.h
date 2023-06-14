@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/14 18:08:44 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:35:29 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,15 @@ typedef struct s_player
 {
 	double		pos_x;
 	double		pos_y;
+	float		p_a;
 	int			case_width;
 	int			case_height;
 	int			p_x;
 	int			p_y;
+	int			x1;
+	int			x2;
+	int			y1;
+	int			y2;
 }				t_player;
 
 typedef struct s_data

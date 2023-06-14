@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:31:38 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/14 18:19:47 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:52:17 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void draw_player(t_data *data)
 static void draw_square(t_data *data, int axe_x, int axe_y, int color)
 {
 	int		count;
-	
+
 	count = 0;
 	while (count < data->player.case_height)
 	{
@@ -80,7 +80,7 @@ void	get_cell_dim(t_data *data)
 {
 	int	map_x;
 	int	map_y;
-	
+
 	map_x = get_longest_line(data->img.map);
 	map_y = get_size_map(data->img.map);
 	data->player.case_width = WIDTH / map_x;
