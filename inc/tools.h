@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/13 22:26:51 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/14 11:27:38 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "cub3d.h"
 
 /*	Macroconstant required by the window management  */
-# define WIDTH 360
-# define HEIGHT 200
+# define WIDTH 600
+# define HEIGHT 600
 
 # define NEWLINE '\n'
 # define SPACE 32
