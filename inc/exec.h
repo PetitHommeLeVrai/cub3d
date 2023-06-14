@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 13:29:15 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/14 17:39:47 by mmeguedm         ###   ########.fr       */
+/*   Created: 2023/05/18 16:49:56 by aboyer            #+#    #+#             */
+/*   Updated: 2023/06/14 18:00:37 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef WINDOW_H
+# define WINDOW_H
 
-/*	GNU C Library*/
-# include <fcntl.h>
-# include <sys/stat.h>
-# include <unistd.h>
-# include <stdbool.h>
-
-/*	Personal Library  */
-# include "exec.h"
-# include "mlx.h"
-# include "mlx_int.h"
-# include "libft.h"
 # include "tools.h"
-# include "parsing.h"
-# include "get_next_line.h"
-# include "graphics.h"
+
+void	init(t_data *data, int ac, char **av);
+int		destroy_win(t_data *data);
+int		draw(t_data *data);
+int		handle_keyrelease(int keysym, t_data *data);
+int		handle_input(int keysym, t_data *data);
+void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color);
+void	draw_map(t_data *data);
+int		move_key_hook(unsigned int keycode, t_data *data);
+void	get_cell_dim(t_data *data);
 
 #endif

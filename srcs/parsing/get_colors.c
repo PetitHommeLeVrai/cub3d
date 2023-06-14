@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:26:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/31 16:53:16 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/14 17:53:25 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static bool	is_in_colors_map(char *str)
 
 	i = 0;
 	colors_map = create_colors_map();
+	if (!str || str[0] == 0)
+		return (false);
 	while (colors_map[i])
 	{
 		if (!(ft_strncmp(colors_map[i], str, 2)))
@@ -65,6 +67,7 @@ void	get_colors(t_data *data)
 			exit_error(E_ELEMENT);
 		i++;
 	}
+	printf("str : |%s|\n", data->img.file[i]);
 	data->txt.count = i;
 	fill_colors(data);
 }

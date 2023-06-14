@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:31:38 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/14 11:27:10 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:19:47 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static void draw_player(t_data *data)
 	int	j;
 
 	i = 0;
-	data->player.pos_x += 10;
-	data->player.pos_y += 10;
-	my_mlx_pixel_put(data, data->player.pos_x, data->player.pos_y, GREEN);
+	// data->player.pos_x += data->player.case_width / 2;
+	// data->player.pos_y += data->player.case_height / 2;
+	printf("pos_x : %f\tpos_y : %f\n", data->player.pos_x, data->player.pos_y);
 	while (i < 10)
 	{
 		my_mlx_pixel_put(data, data->player.pos_x + i, data->player.pos_y, GREEN);
@@ -48,7 +48,6 @@ static void draw_square(t_data *data, int axe_x, int axe_y, int color)
 	int		count;
 	
 	count = 0;
-	printf("case_widht : %d\tcase_height : %d\n", data->player.case_width, data->player.case_height);
 	while (count < data->player.case_height)
 	{
 		draw_line(data, axe_x, axe_y + count, color);
@@ -97,7 +96,6 @@ void draw_map(t_data *data)
 	int longest_line;
 
 	i = 0;
-	get_cell_dim(data);
 	while (data->img.map[i])
 	{
 		j = 0;
@@ -114,8 +112,8 @@ void draw_map(t_data *data)
 		i++;
 	}
 	draw_grid(data);
-	// draw_player(data);
-	// raycasting(data);
+	draw_player(data);
+	raycasting(data);
 	mlx_put_image_to_window(data->img.mlx_ptr, data->img.win_ptr, data->img.img_ptr, 0, 0);
 
 }

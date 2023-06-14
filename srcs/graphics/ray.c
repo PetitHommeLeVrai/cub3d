@@ -6,21 +6,35 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/13 22:10:45 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:15:55 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// static bool	hit_wall(t_data *data)
+// {
+
+// }
 
 void	raycasting(t_data *data)
 {
-	int	i;
+	int		i;
+	double	distSide_Y;
 
 	i = 0;
-	// draw_line(data, data->player.pos_x, data->player.pos_y, GREEN);
-	// while (i < 100)
-	// {
-		
-	// }
+	distSide_Y = data->player.pos_y - ((data->player.pos_y / (double)data->player.case_height) * data->player.case_height);
+	// printf("case_height : %d\t", data->player.case_height);
+	// printf("pos_x : %f\tcase_height : %d\t", data->player.pos_x, data->player.case_height);
+	// printf("distSide_Y : %f\n", distSide_Y);
+	while (i < 500)
+	{
+	my_mlx_pixel_put(data, data->player.pos_x + i, data->player.pos_y - i, GREEN);
+	// my_mlx_pixel_put(data, data->player.pos_x, distSide_Y, GREEN);
+	// my_mlx_pixel_put(data, data->player.pos_x + 1, distSide_Y, GREEN);
+	// my_mlx_pixel_put(data, data->player.pos_x - 1, distSide_Y, GREEN);
+	// my_mlx_pixel_put(data, data->player.pos_x, distSide_Y + 1, GREEN);
+	// my_mlx_pixel_put(data, data->player.pos_x, distSide_Y - 1, GREEN);
+		i++;
+	}
 }

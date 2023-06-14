@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/14 11:27:38 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:08:44 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,26 @@
 # include "cub3d.h"
 
 /*	Macroconstant required by the window management  */
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 900
+# define HEIGHT 900
 
+/*	Ascii codes  */
 # define NEWLINE '\n'
 # define SPACE 32
 
+/*	Hexadecimal color code for use  */
 # define BLACK	0x000000
 # define RED	0xFF0000
 # define BLUE	0x0000FF
 # define WHITE	0xFFFFFF
 # define GREEN	0x00FF00
+
+/* Key code for mlx_instance  */
+# define KEY_UP 65362
+# define KEY_RIGHT 65363
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_ESC 65307
 
 typedef enum e_err_msg
 {
@@ -92,5 +101,14 @@ typedef struct s_data
 	t_txt		txt;
 	t_player	player;
 }				t_data;
+
+typedef void(*t_fp_movement)(t_data *data);
+
+/*	Required to handle key_hook  */
+typedef struct s_movement
+{
+	unsigned int	key;
+	t_fp_movement	key_fp;
+}					t_movement;
 
 #endif
