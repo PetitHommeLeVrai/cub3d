@@ -38,4 +38,5 @@ void	main_parsing(int ac, char *file, t_data *data)
 	get_map(data);
 	get_position_player(data);
 	check_map(data, data->img.map);
+	start_pos_to_rad(data);
 }

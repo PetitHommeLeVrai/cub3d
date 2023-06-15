@@ -6,7 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/06/14 20:06:08 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/06/15 21:04:09 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 					)										\
 					$(addprefix exec/,						\
 						event_handler.c						\
-						move.c								\
+						key_move.c							\
+						key_rotate.c						\
 						free.c								\
 						init.c								\
 						window_handler.c					\

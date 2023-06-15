@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:57:32 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/13 20:39:59 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:05:45 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ void	get_position_player(t_data *data)
 			while (start_pos_player[k])
 			{
 				if (start_pos_player[k] == data->img.map[i][j])
+				{
+					data->player.compass_point = data->img.map[i][j];
 					return ;
+				}
 				k++;
 			}
 			data->player.pos_x++;

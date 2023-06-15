@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/14 19:24:40 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/15 20:31:09 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+float degToRad(int a){ return a*PI/180.0;}
 
 void	init_data(t_data *data)
 {
@@ -27,7 +29,6 @@ void	init_data(t_data *data)
 	data->img.map = NULL;
 	data->img.file = NULL;
 	data->img.map_cp = NULL;
-	data->player.p_a = 0.0f;
 }
 
 static void	init_mlx(t_data *data)

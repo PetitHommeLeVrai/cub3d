@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:06 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/14 20:05:02 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/15 19:06:22 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,6 @@ int	handle_input(int keysym, t_data *data)
 {
 	(void)keysym;
 	(void)data;
-	return (1);
-}
-
-int	handle_keyrelease(int keysym, t_data *data)
-{
-	(void)data;
-	if (keysym == XK_Escape)
-		destroy_win(data);
 	return (1);
 }
 
@@ -61,7 +53,6 @@ int	move_key_hook(unsigned int keycode, t_data *data)
 {
 	static t_movement	*move_storage;
 
-	printf("keycode : %d\n", keycode);
 	move_storage = create_move_storage();
 	while (move_storage->key_fp)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:31:38 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/14 18:52:17 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/15 20:28:29 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void draw_player(t_data *data)
 	i = 0;
 	// data->player.pos_x += data->player.case_width / 2;
 	// data->player.pos_y += data->player.case_height / 2;
-	printf("pos_x : %f\tpos_y : %f\n", data->player.pos_x, data->player.pos_y);
 	while (i < 10)
 	{
 		my_mlx_pixel_put(data, data->player.pos_x + i, data->player.pos_y, GREEN);
@@ -89,6 +88,20 @@ void	get_cell_dim(t_data *data)
 	data->player.pos_y = data->player.pos_y * data->player.case_height;
 }
 
+static bool	check_player(char c)
+{
+	int	k;
+	char	*str = "NSEW";
+
+	k = 0;
+	while (str[k])
+	{
+		if (c == str[k])
+			return (true);
+		k++;
+	}
+	return (false);		
+}
 void draw_map(t_data *data)
 {
 	int i;
@@ -105,7 +118,7 @@ void draw_map(t_data *data)
 				draw_square(data, j * data->player.case_width, i * data->player.case_height, BLUE);
 			else if (data->img.map[i][j] == '1')
 				draw_square(data, j * data->player.case_width, i * data->player.case_height, RED);
-			else if (data->img.map[i][j] == 'N')
+			else if (check_player(data->img.map[i][j]))
 				draw_square(data, j * data->player.case_width, i * data->player.case_height, WHITE);
 			j++;
 		}
