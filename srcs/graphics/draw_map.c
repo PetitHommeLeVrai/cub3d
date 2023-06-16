@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:31:38 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/15 20:28:29 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:54:14 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static bool	check_player(char c)
 			return (true);
 		k++;
 	}
-	return (false);		
+	return (false);
 }
 void draw_map(t_data *data)
 {

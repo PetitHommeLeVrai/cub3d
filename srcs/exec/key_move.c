@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_move.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:19:47 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/15 21:05:54 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:45:46 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	up_move(t_data *data)
 
 	vpdx = velocity_coeff(d_abs(data->player.pdx));
 	vpdy = velocity_coeff(d_abs(data->player.pdy));
-	
+
 	// printf("vpdx : %f\tvpdy : %f\n", vpdx, vpdy);
 	printf("pdx : %f\tvdy : %f\n", data->player.pdx, data->player.pdy);
 	data->player.pos_x += data->player.pdx * 1.4;
@@ -42,15 +42,50 @@ void	up_move(t_data *data)
 
 void	down_move(t_data *data)
 {
-	data->player.pos_y += 5;
+	double	vpdx;
+	double	vpdy;
+
+	vpdx = velocity_coeff(d_abs(data->player.pdx));
+	vpdy = velocity_coeff(d_abs(data->player.pdy));
+
+	data->player.pos_x -= data->player.pdx * 1.4;
+	data->player.pos_y -= data->player.pdy * 1.4;
 }
 
 void	right_move(t_data *data)
 {
-	data->player.pos_x += 5;
+	float angle;
+	float perpendicular_angle;
+	float perpendicularx;
+    float perpendiculary;
+	float magnitude;
+
+	angle = data->player.p_a  * M_PI / 180.0;
+	perpendicular_angle = angle + M_PI / 2.0;
+	perpendicularx = cos(perpendicular_angle);
+	perpendiculary = sin(perpendicular_angle);
+	magnitude = sqrt(perpendicularx * perpendicularx + perpendiculary * perpendiculary);
+	perpendicularx /= magnitude;
+	perpendiculary /= magnitude;
+	data->player.pos_x += 1.4 * perpendicularx;
+	data->player.pos_y += 1.4 * perpendiculary;
 }
 
 void	left_move(t_data *data)
 {
-	data->player.pos_x -= 5;
+	float angle;
+	float perpendicular_angle;
+	float perpendicularx;
+    float perpendiculary;
+	float magnitude;
+
+	angle = data->player.p_a  * M_PI / 180.0;
+	perpendicular_angle = angle - M_PI / 2.0;
+	perpendicularx = cos(perpendicular_angle);
+	perpendiculary = sin(perpendicular_angle);
+	magnitude = sqrt(perpendicularx * perpendicularx + perpendiculary * perpendiculary);
+	perpendicularx /= magnitude;
+	perpendiculary /= magnitude;
+	data->player.pos_x += 1.4 * perpendicularx;
+	data->player.pos_y += 1.4 * perpendiculary;
 }

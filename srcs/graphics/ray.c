@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/15 20:33:27 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:38:06 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ void	send_ray(t_data *data)
 	float	xo;
 	float	yo;
 
-	
+
 }
 
 void	start_pos_to_rad(t_data *data)
 {
 	if (data->player.compass_point == 'N')
-		data->player.p_a = 90;
-	else if (data->player.compass_point == 'S')
 		data->player.p_a = 270;
+	else if (data->player.compass_point == 'S')
+		data->player.p_a = 90;
 	else if (data->player.compass_point == 'W')
 		data->player.p_a = 180;
 	else if (data->player.compass_point == 'E')
@@ -50,13 +50,16 @@ void	start_pos_to_rad(t_data *data)
 void	raycasting(t_data *data)
 {
 	// int		i;
-	// double	distSide_Y;
+	double	distSide_Y;
 
 	// i = 0;
-	// distSide_Y = data->player.pos_y - ((data->player.pos_y / (double)data->player.case_height) * data->player.case_height);
-	// // printf("case_height : %d\t", data->player.case_height);
-	// // printf("pos_x : %f\tcase_height : %d\t", data->player.pos_x, data->player.case_height);
-	// // printf("distSide_Y : %f\n", distSide_Y);
+	// float x = data->player.pos_x + data->player.case_width / 2;
+	float y = 750;
+	distSide_Y = data->player.case_height - fmod(y, data->player.case_height);
+	float xn = distSide_Y / (tan(data->player.p_a));
+	printf("distSide_Y : %f\n", distSide_Y);
+	printf("yn : %f\n", xn);
+	printf("%f\n", data->player.pos_y);
 	// while (i < 500)
 	// {
 	// my_mlx_pixel_put(data, data->player.pos_x + i, data->player.pos_y - i, GREEN);

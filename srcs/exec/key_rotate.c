@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:20:42 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/15 21:05:24 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/16 14:35:53 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rray_rotate(t_data *data)
 {
-	data->player.p_a -= 3.0f;
+	data->player.p_a += 3.0f;
 	printf("pa : %f\n", data->player.p_a);
 	// if (data->player.p_a <  0)
 	// 	data->player.p_a += 2 * PI;
@@ -24,7 +24,7 @@ void	rray_rotate(t_data *data)
 
 void	lray_rotate(t_data *data)
 {
-	data->player.p_a += 3.0f;
+	data->player.p_a -= 3.0f;
 	printf("pa : %f\n", data->player.p_a);
 	// if (data->player.p_a > 2 * PI)
 	// {
