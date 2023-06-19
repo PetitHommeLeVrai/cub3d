@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/19 16:21:56 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:33:28 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	get_x_intersection(t_data *data)
 	float	tan_ra;
 	float	x_intersection;
 	float	y_intersection;
+	int		dof;
 	
 	ra = degToRad(data->player.p_a);
 	tan_ra = tan(ra);
@@ -51,18 +52,24 @@ void	get_x_intersection(t_data *data)
 	//	Looking down
 	// if (ra > PI)
 	// {
-    if(sin(ra) > 0.001)
+    if(ra > PI)
 	{
 		ry=(((int)data->player.pos_y >> 6) << 6) -0.0001;
 		printf("ry : %f\n", ry);
 		rx=(data->player.pos_y -ry) * tan_ra + data->player.pos_x;
 		x_intersection = -64.0f * tan_ra;
 	}
-	else if(sin(ra) < -0.001)
+	else if(ra < PI)
 	{
 		ry=(((int)data->player.pos_y >> 6) << 6) + 64.0f;
 		rx=(data->player.pos_y-ry) * tan_ra + data->player.pos_x;
 		x_intersection = 64.0f * tan_ra;
+	}
+	else if (ra == PI || ra == 0)
+	{
+		rx = data->player.pos_x;
+		ry = data->player.pos_y;
+		dof = 8;
 	}
 	printf("x_intersection : %f\n", x_intersection);
 }
