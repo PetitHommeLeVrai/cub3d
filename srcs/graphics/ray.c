@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/19 16:33:28 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:43:06 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,42 +36,49 @@ void	send_ray(t_data *data)
 /*	Get the x coordinate of the nearest horizontal intersection  */
 void	get_x_intersection(t_data *data)
 {
-	float	ra;
-	float	rx;
-	float	ry;
+	float	ray_a;
+	float	ray_x;
+	float	ray_y;
 	float	atan;
 	float	tan_ra;
 	float	x_intersection;
 	float	y_intersection;
 	int		dof;
-	
-	ra = degToRad(data->player.p_a);
-	tan_ra = tan(ra);
-	tan_ra = 1 / tan_ra;
-	atan = -1 / tan(ra);
+	float	yo;
+
+	ray_a = FixAng(data->player.p_a);
+	tan_ra = tan(degToRad(ray_a));
+	tan_ra = 1.0f / tan_ra;
+	atan = -1.0f / tan(ray_a);
 	//	Looking down
-	// if (ra > PI)
+	// if (ray_a > PI)
 	// {
-    if(ra > PI)
+    printf("ray_a : %f\n", ray_a);
+	if(sin(degToRad(ray_a)) > 0.001)
 	{
-		ry=(((int)data->player.pos_y >> 6) << 6) -0.0001;
-		printf("ry : %f\n", ry);
-		rx=(data->player.pos_y -ry) * tan_ra + data->player.pos_x;
-		x_intersection = -64.0f * tan_ra;
+		printf("UP\n");
+		ray_y = (((int)data->player.pos_y / 81.0f) * 81.0f) -0.0001;
+		printf("ray_y : %f\n", ray_y);
+		ray_x=(data->player.pos_y - ray_y) * tan_ra + data->player.pos_x;
+		yo = -81.0f;
+		x_intersection = -yo * tan_ra;
+		printf("x_intersection : %f\n", x_intersection);
 	}
-	else if(ra < PI)
+	else if(sin(degToRad(ray_a)) < 0.001)
 	{
-		ry=(((int)data->player.pos_y >> 6) << 6) + 64.0f;
-		rx=(data->player.pos_y-ry) * tan_ra + data->player.pos_x;
-		x_intersection = 64.0f * tan_ra;
+		printf("DOWN\n");
+		ray_y = (((int)data->player.pos_y / 81.0f) * 81.0f) - 81.0f;
+		ray_x=(data->player.pos_y-ray_y) * tan_ra + data->player.pos_x;
+		yo = 81.0f;
+		x_intersection = -yo * tan_ra;
+		printf("x_intersection : %f\n", x_intersection);
 	}
-	else if (ra == PI || ra == 0)
+	else if (ray_a == PI || ray_a == 0)
 	{
-		rx = data->player.pos_x;
-		ry = data->player.pos_y;
+		ray_x = data->player.pos_x;
+		ray_y = data->player.pos_y;
 		dof = 8;
 	}
-	printf("x_intersection : %f\n", x_intersection);
 }
 
 /*	The main raycasting

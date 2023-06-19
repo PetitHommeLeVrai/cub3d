@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:19:47 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/19 16:34:33 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:55:13 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,12 @@
 
 void	up_move(t_data *data)
 {
-	double	vpdx;
-	double	vpdy;
-	// printf("vpdx : %f\tvpdy : %f\n", vpdx, vpdy);
-	// printf("pdx : %f\tvdy : %f\n", data->player.pdx, data->player.pdy);
 	data->player.pos_x -= data->player.pdx * 1.4;
 	data->player.pos_y -= data->player.pdy * 1.4;
-	// data->player.pos_y -=5;
 }
 
 void	down_move(t_data *data)
 {
-	double	vpdx;
-	double	vpdy;
-
-	// vpdx = velocity_coeff(d_abs(data->player.pdx));
-	// vpdy = velocity_coeff(d_abs(data->player.pdy));
-
 	data->player.pos_x += data->player.pdx * 1.4;
 	data->player.pos_y += data->player.pdy * 1.4;
 }
@@ -43,10 +32,10 @@ void	right_move(t_data *data)
     float perpendiculary;
 	float magnitude;
 
-	angle = data->player.p_a  * PI / 180.0;
-	perpendicular_angle = angle - PI / 2.0;
+	angle = degToRad(data->player.p_a);
+	perpendicular_angle = angle - PI / 2;
 	perpendicularx = cos(perpendicular_angle);
-	perpendiculary = sin(perpendicular_angle);
+	perpendiculary = -sin(perpendicular_angle);
 	magnitude = sqrt(perpendicularx * perpendicularx + perpendiculary * perpendiculary);
 	perpendicularx /= magnitude;
 	perpendiculary /= magnitude;
@@ -62,10 +51,10 @@ void	left_move(t_data *data)
     float perpendiculary;
 	float magnitude;
 
-	angle = data->player.p_a  * PI / 180.0;
-	perpendicular_angle = angle + PI / 2.0;
+	angle = degToRad(data->player.p_a);
+	perpendicular_angle = angle + PI / 2;
 	perpendicularx = cos(perpendicular_angle);
-	perpendiculary = sin(perpendicular_angle);
+	perpendiculary = -sin(perpendicular_angle);
 	magnitude = sqrt(perpendicularx * perpendicularx + perpendiculary * perpendiculary);
 	perpendicularx /= magnitude;
 	perpendiculary /= magnitude;

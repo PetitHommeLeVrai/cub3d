@@ -6,13 +6,11 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:20:42 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/19 16:36:14 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:49:52 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int FixAng(int a){ if(a>359){ a-=360;} if(a<0){ a+=360;} return a;}
 
 void	r_rotate(t_data *data)
 {

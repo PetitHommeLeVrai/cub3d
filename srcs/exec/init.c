@@ -6,11 +6,13 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/19 15:30:01 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/19 17:46:57 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int FixAng(int a){ if(a>359){ a-=360;} if(a<0){ a+=360;} return a;}
 
 float degToRad(int a){ return a*PI/180.0;}
 
