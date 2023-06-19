@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:06 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/15 19:06:22 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:37:26 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static	t_movement	*create_move_storage(void)
 	{KEY_S, down_move},
 	{KEY_A, left_move},
 	{KEY_D, right_move},
-	{KEY_RIGHT, rray_rotate},
-	{KEY_LEFT, lray_rotate},
+	{KEY_RIGHT, r_rotate},
+	{KEY_LEFT, l_rotate},
 	{KEY_ESC, close_window_key_esc},
 	{0, NULL},
 	};

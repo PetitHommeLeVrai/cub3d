@@ -6,13 +6,27 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/15 20:31:09 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:30:01 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 float degToRad(int a){ return a*PI/180.0;}
+
+void	start_pos_to_rad(t_data *data)
+{
+	if (data->player.compass_point == 'N')
+		data->player.p_a = 90;
+	else if (data->player.compass_point == 'S')
+		data->player.p_a = 270;
+	else if (data->player.compass_point == 'W')
+		data->player.p_a = 180;
+	else if (data->player.compass_point == 'E')
+		data->player.p_a = 0;
+	data->player.pdx = cos(degToRad(data->player.p_a));
+	data->player.pdy = sin(degToRad(data->player.p_a));
+}
 
 void	init_data(t_data *data)
 {

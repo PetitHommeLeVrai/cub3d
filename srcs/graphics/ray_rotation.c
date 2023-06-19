@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 20:03:16 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/15 19:37:26 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:29:22 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	rotate_line(t_data *data)
 	y1 = data->player.pos_y;
 
 	data->player.x1 = data->player.pos_x  + (x1 - data->player.pos_x) * cosf(radians) - (y1 - data->player.pos_y) * sinf(radians);
-	data->player.y1 = data->player.pos_y + (x1 - data->player.pos_x) * sinf(radians) + (y1 - data->player.pos_y) * cosf(radians);
+	data->player.y2 = data->player.pos_y + (x1 - data->player.pos_x) * sinf(radians) + (y1 - data->player.pos_y) * cosf(radians);
 	data->player.x2 = data->player.pos_x + (x2 - data->player.pos_x) * cosf(radians) - (y1 - data->player.pos_y) * sinf(radians);
-	data->player.y2 = data->player.pos_y + (x2 - data->player.pos_x) * sinf(radians) + (y1 - data->player.pos_y) * cosf(radians);
+	data->player.y1 = data->player.pos_y + (x2 - data->player.pos_x) * sinf(radians) + (y1 - data->player.pos_y) * cosf(radians);
 
 	draw_line(data);
 }

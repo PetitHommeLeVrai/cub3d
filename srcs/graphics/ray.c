@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/16 16:38:06 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/19 16:21:56 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,42 @@ void	send_ray(t_data *data)
 
 }
 
-void	start_pos_to_rad(t_data *data)
+/*	Get the x coordinate of the nearest horizontal intersection  */
+void	get_x_intersection(t_data *data)
 {
-	if (data->player.compass_point == 'N')
-		data->player.p_a = 270;
-	else if (data->player.compass_point == 'S')
-		data->player.p_a = 90;
-	else if (data->player.compass_point == 'W')
-		data->player.p_a = 180;
-	else if (data->player.compass_point == 'E')
-		data->player.p_a = 0;
-	data->player.pdx = cos(degToRad(data->player.p_a));
-	data->player.pdy = sin(degToRad(data->player.p_a));
+	float	ra;
+	float	rx;
+	float	ry;
+	float	atan;
+	float	tan_ra;
+	float	x_intersection;
+	float	y_intersection;
+	
+	ra = degToRad(data->player.p_a);
+	tan_ra = tan(ra);
+	tan_ra = 1 / tan_ra;
+	atan = -1 / tan(ra);
+	//	Looking down
+	// if (ra > PI)
+	// {
+    if(sin(ra) > 0.001)
+	{
+		ry=(((int)data->player.pos_y >> 6) << 6) -0.0001;
+		printf("ry : %f\n", ry);
+		rx=(data->player.pos_y -ry) * tan_ra + data->player.pos_x;
+		x_intersection = -64.0f * tan_ra;
+	}
+	else if(sin(ra) < -0.001)
+	{
+		ry=(((int)data->player.pos_y >> 6) << 6) + 64.0f;
+		rx=(data->player.pos_y-ry) * tan_ra + data->player.pos_x;
+		x_intersection = 64.0f * tan_ra;
+	}
+	printf("x_intersection : %f\n", x_intersection);
 }
 
+/*	The main raycasting
+	To know the distance of the player to the near wall  */
 void	raycasting(t_data *data)
 {
 	// int		i;
@@ -57,9 +79,11 @@ void	raycasting(t_data *data)
 	float y = 750;
 	distSide_Y = data->player.case_height - fmod(y, data->player.case_height);
 	float xn = distSide_Y / (tan(data->player.p_a));
-	printf("distSide_Y : %f\n", distSide_Y);
-	printf("yn : %f\n", xn);
-	printf("%f\n", data->player.pos_y);
+	// printf("distSide_Y : %f\n", distSide_Y);
+	// printf("xn : %f\n", xn);
+	get_x_intersection(data);
+	// my_mlx_pixel_put(data, data->player.pos_x, xn, GREEN);
+	// printf("%f\n", data->player.pos_y);
 	// while (i < 500)
 	// {
 	// my_mlx_pixel_put(data, data->player.pos_x + i, data->player.pos_y - i, GREEN);

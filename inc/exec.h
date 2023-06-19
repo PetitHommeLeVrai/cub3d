@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:49:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/15 19:35:39 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:37:26 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	get_cell_dim(t_data *data);
 
 /*	Handle key_hook		*/
 /*		<key_rotate.c>  */
-void	rray_rotate(t_data *data);
-void	lray_rotate(t_data *data);
+void	r_rotate(t_data *data);
+void	l_rotate(t_data *data);
 /*		<move.c>		*/
 void	up_move(t_data *data);
 void	down_move(t_data *data);
