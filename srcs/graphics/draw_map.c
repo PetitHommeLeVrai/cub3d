@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:31:38 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 16:32:22 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 17:57:14 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void draw_player(t_data *data)
 	int	j;
 
 	i = 0;
-	// data->player.pos_x += data->player.case_width / 2;
-	// data->player.pos_y += data->player.case_height / 2;
+	// data->player.pos_x += data->player.case_width - 50;
+	// data->player.pos_y += data->player.case_height - 50;
 	while (i < 10)
 	{
 		my_mlx_pixel_put(data, data->player.pos_x + i, data->player.pos_y, GREEN);

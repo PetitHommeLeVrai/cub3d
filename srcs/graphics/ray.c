@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 17:09:14 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 17:57:55 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	check_vertical_line(t_data *data)
 	float	disY;
 	float	vx;
 	float	vy;
+
 	int		mapY;
 	int		mapX;
 	int		dof;
@@ -164,7 +165,6 @@ void	check_vertical_line(t_data *data)
 			dof = 8;
 			data->player.disV = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
 			// printf("disV : %f\n", data->player.disV);
-			draw_intersection(data, ray_x, ray_y, YELLOW);
 		}
 		//	Next Vertical
 		else
@@ -174,6 +174,8 @@ void	check_vertical_line(t_data *data)
 			dof++;
 		}
 	}
+	data->player.vx = ray_x;
+	data->player.vy = ray_y;
 }
 
 /*	Get the x coordinate of the nearest horizontal intersection  */
@@ -199,7 +201,7 @@ void	check_horizontal_line(t_data *data)
 
 	hx = data->player.pos_x;
 	hy = data->player.pos_y;
-	disH = 100000;
+
 	mapY = 8;
 	mapX = 8;
 	dof = 0;
@@ -213,7 +215,6 @@ void	check_horizontal_line(t_data *data)
 		ray_x = ((int)data->player.pos_y - ray_y) * tan_ra + data->player.pos_x;
 		y_offset = -data->player.case_height;
 		x_offset = -y_offset * tan_ra;
-		draw_intersection(data, ray_x, ray_y, GREEN);
 	}
 	//	Looking down
 	else if(sin(degToRad(ray_a)) < -0.001)
@@ -238,7 +239,6 @@ void	check_horizontal_line(t_data *data)
 		//	Hit Wall
 		if(mp < mapX * mapY && data->img.i_map[mp] == 1)
 		{
-			draw_intersection(data, ray_x, ray_y, ORANGE);
 			dof = 8;
 			data->player.disH = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
 			// printf("disH : %f\n", data->player.disH);
@@ -251,6 +251,13 @@ void	check_horizontal_line(t_data *data)
 			dof++;
 		}
 	}
+	if (data->player.disV < data->player.disH)
+	{
+		ray_x = data->player.vx;
+		ray_y = data->player.vy;
+		data->player.disH = data->player.disV;
+	}
+	draw_intersection(data, ray_x, ray_y, ORANGE);
 }
 
 void	draw_wall(t_data *data, double ray_dist, int x)
@@ -288,9 +295,11 @@ void	draw_wall(t_data *data, double ray_dist, int x)
 	To know the distance of the player to the near wall  */
 void	raycasting(t_data *data)
 {
+	data->player.disH = 100000;
+	data->player.disV = 100000;
 	convert_map_to_int(data);
-	check_horizontal_line(data);
 	check_vertical_line(data);
+	check_horizontal_line(data);
 	int x = 0;
 	printf("%f\n", data->player.disH);
 	while (x < WIDTH)
@@ -298,5 +307,6 @@ void	raycasting(t_data *data)
 		draw_wall(data, data->player.disH, x);
 		x++;
 	}
+	printf("disH : %f\n", data->player.disH);
 	//rotate_line(data);
 }
