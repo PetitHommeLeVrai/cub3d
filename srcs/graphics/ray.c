@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 16:50:37 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 16:51:55 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,8 @@ void	check_vertical_line(t_data *data)
 	float	x_offset;
 	float	disH;
 	float	disY;
-
+	float	vx;
+	float	vy;
 	int		mapY;
 	int		mapX;
 	int		dof;
@@ -161,7 +162,8 @@ void	check_vertical_line(t_data *data)
 		if(mp > 0 && mp < mapX * mapY && data->img.i_map[mp] == 1)
 		{
 			dof = 8;
-			disH = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
+			data->player.disV = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
+			// printf("disV : %f\n", data->player.disV);
 			draw_intersection(data, ray_x, ray_y, YELLOW);
 		}
 		//	Next Vertical
@@ -183,6 +185,8 @@ void	check_horizontal_line(t_data *data)
 	float	tan_ra;
 	float	y_offset;
 	float	x_offset;
+	float	hx;
+	float	hy;
 	float	disH;
 	float	disY;
 
@@ -193,6 +197,9 @@ void	check_horizontal_line(t_data *data)
 	int		my;
 	int		mp;
 
+	hx = data->player.pos_x;
+	hy = data->player.pos_y;
+	disH = 100000;
 	mapY = 8;
 	mapX = 8;
 	dof = 0;
@@ -232,8 +239,9 @@ void	check_horizontal_line(t_data *data)
 		if(mp < mapX * mapY && data->img.i_map[mp] == 1)
 		{
 			draw_intersection(data, ray_x, ray_y, ORANGE);
-			disH = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
-			break ;
+			dof = 8;
+			data->player.disH = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
+			// printf("disH : %f\n", data->player.disH);
 		}
 		//	Next horizontal
 		else
