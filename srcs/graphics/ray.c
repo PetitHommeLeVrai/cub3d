@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 17:14:33 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:52:08 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ void	check_horizontal_line(t_data *data)
 
 	hx = data->player.pos_x;
 	hy = data->player.pos_y;
-	disH = 100000;
+	
 	mapY = 8;
 	mapX = 8;
 	dof = 0;
@@ -263,8 +263,12 @@ void	check_horizontal_line(t_data *data)
 	To know the distance of the player to the near wall  */
 void	raycasting(t_data *data)
 {
+	data->player.disH = 100000;
+	data->player.disV = 100000;
 	convert_map_to_int(data);
 	check_vertical_line(data);
 	check_horizontal_line(data);
+	printf("disH : %f\n", data->player.disH);
 	//rotate_line(data);
 }
+ 
