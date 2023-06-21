@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:31:38 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 17:57:14 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 20:28:39 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void draw_map(t_data *data)
 			else if (data->img.map[i][j] == '1')
 				draw_square(data, j * data->player.case_width, i * data->player.case_height, RED);
 			else if (check_player(data->img.map[i][j]))
-				draw_square(data, j * data->player.case_width, i * data->player.case_height, WHITE);
+				draw_square(data, j * data->player.case_width, i * data->player.case_height, BLUE);
 			j++;
 		}
 		i++;

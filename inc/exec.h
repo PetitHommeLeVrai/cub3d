@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:49:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/21 16:33:00 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 19:33:37 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ void	up_move(t_data *data);
 void	down_move(t_data *data);
 void	right_move(t_data *data);
 void	left_move(t_data *data);
-
-float degToRad(int a);
 
 #endif

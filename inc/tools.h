@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/21 17:56:42 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 19:00:44 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@
 # define KEY_D		100
 
 # define PI 3.14159265359
+# define DR	0.0174533
+# define DISH 1 << 0
+# define DISV 1 << 1
 
 typedef enum e_err_msg
 {
@@ -104,10 +107,6 @@ typedef struct s_player
 	float		p_a;
 	float		pdx;
 	float		pdy;
-	float		disH;
-	float		disV;
-	float		vx;
-	float		vy;
 	char		compass_point;
 	int			case_width;
 	int			case_height;
@@ -119,11 +118,38 @@ typedef struct s_player
 	int			p_y;	// Has to be delete
 }				t_player;
 
+typedef struct	s_map
+{
+	int			case_width;
+	int			case_height;
+	int			mapX;
+	int			mapY;
+	int			mx;
+	int			my;
+	int			mp;
+	char		compass_point;
+}				t_map;
+
+typedef struct s_ray
+{
+	float	ray_x;
+	float	ray_y;
+	float	ray_a;
+	float	vx;
+	float	vy;
+	float	x_offset;
+	float	y_offset;
+	float	disH;
+	float	disV;
+}			t_ray;
+
 typedef struct s_data
 {
 	t_mlx		img;
 	t_txt		txt;
 	t_player	player;
+	t_ray		ray;
+	t_map		map;
 }				t_data;
 
 typedef void(*t_fp_movement)(t_data *data);

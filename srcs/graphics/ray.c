@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 19:35:49 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 20:41:16 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,296 +21,151 @@ void	draw_intersection(t_data *data, int ray_x, int ray_y, int color)
 		return ;
 	if (ray_y <= 0 || ray_y >= HEIGHT)
 		return ;
-	//	Draw cross
-	while (i < 10)
-	{
-		if (ray_x + i >= WIDTH || ray_x - i <= 0)
-			return ;
-		if (ray_y + i >= HEIGHT || ray_y - i <= 0)
-			return ;
-		my_mlx_pixel_put(data, ray_x + i, ray_y, color);
-		my_mlx_pixel_put(data, ray_x - i, ray_y, color);
-		my_mlx_pixel_put(data, ray_x, ray_y + i, color);
-		my_mlx_pixel_put(data, ray_x, ray_y - i, color);
-		i++;
-	}
 	draw_line_with_coord(data, data->player.pos_x, data->player.pos_y, ray_x, ray_y);
-	// Draw x intersection
-	// my_mlx_pixel_put(data, ray_x, data->player.pos_y, GREEN);
-	// my_mlx_pixel_put(data, ray_x + 1, data->player.pos_y, GREEN);
-	// my_mlx_pixel_put(data, ray_x - 1, data->player.pos_y, GREEN);
-	// my_mlx_pixel_put(data, ray_x, data->player.pos_y + 1, GREEN);
-	// my_mlx_pixel_put(data, ray_x, data->player.pos_y - 1, GREEN);
-
-	// Draw y intersection
-	// my_mlx_pixel_put(data, data->player.pos_x, ray_y, GREEN);
-	// my_mlx_pixel_put(data, data->player.pos_x + 1, ray_y, GREEN);
-	// my_mlx_pixel_put(data, data->player.pos_x - 1, ray_y, GREEN);
-	// my_mlx_pixel_put(data, data->player.pos_x, ray_y + 1, GREEN);
-	// my_mlx_pixel_put(data, data->player.pos_x, ray_y - 1, GREEN);
 }
 
-static int	get_surface_map(t_data *data)
+static void	hit_wall(t_data *data, float ray_a, unsigned char flag, int a)
 {
-	int	size;
-	int	i;
+	int	dof;
+	int	mx;
+	int	my;
+	int	mp;
 
-	i = 0;
-	size = 0;
-	while (data->img.map[i])
-	{
-		size += ft_strlen(data->img.map[i]);
-		i++;
-	}
-	return (size);
-}
-
-static void	convert_map_to_int(t_data *data)
-{
-	int	i;
-	int	j;
-	int	index;
-
-	index = 0;
-	i = 0;
-	data->img.i_map = malloc(sizeof(int) * (get_surface_map(data) + 1));
-	while (data->img.map[i])
-	{
-		j = 0;
-		while (data->img.map[i][j])
-		{
-			if (data->img.map[i][j] == '1' || data->img.map[i][j] == ' ')
-				data->img.i_map[index] = 1;
-			else
-				data->img.i_map[index] = 0;
-			index++;
-			j++;
-		}
-		i++;
-	}
-	i = 0;
-	index = 0;
-	//	Print Map
-	// while (i < 8)
-	// {
-	// 	j = 0;
-	// 	while (j < 8)
-	// 	{
-	// 		printf("%d", data->img.i_map[index]);
-	// 		index++;
-	// 		j++;
-	// 	}
-	// 	printf("\n");
-	// 	i++;
-	// }
-}
-
-void	check_vertical_line(t_data *data)
-{
-	float	ray_a;
-	float	ray_x;
-	float	ray_y;
-	float	atan;
-	float	tan_ra;
-	float	y_offset;
-	float	x_offset;
-	float	disH;
-	float	disY;
-	float	vx;
-	float	vy;
-
-	int		mapY;
-	int		mapX;
-	int		dof;
-	int		mx;
-	int		my;
-	int		mp;
-
-	mapY = 8;
-	mapX = 8;
+	if (a)
+		return ;
 	dof = 0;
-	ray_a = FixAng(data->player.p_a);
-	tan_ra = tan(degToRad(ray_a));
-	atan = -1.0f / tan(ray_a);
-	//	Looking left
-	if(cos(degToRad(ray_a)) > 0.001)
-	{
-		ray_x = (((int)data->player.pos_x / data->player.case_height) * data->player.case_height) + data->player.case_height;
-		ray_y = ((int)data->player.pos_x - ray_x) * tan_ra + data->player.pos_y;
-		x_offset = data->player.case_height;
-		y_offset = -x_offset * tan_ra;
-	}
-	//	Looking right
-	else if(cos(degToRad(ray_a)) < -0.001)
-	{
-		ray_x = (((int)data->player.pos_x / data->player.case_height) * data->player.case_height) - 0.0001;
-		ray_y = ((int)data->player.pos_x - ray_x) * tan_ra + data->player.pos_y;
-		x_offset = -data->player.case_height;
-		y_offset = -x_offset * tan_ra;
-	}
-	else
-	{
-		ray_x = data->player.pos_x;
-		ray_y = data->player.pos_y;
-		dof = 8;
-	}
 	while(dof < 8)
 	{
-		mx = (int)(ray_x) / data->player.case_height;
-		my = (int)(ray_y) / data->player.case_height;
-		mp = my * mapX + mx;
+		mx = (int)(data->ray.ray_x) / data->player.case_height;
+		my = (int)(data->ray.ray_y) / data->player.case_height;
+		mp = my * data->map.mapX + mx;
 		//	Hit Wall
-		if(mp > 0 && mp < mapX * mapY && data->img.i_map[mp] == 1)
+		if(mp > 0 && mp < data->map.mapX * data->map.mapY && data->img.i_map[mp] == 1)
 		{
 			dof = 8;
-			data->player.disV = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
-			// printf("disV : %f\n", data->player.disV);
+			if (flag & DISV)
+				data->ray.disV = cos(degToRad(ray_a)) * (data->ray.ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (data->ray.ray_y - data->player.pos_y);
+			else if (flag & DISH)
+				data->ray.disH = cos(degToRad(ray_a)) * (data->ray.ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (data->ray.ray_y - data->player.pos_y);
 		}
 		//	Next Vertical
 		else
 		{
-			ray_x += x_offset;
-			ray_y += y_offset;
+			data->ray.ray_x += data->ray.x_offset;
+			data->ray.ray_y += data->ray.y_offset;
 			dof++;
 		}
 	}
-	data->player.vx = ray_x;
-	data->player.vy = ray_y;
+}
+
+/*	Get the y coordinate of the nearest horizontal intersection  */
+void	check_vertical_line(t_data *data, float	ray_a)
+{
+	float	tan_ra;
+	int		a;
+
+	a = 0;
+	tan_ra = tan(degToRad(ray_a));
+	//	Looking left
+	if(cos(degToRad(ray_a)) > 0.001)
+	{
+		data->ray.ray_x = (((int)data->player.pos_x / data->player.case_height) * data->player.case_height) + data->player.case_height;
+		data->ray.ray_y = ((int)data->player.pos_x - data->ray.ray_x) * tan_ra + data->player.pos_y;
+		data->ray.x_offset = data->player.case_height;
+		data->ray.y_offset = -data->ray.x_offset * tan_ra;
+	}
+	//	Looking right
+	else if(cos(degToRad(ray_a)) < -0.001)
+	{
+		data->ray.ray_x = (((int)data->player.pos_x / data->player.case_height) * data->player.case_height) - 0.0001;
+		data->ray.ray_y = ((int)data->player.pos_x - data->ray.ray_x) * tan_ra + data->player.pos_y;
+		data->ray.x_offset = -data->player.case_height;
+		data->ray.y_offset = -data->ray.x_offset * tan_ra;
+	}
+	else
+	{
+		data->ray.ray_x = data->player.pos_x;
+		data->ray.ray_y = data->player.pos_y;
+		a = 1;
+	}
+	hit_wall(data, ray_a, DISV, a);
+	data->ray.vx = data->ray.ray_x;
+	data->ray.vy = data->ray.ray_y;
 }
 
 /*	Get the x coordinate of the nearest horizontal intersection  */
-void	check_horizontal_line(t_data *data)
+void	check_horizontal_line(t_data *data, float ray_a)
 {
-	float	ray_a;
-	float	ray_x;
-	float	ray_y;
 	float	tan_ra;
-	float	y_offset;
-	float	x_offset;
-	float	hx;
-	float	hy;
-	float	disH;
-	float	disY;
-
-	int		mapY;
-	int		mapX;
-	int		dof;
-	int		mx;
-	int		my;
-	int		mp;
-
-	hx = data->player.pos_x;
-	hy = data->player.pos_y;
-
-	mapY = 8;
-	mapX = 8;
-	dof = 0;
-	ray_a = FixAng(data->player.p_a);
-	tan_ra = tan(degToRad(ray_a));
-	tan_ra = 1.0f / tan_ra;
+	int		a;
+	tan_ra = 1.0f / tan(degToRad(ray_a));
 	//	Looking up
 	if(sin(degToRad(ray_a)) > 0.001)
 	{
-		ray_y = (((int)data->player.pos_y / data->player.case_height) * data->player.case_height) - 0.0001;
-		ray_x = ((int)data->player.pos_y - ray_y) * tan_ra + data->player.pos_x;
-		y_offset = -data->player.case_height;
-		x_offset = -y_offset * tan_ra;
+		data->ray.ray_y = (((int)data->player.pos_y / data->player.case_height) * data->player.case_height) - 0.0001;
+		data->ray.ray_x = ((int)data->player.pos_y - data->ray.ray_y) * tan_ra + data->player.pos_x;
+		data->ray.y_offset = -data->player.case_height;
+		data->ray.x_offset = -data->ray.y_offset * tan_ra;
 	}
 	//	Looking down
 	else if(sin(degToRad(ray_a)) < -0.001)
 	{
-		ray_y = (((int)data->player.pos_y / data->player.case_height) * data->player.case_height) + data->player.case_height;
-		ray_x = ((int)data->player.pos_y - ray_y) * tan_ra + data->player.pos_x;
-		y_offset = data->player.case_height;
-		x_offset = -y_offset * tan_ra;
+		data->ray.ray_y = (((int)data->player.pos_y / data->player.case_height) * data->player.case_height) + data->player.case_height;
+		data->ray.ray_x = ((int)data->player.pos_y - data->ray.ray_y) * tan_ra + data->player.pos_x;
+		data->ray.y_offset = data->player.case_height;
+		data->ray.x_offset = -data->ray.y_offset * tan_ra;
 	}
 	else
 	{
-		ray_x = data->player.pos_x;
-		ray_y = data->player.pos_y;
-		dof = 8;
+		data->ray.ray_x  = data->player.pos_x;
+		data->ray.ray_y = data->player.pos_y;
+		a = 1;
 	}
-	while(dof < 8)
+	hit_wall(data, ray_a, DISH, a);
+	if (data->ray.disV < data->ray.disH)
 	{
-		printf("Test\n");
-		mx = (int)(ray_x) / data->player.case_width;
-		my = (int)(ray_y) / data->player.case_width;
-		mp = my * mapX + mx;
-		//	Hit Wall
-		if(mp < mapX * mapY && data->img.i_map[mp] == 1)
-		{
-			dof = 8;
-			data->player.disH = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
-			// printf("disH : %f\n", data->player.disH);
-		}
-		//	Next horizontal
-		else
-		{
-			ray_x += x_offset;
-			ray_y += y_offset;
-			dof++;
-		}
+		data->ray.ray_x = data->ray.vx;
+		data->ray.ray_y = data->ray.vy;
+		data->ray.disH = data->ray.disV;
 	}
-	if (data->player.disV < data->player.disH)
-	{
-		ray_x = data->player.vx;
-		ray_y = data->player.vy;
-		data->player.disH = data->player.disV;
-	}
-	draw_intersection(data, ray_x, ray_y, ORANGE);
-}
-
-void	draw_wall(t_data *data, double ray_dist, int x)
-{
-	int wall_height;
-	int wall_top;
-	int wall_bottom;
-	int y;
-	int stop;
-
-	stop = x;
-	wall_height = (int)((HEIGHT * 22) / (ray_dist));
-	wall_top = (HEIGHT - wall_height) / 2;
-	if (wall_top <= 0)
-		wall_top = 0;
-	wall_bottom = wall_top + wall_height;
-	if (wall_bottom >= HEIGHT)
-		wall_bottom = HEIGHT - 1;
-	while (x <= stop + 10)
-	{
-		y = 0;
-		while (y < wall_top)
-		{
-			my_mlx_pixel_put2(data, x, y, BLUE);
-			y++;
-		}
-		while (y >= wall_top && y <= wall_bottom)
-		{
-			my_mlx_pixel_put2(data, x, y, GREEN);
-			y++;
-		}
-		while (y < HEIGHT)
-		{
-			my_mlx_pixel_put2(data, x, y, YELLOW);
-			y++;
-		}
-		x++;
-	}
+	draw_intersection(data, data->ray.ray_x, data->ray.ray_y, ORANGE);
 }
 
 /*	The main raycasting
 	To know the distance of the player to the near wall  */
 void	raycasting(t_data *data)
 {
-	data->player.disH = 100000;
-	data->player.disV = 100000;
+	float	ray_a;
+	int		r;
+	int		i;
+
+	r = 0;
+	i = 0;
+	data->ray.disH = 100000;
+	data->ray.disV = 100000;
+	data->map.mapX = 8;
+	data->map.mapY = 8;
 	convert_map_to_int(data);
-	check_vertical_line(data);
-	check_horizontal_line(data);
-	printf("disH:%f, dishV:%f\n", data->player.disH, data->player.disV);
-	if (data->player.disH < data->player.disV)
-		draw_wall(data, data->player.disH, 390);
-	if (data->player.disH >= data->player.disV)
-		draw_wall(data, data->player.disV, 390);
+	ray_a = FixAng(data->player.p_a - 40);
+	while (r < 80)
+	{
+		printf("ra : %f\ti : %d\n", ray_a, i);
+		check_vertical_line(data, ray_a);
+		check_horizontal_line(data, ray_a);
+		if (data->ray.disH < data->ray.disV)
+			draw_wall(data, data->ray.disH, i);
+		if (data->ray.disH >= data->ray.disV)
+			draw_wall(data, data->ray.disV, i);
+		r++;
+		i += 10;
+		ray_a = FixAng(ray_a + 1.0f);
+	}
+	// int x = 0;
+	// while (x < WIDTH)
+	// {
+	// 	draw_wall(data, data->ray.disH, x);
+	// 	x++;
+	// }
+	// printf("disH : %f\n", data->ray.disH);
 	//rotate_line(data);
 }

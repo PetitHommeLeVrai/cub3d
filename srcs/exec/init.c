@@ -6,17 +6,11 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/21 16:52:31 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 19:50:29 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int FixAng(int a){ if(a>359){ a-=360;} if(a<0){ a+=360;} return a;}
-
-float degToRad(int a){ return a*PI/180.0;}
-
-float distance(float ax, float ay, float bx, float by, float ang){ return cos(degToRad(ang))*(bx-ax)-sin(degToRad(ang))*(by-ay);}
 
 void	start_pos_to_rad(t_data *data)
 {
@@ -56,22 +50,29 @@ static void	init_mlx(t_data *data)
 		return (exit_error(E_MLX));
 	data->img.win_ptr = mlx_new_window(data->img.mlx_ptr, WIDTH, HEIGHT,
 			"./minimap");
-	data->img.win2_ptr = mlx_new_window(data->img.mlx_ptr, WIDTH, HEIGHT,
-		"./cub3d");
-	if (!data->img.win_ptr || !data->img.win2_ptr)
+	if (!data->img.win_ptr)
 		return (exit_error(E_MLX));
 	data->img.img_ptr = mlx_new_image(data->img.mlx_ptr, WIDTH, HEIGHT);
-	data->img.img2_ptr = mlx_new_image(data->img.mlx_ptr, WIDTH, HEIGHT);
-	if (!data->img.img_ptr || !data->img.img2_ptr)
+	if (!data->img.img_ptr)
 		return (exit_error(E_MLX));
 	data->img.addr = mlx_get_data_addr(data->img.img_ptr,
 			&data->img.bits_per_pixel, &data->img.line_length,
 			&data->img.endian);
+	if (!data->img.addr)
+		return (exit_error(E_MLX));
+}
+
+static void	init_mlx2(t_data *data)
+{
+	data->img.win2_ptr = mlx_new_window(data->img.mlx_ptr, WIDTH, HEIGHT,
+		"./cub3d");
+	data->img.img2_ptr = mlx_new_image(data->img.mlx_ptr, WIDTH, HEIGHT);
 	data->img.addr2 = mlx_get_data_addr(data->img.img2_ptr,
 			&data->img.bits_per_pixel, &data->img.line_length,
 			&data->img.endian);
-	if (!data->img.addr || !data->img.addr2)
-		return (exit_error(E_MLX));
+	mlx_key_hook(data->img.win2_ptr, move_key_hook, data);
+	mlx_hook(data->img.win2_ptr, 33, 0, &destroy_win, data);
+	mlx_hook(data->img.win2_ptr, KeyPress, KeyPressMask, &handle_input, data);
 }
 
 static void	init_hook(t_data *data)
@@ -79,16 +80,14 @@ static void	init_hook(t_data *data)
 	mlx_loop_hook(data->img.mlx_ptr, &draw, data);
 	mlx_hook(data->img.win_ptr, 33, 0, &destroy_win, data);
 	mlx_hook(data->img.win_ptr, KeyPress, KeyPressMask, &handle_input, data);
-	mlx_hook(data->img.win2_ptr, 33, 0, &destroy_win, data);
-	mlx_hook(data->img.win2_ptr, KeyPress, KeyPressMask, &handle_input, data);
 	// mlx_hook(data->img.win_ptr, KeyRelease, 1L << 1, &handle_keyrelease, data);
 	mlx_key_hook(data->img.win_ptr, move_key_hook, data);
-	mlx_key_hook(data->img.win2_ptr, move_key_hook, data);
 }
 
 void	init(t_data *data, int ac, char **av)
 {
 	main_parsing(ac, av[1], data);
 	init_mlx(data);
+	init_mlx2(data);
 	init_hook(data);
 }
