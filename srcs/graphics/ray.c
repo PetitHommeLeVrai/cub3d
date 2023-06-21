@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 16:42:22 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:14:33 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	check_vertical_line(t_data *data)
 	float	disY;
 	float	vx;
 	float	vy;
+
 	int		mapY;
 	int		mapX;
 	int		dof;
@@ -164,7 +165,6 @@ void	check_vertical_line(t_data *data)
 			dof = 8;
 			data->player.disV = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
 			// printf("disV : %f\n", data->player.disV);
-			draw_intersection(data, ray_x, ray_y, YELLOW);
 		}
 		//	Next Vertical
 		else
@@ -174,6 +174,8 @@ void	check_vertical_line(t_data *data)
 			dof++;
 		}
 	}
+	data->player.vx = ray_x;
+	data->player.vy = ray_y;
 }
 
 /*	Get the x coordinate of the nearest horizontal intersection  */
@@ -236,7 +238,6 @@ void	check_horizontal_line(t_data *data)
 		//	Hit Wall
 		if(mp < mapX * mapY && data->img.i_map[mp] == 1)
 		{
-			draw_intersection(data, ray_x, ray_y, ORANGE);
 			dof = 8;
 			data->player.disH = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
 			// printf("disH : %f\n", data->player.disH);
@@ -249,6 +250,13 @@ void	check_horizontal_line(t_data *data)
 			dof++;
 		}
 	}
+	if (data->player.disV < data->player.disH)
+	{
+		ray_x = data->player.vx;
+		ray_y = data->player.vy;
+		data->player.disH = data->player.disV;	
+	}
+	draw_intersection(data, ray_x, ray_y, ORANGE);
 }
 
 /*	The main raycasting
@@ -256,7 +264,7 @@ void	check_horizontal_line(t_data *data)
 void	raycasting(t_data *data)
 {
 	convert_map_to_int(data);
-	check_horizontal_line(data);
 	check_vertical_line(data);
+	check_horizontal_line(data);
 	//rotate_line(data);
 }
