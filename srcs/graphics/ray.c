@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 02:43:56 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:09:09 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	draw_intersection(t_data *data, int ray_x, int ray_y, int color)
 		my_mlx_pixel_put(data, ray_x, ray_y - i, color);
 		i++;
 	}
+	draw_line_with_coord(data, data->player.pos_x, data->player.pos_y, ray_x, ray_y);
 	// Draw x intersection
 	// my_mlx_pixel_put(data, ray_x, data->player.pos_y, GREEN);
 	// my_mlx_pixel_put(data, ray_x + 1, data->player.pos_y, GREEN);
@@ -122,7 +123,7 @@ void	check_vertical_line(t_data *data)
 	int		mx;
 	int		my;
 	int		mp;
-	
+
 	mapY = 8;
 	mapX = 8;
 	dof = 0;
@@ -151,19 +152,19 @@ void	check_vertical_line(t_data *data)
 		ray_y = data->player.pos_y;
 		dof = 8;
 	}
-	while(dof < 8) 
-	{ 
+	while(dof < 8)
+	{
 		mx = (int)(ray_x) / data->player.case_height;
 		my = (int)(ray_y) / data->player.case_height;
-		mp = my * mapX + mx;       
-		//	Hit Wall                   
+		mp = my * mapX + mx;
+		//	Hit Wall
 		if(mp > 0 && mp < mapX * mapY && data->img.i_map[mp] == 1)
 		{
 			dof = 8;
 			disH = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
 			draw_intersection(data, ray_x, ray_y, YELLOW);
 		}
-		//	Next Vertical 
+		//	Next Vertical
 		else
 		{
 			ray_x += x_offset;
@@ -191,7 +192,7 @@ void	check_horizontal_line(t_data *data)
 	int		mx;
 	int		my;
 	int		mp;
-	
+
 	mapY = 8;
 	mapX = 8;
 	dof = 0;
@@ -220,8 +221,8 @@ void	check_horizontal_line(t_data *data)
 		ray_y = data->player.pos_y;
 		dof = 8;
 	}
-	while(dof < 8) 
-	{ 
+	while(dof < 8)
+	{
 		mx = (int)(ray_x) / data->player.case_width;
 		my = (int)(ray_y) / data->player.case_width;
 		mp = my * mapX + mx;
@@ -249,5 +250,5 @@ void	raycasting(t_data *data)
 	convert_map_to_int(data);
 	check_horizontal_line(data);
 	check_vertical_line(data);
-	rotate_line(data);
+	//rotate_line(data);
 }

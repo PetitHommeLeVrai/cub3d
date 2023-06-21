@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_rotation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 20:03:16 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/19 15:29:22 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:04:00 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,39 @@ static void	draw_line(t_data *data)
 		my_mlx_pixel_put(data, x, y, GREEN);
 		x += xinc;
 		y += yinc;
+	}
+}
+
+void draw_line_with_coord(t_data *data, int x1, int y1, int x2, int y2)
+{
+	int dx;
+	int dy;
+	int sx;
+	int sy;
+	int err;
+	int e2;
+
+	dx = abs(x2 - x1);
+	dy = abs(y2 - y1);
+	sx = (x1 < x2) ? 1 : -1;
+	sy = (y1 < y2) ? 1 : -1;
+	err = dx - dy;
+	while (1)
+	{
+		my_mlx_pixel_put(data, x1, y1, GREEN);
+		if (x1 == x2 && y1 == y2)
+			break;
+		e2 = 2 * err;
+		if (e2 > -dy)
+		{
+			err -= dy;
+			x1 += sx;
+		}
+		if (e2 < dx)
+		{
+			err += dx;
+			y1 += sy;
+		}
 	}
 }
 
