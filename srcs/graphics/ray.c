@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 19:35:50 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:51:40 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	check_vertical_line(t_data *data, float	ray_a)
 		data->ray.y_offset = -data->ray.x_offset * tan_ra;
 	}
 	else
-	{
+	{:
 		data->ray.ray_x = data->player.pos_x;
 		data->ray.ray_y = data->player.pos_y;
 	}
@@ -122,6 +122,8 @@ void	check_horizontal_line(t_data *data, float ray_a)
 		data->ray.ray_y = data->ray.vy;
 		data->ray.disH = data->ray.disV;
 	}
+	int ca = FixAng(data->player.p_a - ray_a);
+	data->ray.disH = data->ray.disH * cos(degToRad(ca));  
 	draw_intersection(data, data->ray.ray_x, data->ray.ray_y, ORANGE);
 }
 
