@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 16:51:55 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 17:09:14 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,7 @@ void	draw_wall(t_data *data, double ray_dist, int x)
 	int y;
 
 	y = 0;
-	wall_height = (int)((HEIGHT * 25) / (ray_dist));
+	wall_height = (int)((HEIGHT * 22) / (ray_dist));
 	wall_top = (HEIGHT - wall_height) / 2;
 	wall_bottom = wall_top + wall_height;
 	while (y < wall_top)
@@ -292,9 +292,10 @@ void	raycasting(t_data *data)
 	check_horizontal_line(data);
 	check_vertical_line(data);
 	int x = 0;
+	printf("%f\n", data->player.disH);
 	while (x < WIDTH)
 	{
-		draw_wall(data, 200, x);
+		draw_wall(data, data->player.disH, x);
 		x++;
 	}
 	//rotate_line(data);
