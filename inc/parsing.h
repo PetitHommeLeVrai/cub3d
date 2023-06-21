@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/19 17:37:54 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:09:32 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,6 @@ void	get_colors(t_data *data);
 int		is_wspace(char c);
 int		only_wspace(char *str);
 int		FixAng(int a);
+float	distance(float ax, float ay, float bx, float by, float ang);
+
 #endif
