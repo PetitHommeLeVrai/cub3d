@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/21 00:54:52 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:10:10 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,11 @@ typedef struct s_mlx
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	void		*win2_ptr;
 	void		*img_ptr;
+	void		*img2_ptr;
 	char		*addr;
+	char		*addr2;
 	char		*n_path;
 	char		*s_path;
 	char		*w_path;

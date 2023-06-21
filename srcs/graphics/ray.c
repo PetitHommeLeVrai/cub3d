@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 15:09:09 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 16:50:37 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,7 @@ void	check_horizontal_line(t_data *data)
 		ray_x = ((int)data->player.pos_y - ray_y) * tan_ra + data->player.pos_x;
 		y_offset = -data->player.case_height;
 		x_offset = -y_offset * tan_ra;
+		draw_intersection(data, ray_x, ray_y, GREEN);
 	}
 	//	Looking down
 	else if(sin(degToRad(ray_a)) < -0.001)
@@ -223,6 +224,7 @@ void	check_horizontal_line(t_data *data)
 	}
 	while(dof < 8)
 	{
+		printf("Test\n");
 		mx = (int)(ray_x) / data->player.case_width;
 		my = (int)(ray_y) / data->player.case_width;
 		mp = my * mapX + mx;
@@ -230,8 +232,8 @@ void	check_horizontal_line(t_data *data)
 		if(mp < mapX * mapY && data->img.i_map[mp] == 1)
 		{
 			draw_intersection(data, ray_x, ray_y, ORANGE);
-			dof = 8;
 			disH = cos(degToRad(ray_a)) * (ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (ray_y - data->player.pos_y);
+			break ;
 		}
 		//	Next horizontal
 		else
@@ -243,6 +245,37 @@ void	check_horizontal_line(t_data *data)
 	}
 }
 
+void	draw_wall(t_data *data, double ray_dist, int x)
+{
+	int wall_height;
+	int wall_top;
+	int wall_bottom;
+	int y;
+
+	y = 0;
+	wall_height = (int)((HEIGHT * 25) / (ray_dist));
+	wall_top = (HEIGHT - wall_height) / 2;
+	wall_bottom = wall_top + wall_height;
+	while (y < wall_top)
+	{
+		// Dessiner le ciel
+		my_mlx_pixel_put2(data, x, y, BLUE);
+		y++;
+	}
+	while (y >= wall_top && y <= wall_bottom)
+	{
+		// Dessiner le mur
+		my_mlx_pixel_put2(data, x, y, GREEN);
+		y++;
+	}
+	while (y < HEIGHT)
+	{
+		// Dessiner le sol
+		my_mlx_pixel_put2(data, x, y, YELLOW);
+		y++;
+	}
+}
+
 /*	The main raycasting
 	To know the distance of the player to the near wall  */
 void	raycasting(t_data *data)
@@ -250,5 +283,11 @@ void	raycasting(t_data *data)
 	convert_map_to_int(data);
 	check_horizontal_line(data);
 	check_vertical_line(data);
+	int x = 0;
+	while (x < WIDTH)
+	{
+		draw_wall(data, 200, x);
+		x++;
+	}
 	//rotate_line(data);
 }
