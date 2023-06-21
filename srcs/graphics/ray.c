@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 17:57:55 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 18:20:40 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,8 @@ static void	convert_map_to_int(t_data *data)
 	// }
 }
 
-void	check_vertical_line(t_data *data)
+void	check_vertical_line(t_data *data, float	ray_a)
 {
-	float	ray_a;
 	float	ray_x;
 	float	ray_y;
 	float	atan;
@@ -129,7 +128,6 @@ void	check_vertical_line(t_data *data)
 	mapY = 8;
 	mapX = 8;
 	dof = 0;
-	ray_a = FixAng(data->player.p_a);
 	tan_ra = tan(degToRad(ray_a));
 	atan = -1.0f / tan(ray_a);
 	//	Looking left
@@ -179,9 +177,8 @@ void	check_vertical_line(t_data *data)
 }
 
 /*	Get the x coordinate of the nearest horizontal intersection  */
-void	check_horizontal_line(t_data *data)
+void	check_horizontal_line(t_data *data, float ray_a)
 {
-	float	ray_a;
 	float	ray_x;
 	float	ray_y;
 	float	tan_ra;
@@ -205,7 +202,6 @@ void	check_horizontal_line(t_data *data)
 	mapY = 8;
 	mapX = 8;
 	dof = 0;
-	ray_a = FixAng(data->player.p_a);
 	tan_ra = tan(degToRad(ray_a));
 	tan_ra = 1.0f / tan_ra;
 	//	Looking up
@@ -232,7 +228,6 @@ void	check_horizontal_line(t_data *data)
 	}
 	while(dof < 8)
 	{
-		printf("Test\n");
 		mx = (int)(ray_x) / data->player.case_width;
 		my = (int)(ray_y) / data->player.case_width;
 		mp = my * mapX + mx;
@@ -295,11 +290,21 @@ void	draw_wall(t_data *data, double ray_dist, int x)
 	To know the distance of the player to the near wall  */
 void	raycasting(t_data *data)
 {
+	float	ray_a;
+	int		r;
+
+	r = 0;
 	data->player.disH = 100000;
 	data->player.disV = 100000;
 	convert_map_to_int(data);
-	check_vertical_line(data);
-	check_horizontal_line(data);
+	ray_a = FixAng(data->player.p_a);
+	while (r < 60)
+	{
+		check_vertical_line(data, ray_a);
+		check_horizontal_line(data, ray_a);
+		r++;
+		ray_a += 1;
+	}
 	int x = 0;
 	printf("%f\n", data->player.disH);
 	while (x < WIDTH)
