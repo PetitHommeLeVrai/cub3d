@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/19 19:17:40 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/21 00:54:52 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "cub3d.h"
 
 /*	Macroconstant required by the window management  */
-# define WIDTH 900
-# define HEIGHT 900
+# define WIDTH 800
+# define HEIGHT 800
 
 /*	Ascii codes  */
 # define NEWLINE '\n'
@@ -29,6 +29,8 @@
 # define BLUE	0x0000FF
 # define WHITE	0xFFFFFF
 # define GREEN	0x00FF00
+# define ORANGE 0xE57314
+# define YELLOW 0xFFDE14
 
 /* Key code for mlx_instance  */
 # define KEY_UP		65362
@@ -76,6 +78,7 @@ typedef struct s_mlx
 	char		**file;
 	char		**map;
 	char		**map_cp;
+	int			*i_map;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:31:38 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/16 15:54:14 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/20 20:54:53 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	get_cell_dim(t_data *data)
 
 	map_x = get_longest_line(data->img.map);
 	map_y = get_size_map(data->img.map);
+	// data->player.case_height = 64;
+	// data->player.case_width = 64;
 	data->player.case_width = WIDTH / map_x;
 	data->player.case_height = HEIGHT / map_y;
 	data->player.pos_x = data->player.pos_x * data->player.case_width;
