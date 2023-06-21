@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 17:57:55 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/21 19:35:49 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,28 +266,35 @@ void	draw_wall(t_data *data, double ray_dist, int x)
 	int wall_top;
 	int wall_bottom;
 	int y;
+	int stop;
 
-	y = 0;
+	stop = x;
 	wall_height = (int)((HEIGHT * 22) / (ray_dist));
 	wall_top = (HEIGHT - wall_height) / 2;
+	if (wall_top <= 0)
+		wall_top = 0;
 	wall_bottom = wall_top + wall_height;
-	while (y < wall_top)
+	if (wall_bottom >= HEIGHT)
+		wall_bottom = HEIGHT - 1;
+	while (x <= stop + 10)
 	{
-		// Dessiner le ciel
-		my_mlx_pixel_put2(data, x, y, BLUE);
-		y++;
-	}
-	while (y >= wall_top && y <= wall_bottom)
-	{
-		// Dessiner le mur
-		my_mlx_pixel_put2(data, x, y, GREEN);
-		y++;
-	}
-	while (y < HEIGHT)
-	{
-		// Dessiner le sol
-		my_mlx_pixel_put2(data, x, y, YELLOW);
-		y++;
+		y = 0;
+		while (y < wall_top)
+		{
+			my_mlx_pixel_put2(data, x, y, BLUE);
+			y++;
+		}
+		while (y >= wall_top && y <= wall_bottom)
+		{
+			my_mlx_pixel_put2(data, x, y, GREEN);
+			y++;
+		}
+		while (y < HEIGHT)
+		{
+			my_mlx_pixel_put2(data, x, y, YELLOW);
+			y++;
+		}
+		x++;
 	}
 }
 
@@ -300,13 +307,10 @@ void	raycasting(t_data *data)
 	convert_map_to_int(data);
 	check_vertical_line(data);
 	check_horizontal_line(data);
-	int x = 0;
-	printf("%f\n", data->player.disH);
-	while (x < WIDTH)
-	{
-		draw_wall(data, data->player.disH, x);
-		x++;
-	}
-	printf("disH : %f\n", data->player.disH);
+	printf("disH:%f, dishV:%f\n", data->player.disH, data->player.disV);
+	if (data->player.disH < data->player.disV)
+		draw_wall(data, data->player.disH, 390);
+	if (data->player.disH >= data->player.disV)
+		draw_wall(data, data->player.disV, 390);
 	//rotate_line(data);
 }
