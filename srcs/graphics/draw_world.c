@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:27:47 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/22 18:32:00 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/22 20:09:48 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	draw_wall(t_data *data, double ray_dist, int x)
 	int stop;
 
 	stop = x;
-	wall_height = (int)((HEIGHT * 15) / (ray_dist));
+	wall_height = (int)((HEIGHT * 10) / (ray_dist));
 	wall_top = (HEIGHT - wall_height) / 2;
 	if (wall_top <= 0)
 		wall_top = 0;

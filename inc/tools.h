@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/22 18:21:43 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/22 19:41:57 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,14 @@ typedef struct s_player
 	float		p_a;
 	float		pdx;
 	float		pdy;
+	int			x_offset;
+	int			y_offset;
+	int			ipx;
+	int			ipy;
+	int			ipx_add_xo;
+	int			ipx_sub_xo;
+	int			ipy_add_yo;
+	int			ipy_sub_yo;
 	char		compass_point;
 	int			case_width;
 	int			case_height;
