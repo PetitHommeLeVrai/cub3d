@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/22 18:46:34 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:48:06 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ void	raycasting(t_data *data)
 	r = 0;
 	i = 0;
 
-	printf("Commit test\n");
+	printf("Commit test\n\n");
 	data->map.mapX = 8;
 	data->map.mapY = 8;
 	convert_map_to_int(data);
