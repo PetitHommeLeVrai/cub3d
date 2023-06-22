@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/21 19:00:44 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/22 17:06:21 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 /*	Macroconstant required by the window management  */
 # define WIDTH 800
 # define HEIGHT 800
+#	define TEX_WIDTH 64
+#	define TEX_HEIGHT 64
 
 /*	Ascii codes  */
 # define NEWLINE '\n'
@@ -96,6 +98,10 @@ typedef struct s_txt
 	void		*img_south;
 	void		*img_west;
 	void		*img_east;
+	void		*addr_north;
+	int			txt_bpp;
+	int			txt_ll;
+	int			txt_endian;
 	int			count;
 	int			index_file;
 }				t_txt;
@@ -132,6 +138,7 @@ typedef struct	s_map
 
 typedef struct s_ray
 {
+	float	wall_x;
 	float	ray_x;
 	float	ray_y;
 	float	ray_a;
