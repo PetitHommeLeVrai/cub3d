@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:54:44 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 19:50:03 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/22 17:19:45 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	raycasting(t_data *data);
 void	rotate_line(t_data *data);
 void	start_pos_to_rad(t_data *data);
-void	draw_line_with_coord(t_data *data, int x1, int y1, int x2, int y2);
+void	draw_line_with_coord(t_data *data, int x1, int y1, int x2, int y2, int color);
 void	draw_wall(t_data *data, double ray_dist, int x);
 
 
