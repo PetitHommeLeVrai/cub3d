@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:31:38 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 19:04:26 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:28:39 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void draw_map(t_data *data)
 			else if (data->img.map[i][j] == '1')
 				draw_square(data, j * data->player.case_width, i * data->player.case_height, RED);
 			else if (check_player(data->img.map[i][j]))
-				draw_square(data, j * data->player.case_width, i * data->player.case_height, WHITE);
+				draw_square(data, j * data->player.case_width, i * data->player.case_height, BLUE);
 			j++;
 		}
 		i++;
@@ -130,5 +130,5 @@ void draw_map(t_data *data)
 	draw_player(data);
 	raycasting(data);
 	mlx_put_image_to_window(data->img.mlx_ptr, data->img.win_ptr, data->img.img_ptr, 0, 0);
-	// mlx_put_image_to_window(data->img.mlx_ptr, data->img.win2_ptr, data->img.img2_ptr, 0, 0);
+	mlx_put_image_to_window(data->img.mlx_ptr, data->img.win2_ptr, data->img.img2_ptr, 0, 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/21 19:31:13 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/21 19:50:29 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,6 @@ void	init(t_data *data, int ac, char **av)
 {
 	main_parsing(ac, av[1], data);
 	init_mlx(data);
-	// init_mlx2(data);
+	init_mlx2(data);
 	init_hook(data);
 }
