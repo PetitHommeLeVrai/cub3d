@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:19:47 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/26 23:11:08 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 00:14:15 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	right_move(t_data *data)
     float perpendiculary;
 	float magnitude;
 
-	printf("NEW_MOVE\n");
 	angle = degToRad(data->player.p_a);
 	perpendicular_angle = angle - PI / 2;
 	perpendicularx = cos(perpendicular_angle);
@@ -107,7 +106,6 @@ void	right_move(t_data *data)
 	int	value2;
 
 	init_collision2(data, perpendicularx, perpendiculary);
-	printf("px : %f\tpy : %f\n", perpendicularx, perpendiculary);
 	if (perpendicularx > 0.0f)
 		value1 = (data->player.ipy * data->map.mapX) + data->player.ipx_add_xo;
 	else
@@ -131,31 +129,27 @@ void	left_move(t_data *data)
 	float magnitude;
 
 	angle = degToRad(data->player.p_a);
-	perpendicular_angle = angle + PI / 2;
+	perpendicular_angle = angle - PI / 2;
 	perpendicularx = cos(perpendicular_angle);
 	perpendiculary = -sin(perpendicular_angle);
 	magnitude = sqrt(perpendicularx * perpendicularx + perpendiculary * perpendiculary);
 	perpendicularx /= magnitude;
 	perpendiculary /= magnitude;
-	data->player.pos_x += 1.4 * perpendicularx;
-	data->player.pos_y += 1.4 * perpendiculary;
-
 
 	int	value1;
 	int	value2;
 
 	init_collision2(data, perpendicularx, perpendiculary);
-	printf("px : %f\tpy : %f\n", perpendicularx, perpendiculary);
 	if (perpendicularx > 0.0f)
-		value1 = (data->player.ipy * data->map.mapX) + data->player.ipx_add_xo;
-	else
 		value1 = (data->player.ipy * data->map.mapX) + data->player.ipx_sub_xo;
-	if (perpendiculary > 0.0f)
-		value2 = (data->player.ipy_sub_yo * data->map.mapX) + data->player.ipx;
 	else
+		value1 = (data->player.ipy * data->map.mapX) + data->player.ipx_add_xo;
+	if (perpendiculary > 0.0f)
 		value2 = (data->player.ipy_add_yo * data->map.mapX) + data->player.ipx;
+	else
+		value2 = (data->player.ipy_sub_yo * data->map.mapX) + data->player.ipx;
 	if (data->img.i_map[value1] == 0)
-		data->player.pos_x += perpendicularx * 1.4;
+		data->player.pos_x -= perpendicularx * 1.4;
 	if (data->img.i_map[value2] == 0)
-		data->player.pos_y += perpendiculary * 1.4;
+		data->player.pos_y -= perpendiculary * 1.4;
 }
