@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_move.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:19:47 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/22 20:44:09 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/26 16:53:15 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,59 @@
 
 void	init_collision(t_data *data)
 {
+	printf("NEY_MOVE\n");
 	data->player.x_offset = 0;
 	data->player.y_offset = 0;
 	if (data->player.pdx < 0)
+	{
+		printf("pdx < 0\n");
 		data->player.x_offset = -10;
+	}
 	else
+	{
+		printf("pdx > 0\n");
 		data->player.x_offset = +10;
+	}
 	if (data->player.pdy < 0)
+	{
+		printf("pdy < 0\n");
 		data->player.y_offset = 10;
+	}
 	else
+	{
+		printf("pdy > 0\n");
 		data->player.y_offset = -10;
-	data->player.ipx = data->player.pos_x / data->player.case_height;
-	data->player.ipx_add_xo = (data->player.pos_x + data->player.x_offset) / data->player.case_height;
-	data->player.ipx_sub_xo = (data->player.pos_x - data->player.x_offset) / data->player.case_height;
-	
-	data->player.ipy = data->player.pos_y / data->player.case_height;
-	data->player.ipy_add_yo = (data->player.pos_y + data->player.y_offset) / data->player.case_height;
-	data->player.ipy_sub_yo = (data->player.pos_y - data->player.y_offset) / data->player.case_height;
+	}
+	data->player.ipx = data->player.pos_x / 75.0f;
+	data->player.ipx_add_xo = (data->player.pos_x + data->player.x_offset) / 75.0f;
+	data->player.ipx_sub_xo = (data->player.pos_x - data->player.x_offset) / 75.0f;
+
+	data->player.ipy = data->player.pos_y / 75.0f;
+	data->player.ipy_add_yo = (data->player.pos_y + data->player.y_offset) / 75.0f;
+	data->player.ipy_sub_yo = (data->player.pos_y - data->player.y_offset) / 75.0f;
 }
 
 void	up_move(t_data *data)
 {
+	int	value1;
+	int	value2;
+
 	init_collision(data);
-	if (data->img.i_map[data->player.ipy * data->map.mapX + data->player.ipx_add_xo] == 0)
+	value1 = (data->player.ipy * data->map.mapX) + data->player.ipx_sub_xo;
+	value2 = (data->player.ipy_add_yo * data->map.mapX) + data->player.ipx;
+	printf("value 1 : %d\tvalue2 : %d\n", value1, value2);
+	// printf("i_map[%d] : %d\n", data->img.i_map[value1]);
+	if (data->img.i_map[value1] == 0)
+	{
+		printf("pos_x\n");
 		data->player.pos_x -= data->player.pdx * 1.4;
-	if (data->img.i_map[data->player.ipy_add_yo * data->map.mapX + data->player.ipx] == 0)
+	}
+	if (data->img.i_map[value2] == 0)
+	{
+		printf("pos_y\n");
 		data->player.pos_y -= data->player.pdy * 1.4;
-	
+	}
+
 }
 
 void	down_move(t_data *data)

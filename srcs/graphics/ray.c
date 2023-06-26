@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/22 18:46:34 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:53:21 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ static void	hit_wall(t_data *data, float ray_a, unsigned char flag, int a)
 				data->ray.disV = cos(degToRad(ray_a)) * (data->ray.ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (data->ray.ray_y - data->player.pos_y);
 			else if (flag & DISH)
 			{
-				printf("DISH\n");
+				////printf("DISH\n");
 				// data->ray.disH = dist(data->player.pos_x, data->player.pos_y, data->ray.ray_x, data->ray.ray_y);
 				data->ray.disH = cos(degToRad(ray_a)) * (data->ray.ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (data->ray.ray_y - data->player.pos_y);
-				printf("disH : %f\n", data->ray.disH);
-			
+				////printf("disH : %f\n", data->ray.disH);
+
 			}
 		}
 		//	Next Vertical
@@ -139,18 +139,18 @@ void	check_horizontal_line(t_data *data, float ray_a)
 		a = 1;
 	}
 	hit_wall(data, ray_a, DISH, a);
-	printf("disV : %f\tdisH : %f\n", data->ray.disV, data->ray.disH);
+	//printf("disV : %f\tdisH : %f\n", data->ray.disV, data->ray.disH);
 	if (data->ray.disV < data->ray.disH)
 	{
 		data->ray.ray_x = data->ray.vx;
 		data->ray.ray_y = data->ray.vy;
-		printf("VERTICAL LINE\n");
+		//printf("VERTICAL LINE\n");
 		color = WHITE;
 		data->ray.disH = data->ray.disV;
 	}
-	printf("ray_x : %f\tray_y : %f\n", data->ray.ray_x, data->ray.ray_y);
+	//printf("ray_x : %f\tray_y : %f\n", data->ray.ray_x, data->ray.ray_y);
 	ca = FixAng(data->player.p_a - ray_a);
-	data->ray.disH = data->ray.disH * cos(degToRad(ca));  
+	data->ray.disH = data->ray.disH * cos(degToRad(ca));
 	draw_intersection(data, data->ray.ray_x, data->ray.ray_y, color);
 }
 
@@ -165,7 +165,7 @@ void	raycasting(t_data *data)
 	r = 0;
 	i = 0;
 
-	printf("Commit test\n");
+	//printf("Commit test\n");
 	data->map.mapX = 8;
 	data->map.mapY = 8;
 	convert_map_to_int(data);
@@ -174,8 +174,8 @@ void	raycasting(t_data *data)
 	{
 		data->ray.disH = 100000.0f;
 		data->ray.disV = 100000.0f;
-		printf("--------\n");
-		printf("r : %d\n", r);
+		//printf("--------\n");
+		//printf("r : %d\n", r);
 		check_vertical_line(data, ray_a);
 		check_horizontal_line(data, ray_a);
 		if (data->ray.disH < data->ray.disV)
@@ -185,15 +185,15 @@ void	raycasting(t_data *data)
 		r++;
 		i += 10;
 		ray_a = FixAng(ray_a - 1.0f);
-		printf("\n");
+		//printf("\n");
 	}
-	printf("NEW\n\n");
+	//printf("NEW\n\n");
 	// int x = 0;
 	// while (x < WIDTH)
 	// {
 	// 	draw_wall(data, data->ray.disH, x);
 	// 	x++;
 	// }
-	// printf("disH : %f\n", data->ray.disH);
+	// //printf("disH : %f\n", data->ray.disH);
 	//rotate_line(data);
 }
