@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:31:38 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 20:28:39 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/26 22:00:37 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ static void draw_player(t_data *data)
 	int	j;
 
 	i = 0;
-	// data->player.pos_x += data->player.case_width - 50;
-	// data->player.pos_y += data->player.case_height - 50;
 	while (i < 10)
 	{
 		my_mlx_pixel_put(data, data->player.pos_x + i, data->player.pos_y, GREEN);
