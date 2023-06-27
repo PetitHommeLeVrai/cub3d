@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:27:47 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/27 12:21:44 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 13:03:48 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	draw_wall(t_data *data, double ray_dist, int x)
 		y = 0;
 		while (y < wall_top)
 		{
-			my_mlx_pixel_put2(data, x, y, BLUE);
+			my_mlx_pixel_put2(data, x, y, data->txt.c_color);
 			y++;
 		}
 		while (y >= wall_top && y <= wall_bottom)
@@ -62,7 +62,7 @@ void	draw_wall(t_data *data, double ray_dist, int x)
 		}
 		while (y < HEIGHT)
 		{
-			my_mlx_pixel_put2(data, x, y, YELLOW);
+			my_mlx_pixel_put2(data, x, y, data->txt.f_color);
 			y++;
 		}
 		x++;

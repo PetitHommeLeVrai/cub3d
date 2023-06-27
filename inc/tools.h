@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/27 12:21:35 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 12:59:54 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,12 @@ typedef struct s_txt
 	void		*img_south;
 	void		*img_west;
 	void		*img_east;
+	int			fd_north;
+	int			fd_south;
+	int			fd_west;
+	int			fd_est;
+	int			c_color;
+	int			f_color;
 	int			count;
 	int			index_file;
 }				t_txt;

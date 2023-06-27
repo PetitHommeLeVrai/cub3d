@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:16:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/27 12:28:49 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 12:46:02 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**init_var(t_data *data)
 	return (paths);
 }
 
-void	check_path_textures(t_data *data)
+void	set_textures(t_data *data)
 {
 	int		fd;
 	int		i;
@@ -59,4 +59,3 @@ void	check_path_textures(t_data *data)
 	}
 	free(paths);
 }
-

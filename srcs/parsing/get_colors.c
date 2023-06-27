@@ -6,11 +6,16 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:26:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/15 19:07:51 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 13:02:55 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	create_trgb(unsigned char t, unsigned char r, unsigned char  g, unsigned char b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
 
 static char	**create_colors_map(void)
 {
@@ -69,4 +74,8 @@ void	get_colors(t_data *data)
 	}
 	data->txt.count = i;
 	fill_colors(data);
+	data->txt.c_color = create_trgb(0, data->img.c_rgb[0], data->img.c_rgb[1],
+		data->img.c_rgb[2]);
+	data->txt.f_color = create_trgb(0, data->img.f_rgb[0], data->img.f_rgb[1],
+		data->img.f_rgb[2]);
 }
