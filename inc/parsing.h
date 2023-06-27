@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 19:33:14 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 12:44:06 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	fill_colors(t_data *data);
 /*	<parse_textures.c>  */
 void	get_textures(t_data *data);
 void	set_path(t_data *data, char *key, char *path);
-void	check_path_textures(t_data *data);
 char	**init_var(t_data *data);
 
 /*	<error.c>  */

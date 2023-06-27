@@ -6,11 +6,16 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/22 18:42:34 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/27 15:07:18 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static float	dist(float ax, float ay, float bx, float by)
+{
+	return (sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
+}
 
 void	draw_intersection(t_data *data, int ray_x, int ray_y, int color)
 {
@@ -21,7 +26,7 @@ void	draw_intersection(t_data *data, int ray_x, int ray_y, int color)
 		return ;
 	if (ray_y <= 0 || ray_y >= HEIGHT)
 		return ;
-	draw_line_with_coord(data, data->player.pos_x, data->player.pos_y, ray_x, ray_y);
+	draw_line_with_coord(data, data->player.pos_x, data->player.pos_y, ray_x, ray_y, data->map.color);
 }
 
 static void	hit_wall(t_data *data, float ray_a, unsigned char flag, int a)
@@ -100,8 +105,11 @@ void	check_horizontal_line(t_data *data, float ray_a)
 	int		a;
 	int		ca;
 
+	data->map.color = RED;
+	data->map.wall = H_WALL;
 	tan_ra = 1.0f / tan(degToRad(ray_a));
 	//	Looking up
+	a = 0;
 	if(sin(degToRad(ray_a)) > 0.001)
 	{
 		data->ray.ray_y = (((int)data->player.pos_y / data->player.case_height) * data->player.case_height) - 0.0001;
@@ -128,12 +136,16 @@ void	check_horizontal_line(t_data *data, float ray_a)
 	{
 		data->ray.ray_x = data->ray.vx;
 		data->ray.ray_y = data->ray.vy;
+		printf("V_WALL\n");
+		data->map.wall = V_WALL;
+		data->map.color = GREEN;
 		data->ray.disH = data->ray.disV;
 	}
 	ca = FixAng(data->player.p_a - ray_a);
 	data->ray.disH = data->ray.disH * cos(degToRad(ca));
-	draw_intersection(data, data->ray.ray_x, data->ray.ray_y, ORANGE);
+	draw_intersection(data, data->ray.ray_x, data->ray.ray_y, data->map.color);
 }
+
 
 /*	The main raycasting
 	To know the distance of the player to the near wall  */
@@ -145,30 +157,25 @@ void	raycasting(t_data *data)
 
 	r = 0;
 	i = 0;
-	data->ray.disH = 100000;
-	data->ray.disV = 100000;
+
 	data->map.mapX = 8;
 	data->map.mapY = 8;
 	convert_map_to_int(data);
-	ray_a = FixAng(data->player.p_a - 40.0f);
-	while (r < 80)
+	ray_a = FixAng(data->player.p_a + 30.0f);
+	while (r < 60)
 	{
+		printf("ray_a : %f\n", ray_a);
+		data->ray.disH = 100000.0f;
+		data->ray.disV = 100000.0f;
 		check_vertical_line(data, ray_a);
 		check_horizontal_line(data, ray_a);
+		draw_color(data, ray_a);
 		if (data->ray.disH < data->ray.disV)
-			draw_wall(data, data->ray.disH, i);
+			draw_wall(data, data->ray.disH, i, data->ray.ray_x, data->ray.ray_y);
 		if (data->ray.disH >= data->ray.disV)
-			draw_wall(data, data->ray.disV, i);
+			draw_wall(data, data->ray.disH, i, data->ray.ray_x, data->ray.ray_y);;
 		r++;
 		i += 10;
-		ray_a = FixAng(ray_a + 1.0f);
+		ray_a = FixAng(ray_a - 1.0f);
 	}
-	// int x = 0;
-	// while (x < WIDTH)
-	// {
-	// 	draw_wall(data, data->ray.disH, x);
-	// 	x++;
-	// }
-	// printf("disH : %f\n", data->ray.disH);
-	//rotate_line(data);
 }

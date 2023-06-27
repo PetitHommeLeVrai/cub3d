@@ -3,8 +3,8 @@ SO ./srcs/main.c
 WE ./srcs/main.c
 EA ./srcs/main.c
 
-F 220,100,0
-C 225,30,0
+C 0,255,255
+F 224,224,224
 
 11111111
 10100001

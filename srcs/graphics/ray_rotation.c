@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_rotation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 20:03:16 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 15:04:00 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/22 17:19:56 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	draw_line(t_data *data)
 	}
 }
 
-void draw_line_with_coord(t_data *data, int x1, int y1, int x2, int y2)
+void draw_line_with_coord(t_data *data, int x1, int y1, int x2, int y2, int color)
 {
 	int dx;
 	int dy;
@@ -57,7 +57,7 @@ void draw_line_with_coord(t_data *data, int x1, int y1, int x2, int y2)
 	err = dx - dy;
 	while (1)
 	{
-		my_mlx_pixel_put(data, x1, y1, GREEN);
+		my_mlx_pixel_put(data, x1, y1, color);
 		if (x1 == x2 && y1 == y2)
 			break;
 		e2 = 2 * err;
