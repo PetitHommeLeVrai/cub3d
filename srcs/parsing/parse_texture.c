@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:16:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/24 12:57:29 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 12:28:49 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**init_var(t_data *data)
 	if (!paths)
 	{
 		free_map(data);
-		exit_error(E_TEXTURES);
+		exit_error(E_NOMEM);
 	}
 	paths[0] = data->img.n_path;
 	paths[1] = data->img.s_path;

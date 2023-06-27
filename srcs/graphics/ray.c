@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/26 15:53:21 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 12:13:31 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_intersection(t_data *data, int ray_x, int ray_y, int color)
 		return ;
 	if (ray_y <= 0 || ray_y >= HEIGHT)
 		return ;
-	draw_line_with_coord(data, data->player.pos_x, data->player.pos_y, ray_x, ray_y, color);
+	draw_line_with_coord(data, data->player.pos_x, data->player.pos_y, ray_x, ray_y, data->map.color);
 }
 
 static void	hit_wall(t_data *data, float ray_a, unsigned char flag, int a)
@@ -49,16 +49,9 @@ static void	hit_wall(t_data *data, float ray_a, unsigned char flag, int a)
 		{
 			dof = 8;
 			if (flag & DISV)
-				// data->ray.disV = dist(data->player.pos_x, data->player.pos_y, data->ray.ray_x, data->ray.ray_y);
 				data->ray.disV = cos(degToRad(ray_a)) * (data->ray.ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (data->ray.ray_y - data->player.pos_y);
 			else if (flag & DISH)
-			{
-				////printf("DISH\n");
-				// data->ray.disH = dist(data->player.pos_x, data->player.pos_y, data->ray.ray_x, data->ray.ray_y);
 				data->ray.disH = cos(degToRad(ray_a)) * (data->ray.ray_x - data->player.pos_x) - sin(degToRad(ray_a)) * (data->ray.ray_y - data->player.pos_y);
-				////printf("disH : %f\n", data->ray.disH);
-
-			}
 		}
 		//	Next Vertical
 		else
@@ -111,9 +104,9 @@ void	check_horizontal_line(t_data *data, float ray_a)
 	float	tan_ra;
 	int		a;
 	int		ca;
-	int		color;
 
-	color = ORANGE;
+	data->map.color = RED;
+	data->map.wall = H_WALL;
 	tan_ra = 1.0f / tan(degToRad(ray_a));
 	//	Looking up
 	a = 0;
@@ -139,20 +132,20 @@ void	check_horizontal_line(t_data *data, float ray_a)
 		a = 1;
 	}
 	hit_wall(data, ray_a, DISH, a);
-	//printf("disV : %f\tdisH : %f\n", data->ray.disV, data->ray.disH);
 	if (data->ray.disV < data->ray.disH)
 	{
 		data->ray.ray_x = data->ray.vx;
 		data->ray.ray_y = data->ray.vy;
-		//printf("VERTICAL LINE\n");
-		color = WHITE;
+		printf("V_WALL\n");
+		data->map.wall = V_WALL;
+		data->map.color = GREEN;
 		data->ray.disH = data->ray.disV;
 	}
-	//printf("ray_x : %f\tray_y : %f\n", data->ray.ray_x, data->ray.ray_y);
 	ca = FixAng(data->player.p_a - ray_a);
 	data->ray.disH = data->ray.disH * cos(degToRad(ca));
-	draw_intersection(data, data->ray.ray_x, data->ray.ray_y, color);
+	draw_intersection(data, data->ray.ray_x, data->ray.ray_y, data->map.color);
 }
+
 
 /*	The main raycasting
 	To know the distance of the player to the near wall  */
@@ -165,19 +158,18 @@ void	raycasting(t_data *data)
 	r = 0;
 	i = 0;
 
-	//printf("Commit test\n");
 	data->map.mapX = 8;
 	data->map.mapY = 8;
 	convert_map_to_int(data);
 	ray_a = FixAng(data->player.p_a + 30.0f);
 	while (r < 60)
 	{
+		printf("ray_a : %f\n", ray_a);
 		data->ray.disH = 100000.0f;
 		data->ray.disV = 100000.0f;
-		//printf("--------\n");
-		//printf("r : %d\n", r);
 		check_vertical_line(data, ray_a);
 		check_horizontal_line(data, ray_a);
+		draw_color(data, ray_a);
 		if (data->ray.disH < data->ray.disV)
 			draw_wall(data, data->ray.disH, i);
 		if (data->ray.disH >= data->ray.disV)
@@ -185,15 +177,5 @@ void	raycasting(t_data *data)
 		r++;
 		i += 10;
 		ray_a = FixAng(ray_a - 1.0f);
-		//printf("\n");
 	}
-	//printf("NEW\n\n");
-	// int x = 0;
-	// while (x < WIDTH)
-	// {
-	// 	draw_wall(data, data->ray.disH, x);
-	// 	x++;
-	// }
-	// //printf("disH : %f\n", data->ray.disH);
-	//rotate_line(data);
 }

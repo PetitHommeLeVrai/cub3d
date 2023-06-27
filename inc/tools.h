@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/22 19:41:57 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 12:21:35 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,20 @@
 # define SPACE 32
 
 /*	Hexadecimal color code for use  */
-# define BLACK	0x000000
-# define RED	0xFF0000
+# define BLACK		0x000000
+/*----------RED----------*/
+# define RED		0xFF0000
+# define RED1		0xd90000
+# define RED2		0x8a0000
+/*--------YELLOW---------*/
+# define YELLOW		0xFFDE14
+# define YELLOW1	0xf29d00
+# define YELLOW2	0xb87700
+
 # define BLUE	0x0000FF
 # define WHITE	0xFFFFFF
 # define GREEN	0x00FF00
 # define ORANGE 0xE57314
-# define YELLOW 0xFFDE14
 
 /* Key code for mlx_instance  */
 # define KEY_UP		65362
@@ -47,6 +54,8 @@
 # define DR	0.0174533
 # define DISH 1 << 0
 # define DISV 1 << 1
+# define V_WALL 1 << 0
+# define H_WALL 1 << 1
 
 typedef enum e_err_msg
 {
@@ -128,14 +137,16 @@ typedef struct s_player
 
 typedef struct	s_map
 {
-	int			case_width;
-	int			case_height;
-	int			mapX;
-	int			mapY;
-	int			mx;
-	int			my;
-	int			mp;
-	char		compass_point;
+	int				color;
+	unsigned char	wall;
+	int				case_width;
+	int				case_height;
+	int				mapX;
+	int				mapY;
+	int				mx;
+	int				my;
+	int				mp;
+	char			compass_point;
 }				t_map;
 
 typedef struct s_ray
