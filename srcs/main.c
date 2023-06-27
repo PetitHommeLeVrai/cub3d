@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:28:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/27 00:08:19 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 13:27:32 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int	main(int ac, char **av)
 	data.player.pos_x += data.player.case_width - 10;
 	data.player.pos_y += data.player.case_height - 100;
 	draw_map(&data);
+	put_texture(&data);
 	mlx_loop(data.img.mlx_ptr);
 }

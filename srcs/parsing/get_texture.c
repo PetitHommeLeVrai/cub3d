@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:16:17 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/27 12:50:24 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 13:15:38 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,18 @@ static bool	is_in_texture_map(char *str)
 	return (false);
 }
 
-static void	set_textures(t_data *data)
-{
-	data->txt.fd_north = open(data->img.n_path, O_RDONLY);
-	data->txt.fd_south = open(data->img.s_path, O_RDONLY);
-	data->txt.fd_west = open(data->img.w_path, O_RDONLY);
-	data->txt.fd_est = open(data->img.e_path, O_RDONLY);
-	if (data->txt.fd_north < 0
-		|| data->txt.fd_south < 0
-		|| data->txt.fd_west < 0
-		|| data->txt.fd_est < 0)
-			return (free_map(data), exit_error(E_NOMEM));
-}
+// static void	set_textures(t_data *data)
+// {
+// 	data->txt.fd_north = open(data->img.n_path, O_RDONLY);
+// 	data->txt.fd_south = open(data->img.s_path, O_RDONLY);
+// 	data->txt.fd_west = open(data->img.w_path, O_RDONLY);
+// 	data->txt.fd_est = open(data->img.e_path, O_RDONLY);
+// 	if (data->txt.fd_north < 0
+// 		|| data->txt.fd_south < 0
+// 		|| data->txt.fd_west < 0
+// 		|| data->txt.fd_est < 0)
+// 			return (free_map(data), exit_error(E_NOMEM));
+// }
 
 
 void	get_textures(t_data *data)

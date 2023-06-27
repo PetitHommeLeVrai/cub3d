@@ -1,7 +1,7 @@
-NO ./srcs/main.c
-SO ./srcs/main.c
-WE ./srcs/main.c
-EA ./srcs/main.c
+NO ./xpm/redbrick.xpm
+SO ./xpm/wood.xpm
+WE ./xpm/pillar.xpm
+EA ./xpm/mossy.xpm
 
 C 0,255,255
 F 224,224,224

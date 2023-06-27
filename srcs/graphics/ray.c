@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/27 12:13:31 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 13:29:16 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ void	check_horizontal_line(t_data *data, float ray_a)
 	{
 		data->ray.ray_x = data->ray.vx;
 		data->ray.ray_y = data->ray.vy;
-		printf("V_WALL\n");
 		data->map.wall = V_WALL;
 		data->map.color = GREEN;
 		data->ray.disH = data->ray.disV;
@@ -164,7 +163,6 @@ void	raycasting(t_data *data)
 	ray_a = FixAng(data->player.p_a + 30.0f);
 	while (r < 60)
 	{
-		printf("ray_a : %f\n", ray_a);
 		data->ray.disH = 100000.0f;
 		data->ray.disV = 100000.0f;
 		check_vertical_line(data, ray_a);
