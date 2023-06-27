@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/27 12:59:54 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:54:46 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ typedef struct	s_map
 
 typedef struct s_ray
 {
+	float	wall_x;
 	float	ray_x;
 	float	ray_y;
 	float	ray_a;

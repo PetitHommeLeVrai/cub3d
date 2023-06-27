@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 11:25:42 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/27 16:14:35 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:17:53 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	put_texture(t_data *data)
 	int		height;
 
 	printf("Test\n");
-	width = ;
+	// width = ;
 	height = 600;
     img = mlx_xpm_file_to_image(data->img.mlx_ptr, data->img.n_path, &width, &height);
 	if (!img)

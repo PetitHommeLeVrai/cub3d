@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/21 19:50:29 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/27 14:22:04 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,15 @@ static void	init_mlx(t_data *data)
 
 static void	init_mlx2(t_data *data)
 {
+	int texH = 64;
+	int texW = 64;
 	data->img.win2_ptr = mlx_new_window(data->img.mlx_ptr, WIDTH, HEIGHT,
 		"./cub3d");
 	data->img.img2_ptr = mlx_new_image(data->img.mlx_ptr, WIDTH, HEIGHT);
 	data->img.addr2 = mlx_get_data_addr(data->img.img2_ptr,
 			&data->img.bits_per_pixel, &data->img.line_length,
 			&data->img.endian);
+	data->txt.img_north = mlx_xpm_file_to_image(data->img.mlx_ptr, data->img.n_path, &texH, &texW);
 	mlx_key_hook(data->img.win2_ptr, move_key_hook, data);
 	mlx_hook(data->img.win2_ptr, 33, 0, &destroy_win, data);
 	mlx_hook(data->img.win2_ptr, KeyPress, KeyPressMask, &handle_input, data);

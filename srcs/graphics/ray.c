@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/27 13:29:16 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:05:17 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,10 +168,7 @@ void	raycasting(t_data *data)
 		check_vertical_line(data, ray_a);
 		check_horizontal_line(data, ray_a);
 		draw_color(data, ray_a);
-		if (data->ray.disH < data->ray.disV)
-			draw_wall(data, data->ray.disH, i);
-		if (data->ray.disH >= data->ray.disV)
-			draw_wall(data, data->ray.disV, i);
+		draw_wall(data, data->ray.disH, i, data->ray.ray_x, data->ray.ray_y);;
 		r++;
 		i += 10;
 		ray_a = FixAng(ray_a - 1.0f);

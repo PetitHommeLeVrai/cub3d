@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:54:44 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/27 13:27:22 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 16:17:36 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	raycasting(t_data *data);
 void	rotate_line(t_data *data);
 void	start_pos_to_rad(t_data *data);
 void	draw_line_with_coord(t_data *data, int x1, int y1, int x2, int y2, int color);
-void	draw_wall(t_data *data, double ray_dist, int x);
+void	draw_wall(t_data *data, double ray_dist, int x, int hit_x, int hit_y);
 void	draw_color(t_data *data, int ray_a);
 int		create_trgb(unsigned char t, unsigned char r, unsigned char  g, unsigned char b);
 void	put_texture(t_data *data);
