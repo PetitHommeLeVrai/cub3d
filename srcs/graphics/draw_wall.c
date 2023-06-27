@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 19:27:47 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/27 19:55:12 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/06/27 20:00:40 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	draw_wall(t_data *data, double ray_dist, int x, int hit_x, int hit_y)
 	if (data->map.wall == V_WALL)
 		wallx = data->player.pos_x + ((data->map.mapY - data->player.pos_y + (1 - 4) / 2) / data->ray.ray_y) * data->ray.ray_x;
 	else
-		wallx = data->player.pos_y + ((data->map.mapX - data->player.pos_x + (1 - 4) / 2) / data->ray.ray_y) * data->ray.ray_y;
+		wallx = data->player.pos_y + ((data->map.mapX - data->player.pos_x + (1 - 4) / 2) / data->ray.ray_x) * data->ray.ray_y;
 	// if (data->ray.disH > data->ray.disV)
 	// 	wallx = hit_y + ray_dist * diry;
 	// else
