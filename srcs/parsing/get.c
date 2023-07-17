@@ -23,7 +23,8 @@ int	get_player_pos(t_data *data, char **map)
 	{
 		while (map[y][x])
 		{
-			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'W' || map[y][x] == 'E')
+			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
+					|| map[y][x] == 'W' || map[y][x] == 'E')
 			{
 				data->player.p_x = x;
 				data->player.p_y = y;

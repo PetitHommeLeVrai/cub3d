@@ -12,7 +12,8 @@
 
 #include "cub3d.h"
 
-int	create_trgb(unsigned char t, unsigned char r, unsigned char  g, unsigned char b)
+int	create_trgb(unsigned char t, unsigned char r,
+				unsigned char g, unsigned char b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
@@ -56,8 +57,8 @@ static bool	is_in_colors_map(char *str)
 
 void	get_colors(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = 0;
 	i = data->txt.index_file;
@@ -75,7 +76,7 @@ void	get_colors(t_data *data)
 	data->txt.count = i;
 	fill_colors(data);
 	data->txt.c_color = create_trgb(0, data->img.c_rgb[0], data->img.c_rgb[1],
-		data->img.c_rgb[2]);
+			data->img.c_rgb[2]);
 	data->txt.f_color = create_trgb(0, data->img.f_rgb[0], data->img.f_rgb[1],
-		data->img.f_rgb[2]);
+			data->img.f_rgb[2]);
 }

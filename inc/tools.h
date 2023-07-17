@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/07/11 14:20:53 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/18 00:23:57 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 /*	Macroconstant required by the window management  */
 # define WIDTH 640
 # define HEIGHT 480
+#define screenWidth 640
+#define screenHeight 480
+#define texWidth 64
+#define texHeight 64
 
 /*	Ascii codes  */
 # define NEWLINE '\n'
@@ -95,6 +99,8 @@ typedef struct s_mlx
 	char		**map_cp;
 	int			*i_map;
 	int			bits_per_pixel;
+	int			bpp;
+	int			size_line;
 	int			line_length;
 	int			endian;
 }				t_mlx;
@@ -117,6 +123,10 @@ typedef struct s_txt
 
 typedef struct s_player
 {
+	double		posX;
+	double		dirX;
+	double		planeX;
+	double		planeY;
 	float		pos_x;
 	float		pos_y;
 	float		p_a;
@@ -157,20 +167,40 @@ typedef struct	s_map
 
 typedef struct s_ray
 {
-	double	dirx;
-	double	diry;
-	double	planex;
-	double	planey;
-	float	wall_x;
-	float	ray_x;
-	float	ray_y;
-	float	ray_a;
-	float	vx;
-	float	vy;
-	float	x_offset;
-	float	y_offset;
-	float	disH;
-	float	disV;
+	double		tex_pos;
+	int			draw_start;
+	int			draw_end;
+	int			tex_x;
+	int			line_height;
+	int			pitch;
+	double		wallX;
+	int			texX;
+	int			stepx;
+	int			stepy;
+	double		pw_dist;
+	double		ddist_x;
+	double		ddist_y;
+	double		rayDirX;
+	double		rayDirY;
+	double		cameraX;
+	double		sd_x;
+	double		sd_y;
+	int			mapX;
+	int			mapY;
+	double		dirx;
+	double		diry;
+	double		planex;
+	double		planey;
+	float		wall_x;
+	float		ray_x;
+	float		ray_y;
+	float		ray_a;
+	float		vx;
+	float		vy;
+	float		x_offset;
+	float		y_offset;
+	float		disH;
+	float		disV;
 }			t_ray;
 
 typedef struct s_data

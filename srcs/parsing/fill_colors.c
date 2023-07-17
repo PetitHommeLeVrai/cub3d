@@ -76,7 +76,6 @@ static bool	rgb_is_number(char **f_rgb, char **c_rgb)
 	return (true);
 }
 
-
 void	fill_colors(t_data *data)
 {
 	int		i;

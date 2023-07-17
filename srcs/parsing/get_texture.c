@@ -63,9 +63,8 @@ static void	set_textures(t_data *data)
 		|| data->txt.fd_south < 0
 		|| data->txt.fd_west < 0
 		|| data->txt.fd_est < 0)
-			return (free_map(data), exit_error(E_NOMEM));
+		return (free_map(data), exit_error(E_NOMEM));
 }
-
 
 void	get_textures(t_data *data)
 {
@@ -80,7 +79,7 @@ void	get_textures(t_data *data)
 			j++;
 		if (is_in_texture_map(data->img.file[i] + j))
 			init_texture_path(data, data->img.file[i][j], data->img.file[i]
-					+ j);
+				+ j);
 		else if (data->img.file[i][0] != 0 && !only_wspace(data->img.file[i]))
 			exit_error(E_ELEMENT);
 		i++;

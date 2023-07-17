@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/27 12:44:06 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/17 23:22:14 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PARSING_H
 
 /*	<main_parsing.c>  */
+void	init_mlx2(t_data *data);
+void	init_mlx(t_data *data);
 void	check_file(char *file);
 void	main_parsing(int ac, char *file, t_data *data);
 void	init_data(t_data *data);
@@ -35,16 +37,7 @@ int		get_player_pos(t_data *data, char **map);
 int		get_map_last_line(char **map);
 int		get_bigger_len(char **map);
 
-/*	<parse_colors.c>  */
-void	free_split_rgb(char **rgb);
-void	isnumber(char **rgb, char *str, t_data *data);
-void	check_colors(t_data *data);
 void	fill_colors(t_data *data);
-
-/*	<parse_textures.c>  */
-void	get_textures(t_data *data);
-void	set_path(t_data *data, char *key, char *path);
-char	**init_var(t_data *data);
 
 /*	<error.c>  */
 void	exit_error(int err_msg);

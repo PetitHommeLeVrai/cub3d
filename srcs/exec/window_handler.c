@@ -12,12 +12,6 @@
 
 #include "cub3d.h"
 
-//render
-int	draw(t_data *data)
-{
-	return (1);
-}
-
 void	my_mlx_pixel_put(t_data *data, int x, int y, unsigned int color)
 {
 	char	*dst;

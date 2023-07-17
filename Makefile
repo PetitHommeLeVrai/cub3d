@@ -6,7 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/06/27 11:18:23 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/07/18 00:35:24 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,6 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						main_parsing.c						\
 						parse_ftc.c							\
 						get_map.c							\
-						parse_texture.c						\
 						get_texture.c						\
 						get_colors.c						\
 						fill_colors.c						\
@@ -66,6 +65,7 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						key_move.c							\
 						key_rotate.c						\
 						free.c								\
+						init_mlx.c							\
 						init.c								\
 						window_handler.c					\
 					)										\
@@ -74,11 +74,8 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						get_next_line_utils.c				\
 					)										\
 					$(addprefix graphics/,					\
-						utils_maths.c						\
-						draw_wall.c							\
-						draw_textures.c						\
 						draw_map.c							\
-						ray_rotation.c						\
+						calcul.c							\
 						ray.c								\
 					)										\
 				)											\

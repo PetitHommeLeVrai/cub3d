@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:28:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/07/14 15:21:44 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/17 20:22:07 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	get_pos(t_data *data, char **map)
 	{
 		while (map[y][x])
 		{
-			if (map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'W' || map[y][x] == 'E')
+			if (map[y][x] == 'N' || map[y][x] == 'S'
+				|| map[y][x] == 'W' || map[y][x] == 'E')
 			{
 				data->player.pos_x = x;
 				data->player.pos_y = y;

@@ -15,7 +15,7 @@
 int	get_size_map(char **file)
 {
 	int	i;
-	
+
 	i = 0;
 	while (file && file[i])
 		i++;
@@ -26,7 +26,7 @@ void	get_map(t_data *data)
 {
 	int		i;
 	int		j;
-	
+
 	j = 0;
 	i = data->txt.count;
 	while (data->img.file[i][0] == 0)

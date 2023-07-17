@@ -14,20 +14,28 @@
 
 void	r_rotate(t_data *data)
 {
-      double oldDirX = data->ray.dirx;
-      data->ray.dirx = data->ray.dirx * cos(-0.1) - data->ray.diry * sin(-0.1);
-      data->ray.diry = oldDirX * sin(-0.1) + data->ray.diry * cos(-0.1);
-      double oldPlaneX = data->ray.planex;
-      data->ray.planex = data->ray.planex * cos(-0.1) - data->ray.planey * sin(-0.1);
-      data->ray.planey = oldPlaneX * sin(-0.1) + data->ray.planey * cos(-0.1);
+	double	old_dir_x;
+	double	old_plane_x;
+
+	old_dir_x = data->ray.dirx;
+	old_plane_x = data->ray.planex;
+	data->ray.dirx = data->ray.dirx * cos(-0.1) - data->ray.diry * sin(-0.1);
+	data->ray.diry = old_dir_x * sin(-0.1) + data->ray.diry * cos(-0.1);
+	data->ray.planex = data->ray.planex
+		* cos(-0.1) - data->ray.planey * sin(-0.1);
+	data->ray.planey = old_plane_x * sin(-0.1) + data->ray.planey * cos(-0.1);
 }
 
 void	l_rotate(t_data *data)
 {
-      double oldDirX = data->ray.dirx;
-      data->ray.dirx = data->ray.dirx * cos(0.1) - data->ray.diry * sin(0.1);
-      data->ray.diry = oldDirX * sin(0.1) + data->ray.diry * cos(0.1);
-      double oldPlaneX = data->ray.planex;
-      data->ray.planex = data->ray.planex * cos(0.1) - data->ray.planey * sin(0.1);
-      data->ray.planey = oldPlaneX * sin(0.1) + data->ray.planey * cos(0.1);
+	double	old_dir_x;
+	double	old_plane_x;
+
+	old_dir_x = data->ray.dirx;
+	old_plane_x = data->ray.planex;
+	data->ray.dirx = data->ray.dirx * cos(0.1) - data->ray.diry * sin(0.1);
+	data->ray.diry = old_dir_x * sin(0.1) + data->ray.diry * cos(0.1);
+	data->ray.planex = data->ray.planex
+		* cos(0.1) - data->ray.planey * sin(0.1);
+	data->ray.planey = old_plane_x * sin(0.1) + data->ray.planey * cos(0.1);
 }

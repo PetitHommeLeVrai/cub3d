@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_H
-# define WINDOW_H
+#ifndef EXEC_H
+# define EXEC_H
 
 # include "tools.h"
 
