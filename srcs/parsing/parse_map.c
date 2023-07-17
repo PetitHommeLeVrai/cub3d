@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:11:28 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/15 17:53:29 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/17 17:09:32 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,5 @@ void	check_map(t_data *data, char **map)
 	is_map_surrouded_by_wall(data, map);
 	create_map_copy(data, map);
 	while (get_player_pos(data, data->img.map_cp) == 1)
-		dfs(data, data->img.map_cp, data->player.pos_y, data->player.pos_x);
+		dfs(data, data->img.map_cp, data->player.p_y, data->player.p_x);
 }

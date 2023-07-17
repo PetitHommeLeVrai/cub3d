@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/14 15:58:15 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/17 17:14:43 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,14 @@ void raycasting(t_data *data)
       }
 
       if (rayDirY >= 0.0  && side == 1)
-        pixels = (int *)mlx_get_data_addr(data->txt.img_north, &bpp, &size_line, &endian);
-      else if (rayDirY <= 0.0  && side == 1)
-	      pixels = (int *)mlx_get_data_addr(data->txt.img_south, &bpp, &size_line, &endian);
-      else if (rayDirX <= 0.0  && side == 0)
-        pixels = (int *)mlx_get_data_addr(data->txt.img_west, &bpp, &size_line, &endian);
-      else
         pixels = (int *)mlx_get_data_addr(data->txt.img_east, &bpp, &size_line, &endian);
-        
+      else if (rayDirY <= 0.0  && side == 1)
+	      pixels = (int *)mlx_get_data_addr(data->txt.img_west, &bpp, &size_line, &endian);
+      else if (rayDirX <= 0.0  && side == 0)
+        pixels = (int *)mlx_get_data_addr(data->txt.img_north, &bpp, &size_line, &endian);
+      else
+        pixels = (int *)mlx_get_data_addr(data->txt.img_south, &bpp, &size_line, &endian);
+
       //Calculate distance of perpendicular ray (Euclidean distance would give fisheye effect!)
       if(side == 0) perpWallDist = (sideDistX - deltaDistX);
       else          perpWallDist = (sideDistY - deltaDistY);
