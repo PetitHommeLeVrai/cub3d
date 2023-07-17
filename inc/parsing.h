@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/31 16:31:03 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/27 12:44:06 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	dfs(t_data *data, char **map, int y, int x);
 void	check_map(t_data *data, char **map);
 
 /*	<get.c>  */
-int	get_player_pos(t_data *data, char **map);
+int		get_player_pos(t_data *data, char **map);
 int		get_map_last_line(char **map);
 int		get_bigger_len(char **map);
 
@@ -44,7 +44,6 @@ void	fill_colors(t_data *data);
 /*	<parse_textures.c>  */
 void	get_textures(t_data *data);
 void	set_path(t_data *data, char *key, char *path);
-void	check_path_textures(t_data *data);
 char	**init_var(t_data *data);
 
 /*	<error.c>  */
@@ -52,6 +51,9 @@ void	exit_error(int err_msg);
 
 /*	<get_map.c>  */
 void	get_map(t_data *data);
+void	get_position_player(t_data *data);
+int		get_longest_line(char **file);
+int		get_size_map(char **file);
 void	get_position_player(t_data *data);
 
 /*	<get_texture.c>  */

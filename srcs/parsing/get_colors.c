@@ -3,20 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:26:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/31 15:45:27 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/06/27 13:02:55 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int	create_trgb(unsigned char t, unsigned char r, unsigned char  g, unsigned char b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
 static char	**create_colors_map(void)
 {
-	static char *colors_map[] = {
+	static char	*colors_map[] = {
 		"F ",
-		"C "};
+		"C "
+	};
+
 	return (colors_map);
 }
 
@@ -36,6 +43,8 @@ static bool	is_in_colors_map(char *str)
 
 	i = 0;
 	colors_map = create_colors_map();
+	if (!str || str[0] == 0)
+		return (false);
 	while (colors_map[i])
 	{
 		if (!(ft_strncmp(colors_map[i], str, 2)))
@@ -65,4 +74,8 @@ void	get_colors(t_data *data)
 	}
 	data->txt.count = i;
 	fill_colors(data);
+	data->txt.c_color = create_trgb(0, data->img.c_rgb[0], data->img.c_rgb[1],
+		data->img.c_rgb[2]);
+	data->txt.f_color = create_trgb(0, data->img.f_rgb[0], data->img.f_rgb[1],
+		data->img.f_rgb[2]);
 }

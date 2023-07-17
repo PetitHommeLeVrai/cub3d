@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/31 14:51:01 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/11 14:20:53 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,46 @@
 # include "cub3d.h"
 
 /*	Macroconstant required by the window management  */
-# define WIDTH 900
-# define HEIGHT 900
+# define WIDTH 640
+# define HEIGHT 480
 
+/*	Ascii codes  */
 # define NEWLINE '\n'
 # define SPACE 32
+
+/*	Hexadecimal color code for use  */
+# define BLACK		0x000000
+/*----------RED----------*/
+# define RED		0xFF0000
+# define RED1		0xd90000
+# define RED2		0x8a0000
+/*--------YELLOW---------*/
+# define YELLOW		0xFFDE14
+# define YELLOW1	0xf29d00
+# define YELLOW2	0xb87700
+
+# define BLUE	0x0000FF
+# define WHITE	0xFFFFFF
+# define GREEN	0x00FF00
+# define ORANGE 0xE57314
+
+/* Key code for mlx_instance  */
+# define KEY_UP		65362
+# define KEY_RIGHT	65363
+# define KEY_DOWN	65364
+# define KEY_LEFT	65361
+# define KEY_ESC	65307
+# define KEY_W		119
+# define KEY_A		97
+# define KEY_S		115
+# define KEY_D		100
+
+# define PI 3.14159265359
+# define DR	0.0174533
+# define DISH 1 << 0
+# define DISV 1 << 1
+# define V_WALL 1 << 0
+# define H_WALL 1 << 1
 
 typedef enum e_err_msg
 {
@@ -42,8 +77,11 @@ typedef struct s_mlx
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	void		*win2_ptr;
 	void		*img_ptr;
+	void		*img2_ptr;
 	char		*addr;
+	char		*addr2;
 	char		*n_path;
 	char		*s_path;
 	char		*w_path;
@@ -55,6 +93,7 @@ typedef struct s_mlx
 	char		**file;
 	char		**map;
 	char		**map_cp;
+	int			*i_map;
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
@@ -66,23 +105,90 @@ typedef struct s_txt
 	void		*img_south;
 	void		*img_west;
 	void		*img_east;
+	int			fd_north;
+	int			fd_south;
+	int			fd_west;
+	int			fd_est;
+	int			c_color;
+	int			f_color;
 	int			count;
 	int			index_file;
 }				t_txt;
 
 typedef struct s_player
 {
-	double		pos_x;
-	double		pos_y;
-	int			p_x;
-	int			p_y;
+	float		pos_x;
+	float		pos_y;
+	float		p_a;
+	float		pdx;
+	float		pdy;
+	int			x_offset;
+	int			y_offset;
+	int			ipx;
+	int			ipy;
+	int			ipx_add_xo;
+	int			ipx_sub_xo;
+	int			ipy_add_yo;
+	int			ipy_sub_yo;
+	char		compass_point;
+	int			case_width;
+	int			case_height;
+	int			x1;
+	int			x2;
+	int			y1;
+	int			y2;
+	int			p_x;	// Has to be delete
+	int			p_y;	// Has to be delete
 }				t_player;
+
+typedef struct	s_map
+{
+	int				color;
+	unsigned char	wall;
+	int				case_width;
+	int				case_height;
+	int				mapX;
+	int				mapY;
+	int				mx;
+	int				my;
+	int				mp;
+	char			compass_point;
+}				t_map;
+
+typedef struct s_ray
+{
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
+	float	wall_x;
+	float	ray_x;
+	float	ray_y;
+	float	ray_a;
+	float	vx;
+	float	vy;
+	float	x_offset;
+	float	y_offset;
+	float	disH;
+	float	disV;
+}			t_ray;
 
 typedef struct s_data
 {
 	t_mlx		img;
 	t_txt		txt;
 	t_player	player;
+	t_ray		ray;
+	t_map		map;
 }				t_data;
+
+typedef void(*t_fp_movement)(t_data *data);
+
+/*	Required to handle key_hook  */
+typedef struct s_movement
+{
+	unsigned int	key;
+	t_fp_movement	key_fp;
+}					t_movement;
 
 #endif

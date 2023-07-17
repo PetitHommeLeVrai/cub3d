@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+         #
+#    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/05/31 13:32:25 by aboyer           ###   ########.fr        #
+#    Updated: 2023/06/27 11:18:23 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,19 +59,28 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						fill_colors.c						\
 						utils.c								\
 						error.c								\
-						get.c								\
 						parse_map.c							\
 					)										\
 					$(addprefix exec/,						\
 						event_handler.c						\
+						key_move.c							\
+						key_rotate.c						\
 						free.c								\
 						init.c								\
 						window_handler.c					\
 					)										\
-				)											\
-				$(addprefix get_next_line/,					\
+					$(addprefix get_next_line/,				\
 						get_next_line.c						\
 						get_next_line_utils.c				\
+					)										\
+					$(addprefix graphics/,					\
+						utils_maths.c						\
+						draw_wall.c							\
+						draw_textures.c						\
+						draw_map.c							\
+						ray_rotation.c						\
+						ray.c								\
+					)										\
 				)											\
 
 # --------- Object files ------------------------------------------------------------
