@@ -6,7 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/06/27 11:18:23 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/07/17 23:26:13 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 					$(addprefix graphics/,					\
 						utils_maths.c						\
 						draw_wall.c							\
+						calcul.c							\
 						draw_textures.c						\
 						draw_map.c							\
 						ray_rotation.c						\
