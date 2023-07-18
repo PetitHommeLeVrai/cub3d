@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:57:32 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 17:50:46 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 20:38:18 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	get_map(t_data *data)
 
 	j = 0;
 	i = data->txt.count;
-	while (data->img.file[i][0] == 0)
+	while (data->img.file[i] && data->img.file[i][0] == 0)
 		i++;
 	data->img.map = malloc((sizeof(char *) * (get_size_map(data->img.file))));
 	data->txt.count = i;

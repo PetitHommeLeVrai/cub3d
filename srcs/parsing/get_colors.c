@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:26:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 19:24:41 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/18 20:32:39 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static char	**create_colors_map(void)
 {
 	static char	*colors_map[] = {
 		"F ",
-		"C "
+		"C ",
+		NULL
 	};
 
 	return (colors_map);
@@ -46,7 +47,7 @@ static bool	is_in_colors_map(char *str)
 	colors_map = create_colors_map();
 	if (!str || str[0] == 0)
 		return (false);
-	while (colors_map[i])
+	while (colors_map[i] != NULL)
 	{
 		if (!(ft_strncmp(colors_map[i], str, 2)))
 			return (true);

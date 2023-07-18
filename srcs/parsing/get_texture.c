@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:16:17 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 19:25:42 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/18 20:45:15 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ static bool	is_in_texture_map(char *str)
 
 static void	set_textures(t_data *data)
 {
+	if (!data->img.n_path || !data->img.s_path || !data->img.w_path
+		|| !data->img.e_path)
+		return (free_map(data), exit_error(E_ELEMENT));
 	data->txt.fd_north = open(data->img.n_path, O_RDONLY);
 	data->txt.fd_south = open(data->img.s_path, O_RDONLY);
 	data->txt.fd_west = open(data->img.w_path, O_RDONLY);
