@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 19:05:27 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/18 19:16:01 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	hit_detection(t_data *data, int *side)
 	return (hit);
 }
 
-static void	draw_pixels(t_data *data, int *pixels, int x, int side)
+static void	draw_pixels(t_data *data, int *pixels, int x)
 {
 	double	step;
 	int		g;
@@ -107,7 +107,6 @@ void	raycasting(t_data *data)
 {
 	int	x;
 	int	*pixels;
-	int	hit;
 	int	side;
 
 	x = 0;
@@ -125,7 +124,7 @@ void	raycasting(t_data *data)
 		calculate_line_height_and_draw_start_end(data);
 		calculate_wall_x(data, side);
 		calculate_tex_x(data, side);
-		draw_pixels(data, pixels, x, side);
+		draw_pixels(data, pixels, x);
 		x++;
 	}
 	mlx_put_image_to_window(data->img.mlx_ptr, data->img.win2_ptr,

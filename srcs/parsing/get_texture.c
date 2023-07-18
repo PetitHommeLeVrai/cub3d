@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_texture.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:16:17 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/27 12:50:24 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 19:25:42 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	get_textures(t_data *data)
 			init_texture_path(data, data->img.file[i][j], data->img.file[i]
 				+ j);
 		else if (data->img.file[i][0] != 0 && !only_wspace(data->img.file[i]))
-			exit_error(E_ELEMENT);
+			return (free_map(data), exit_error(E_ELEMENT));
 		i++;
 		data->txt.index_file++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:26:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/27 13:02:55 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 19:24:41 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	get_colors(t_data *data)
 		if (is_in_colors_map(data->img.file[i] + j))
 			init_colors_path(data, data->img.file[i][j], data->img.file[i] + j);
 		else if (data->img.file[i][0] != 0 && !only_wspace(data->img.file[i]))
-			exit_error(E_ELEMENT);
+			return (free_map(data), exit_error(E_ELEMENT));
 		i++;
 	}
 	data->txt.count = i;
