@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/17 23:22:14 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:31:37 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	dfs(t_data *data, char **map, int y, int x);
 void	check_map(t_data *data, char **map);
 
 /*	<get.c>  */
+int		get_pos(t_data *data, char **map);
 int		get_player_pos(t_data *data, char **map);
 int		get_map_last_line(char **map);
 int		get_bigger_len(char **map);
@@ -58,5 +59,12 @@ void	get_colors(t_data *data);
 /*	<utils.c>  */
 int		is_wspace(char c);
 int		only_wspace(char *str);
+
+/*	<init_geo.c>  */
+char	init_coord(t_data *data, char **map, int x, int y);
+void	init_north(t_data *data);
+void	init_south(t_data *data);
+void	init_west(t_data *data);
+void	init_east(t_data *data);
 
 #endif

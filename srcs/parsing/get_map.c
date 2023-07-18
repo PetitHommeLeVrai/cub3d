@@ -6,11 +6,33 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:57:32 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/15 20:05:45 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:31:42 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	get_pos(t_data *data, char **map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (map[y])
+	{
+		while (map[y][x])
+		{
+			if (map[y][x] == 'N' || map[y][x] == 'S'
+				|| map[y][x] == 'W' || map[y][x] == 'E')
+				return (init_coord(data, map,x , y));
+			x++;
+		}
+		y++;
+		x = 0;
+	}
+	return (0);
+}
 
 int	get_size_map(char **file)
 {
