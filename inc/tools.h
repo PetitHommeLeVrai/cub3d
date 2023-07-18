@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/07/18 00:23:57 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:28:28 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 /*	Macroconstant required by the window management  */
 # define WIDTH 640
 # define HEIGHT 480
-#define screenWidth 640
-#define screenHeight 480
-#define texWidth 64
-#define texHeight 64
+# define SCREENWIDTH 640
+# define SCREENHEIGHT 480
+# define TEXWIDTH 64
+# define TEXHEIGHT 64
 
 /*	Ascii codes  */
 # define NEWLINE '\n'
@@ -56,10 +56,6 @@
 
 # define PI 3.14159265359
 # define DR	0.0174533
-# define DISH 1 << 0
-# define DISV 1 << 1
-# define V_WALL 1 << 0
-# define H_WALL 1 << 1
 
 typedef enum e_err_msg
 {
@@ -75,7 +71,6 @@ typedef enum e_err_msg
 	E_MAP,
 	E_LENGHT
 }				t_err_msg;
-
 
 typedef struct s_mlx
 {

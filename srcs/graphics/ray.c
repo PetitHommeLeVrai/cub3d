@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 18:18:05 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:26:36 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	update_raycasting(t_data *data, int x)
 {
 	data->ray.rayDirY = data->ray.diry + data->ray.planey * data->ray.cameraX;
 	data->ray.rayDirX = data->ray.dirx + data->ray.planex * data->ray.cameraX;
-	data->ray.cameraX = (2 * x) / (double)screenWidth - 1;
+	data->ray.cameraX = (2 * x) / (double)SCREENWIDTH - 1;
 	data->ray.mapX = (int)data->player.pos_y;
 	data->ray.mapY = (int)data->player.pos_x;
 	if (data->ray.rayDirX == 0)
@@ -81,19 +81,19 @@ static void	draw_pixels(t_data *data, int *pixels, int x, int side)
 	int		tex_y;
 
 	g = 0;
-	step = 1.0 * texHeight / data->ray.line_height;
+	step = 1.0 * TEXHEIGHT / data->ray.line_height;
 	extra_draw_pixels(data, x, step);
 	g = data->ray.draw_start;
 	while (g < data->ray.draw_end)
 	{
-		tex_y = (int)data->ray.tex_pos & (texHeight - 1);
+		tex_y = (int)data->ray.tex_pos & (TEXHEIGHT - 1);
 		data->ray.tex_pos += step;
-		color = pixels[texHeight * tex_y + data->ray.tex_x];
+		color = pixels[TEXHEIGHT * tex_y + data->ray.tex_x];
 		my_mlx_pixel_put2(data, x, g, color);
 		g++;
 	}
 	g = data->ray.draw_end;
-	while (g < screenHeight)
+	while (g < SCREENHEIGHT)
 	{
 		if (g >= 0)
 			my_mlx_pixel_put2(data, x, g, data->txt.f_color);
@@ -109,7 +109,7 @@ void	raycasting(t_data *data)
 	int	side;
 
 	x = 0;
-	while (x < screenWidth)
+	while (x < SCREENWIDTH)
 	{
 		update_raycasting(data, x);
 		calculate_side_distances(data);
