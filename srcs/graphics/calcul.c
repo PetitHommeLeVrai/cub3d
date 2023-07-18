@@ -6,37 +6,38 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 23:23:54 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 00:28:27 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:11:28 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    calculate_side_distances(t_data *data)
+void	calculate_side_distances(t_data *data)
 {
-    if (data->ray.rayDirX < 0)
-    {
-        data->ray.stepx = -1;
-        data->ray.sd_x = 
-            (data->player.pos_y - data->ray.mapX) * data->ray.ddist_x;
-    }
-    else
-    {
-        data->ray.stepx = 1;
-        data->ray.sd_x = 
-            (data->ray.mapX + 1.0 - data->player.pos_y) * data->ray.ddist_x;
-    }
-    if (data->ray.rayDirY < 0)
-    {
-        data->ray.stepy = -1;
-        data->ray.sd_y = 
-            (data->player.pos_x - data->ray.mapY) * data->ray.ddist_y;
-    }
-    else
-    {
-        data->ray.stepy = 1;
-        data->ray.sd_y = (data->ray.mapY + 1.0 - data->player.pos_x) * data->ray.ddist_y;
-    }
+	if (data->ray.rayDirX < 0)
+	{
+		data->ray.stepx = -1;
+		data->ray.sd_x = (data->player.pos_y - data->ray.mapX)
+			* data->ray.ddist_x;
+	}
+	else
+	{
+		data->ray.stepx = 1;
+		data->ray.sd_x = (data->ray.mapX + 1.0 - data->player.pos_y)
+			* data->ray.ddist_x;
+	}
+	if (data->ray.rayDirY < 0)
+	{
+		data->ray.stepy = -1;
+		data->ray.sd_y = (data->player.pos_x - data->ray.mapY)
+			* data->ray.ddist_y;
+	}
+	else
+	{
+		data->ray.stepy = 1;
+		data->ray.sd_y = (data->ray.mapY + 1.0 - data->player.pos_x)
+			* data->ray.ddist_y;
+	}
 }
 
 void	calculate_line_height_and_draw_start_end(t_data *data)
