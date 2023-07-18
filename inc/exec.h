@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:49:56 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/21 19:33:37 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 19:09:44 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 void	init(t_data *data, int ac, char **av);
 int		destroy_win(t_data *data);
+void	destroy_win2(t_data *data);
 int		draw(t_data *data);
 int		handle_keyrelease(int keysym, t_data *data);
 int		handle_input(int keysym, t_data *data);

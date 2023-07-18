@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 18:41:33 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 19:05:27 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ static int	*assign_texture(t_data *data, int side)
 
 static void	update_raycasting(t_data *data, int x)
 {
-	data->ray.raydir_y = data->ray.diry + data->ray.plane_y * data->ray.camara_x;
-	data->ray.raydir_x = data->ray.dir_x + data->ray.plane_x * data->ray.camara_x;
 	data->ray.camara_x = (2 * x) / (double)SCREENWIDTH - 1;
+	data->ray.raydir_y = data->ray.diry + data->ray.plane_y
+		* data->ray.camara_x;
+	data->ray.raydir_x = data->ray.dir_x + data->ray.plane_x
+		* data->ray.camara_x;
 	data->ray.map_x = (int)data->player.pos_y;
 	data->ray.map_y = (int)data->player.pos_x;
 	if (data->ray.raydir_x == 0)
