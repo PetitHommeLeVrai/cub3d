@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 00:29:23 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:03:02 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,6 @@ void	raycasting(t_data *data)
 		draw_pixels(data, pixels, x, side);
 		x++;
 	}
+	mlx_put_image_to_window(data->img.mlx_ptr, data->img.win2_ptr,
+		data->img.img2_ptr, 0, 0);
 }

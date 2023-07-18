@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:06 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/21 20:24:11 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/18 18:03:52 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	move_key_hook(unsigned int keycode, t_data *data)
 		}
 		move_storage++;
 	}
-	draw_map(data);
+	raycasting(data);
+	mlx_put_image_to_window(data->img.mlx_ptr, data->img.win2_ptr,
+		data->img.img2_ptr, 0, 0);
 	return (21);
 }

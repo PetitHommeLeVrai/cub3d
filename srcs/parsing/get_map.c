@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:57:32 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 17:31:42 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:50:46 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_pos(t_data *data, char **map)
 		{
 			if (map[y][x] == 'N' || map[y][x] == 'S'
 				|| map[y][x] == 'W' || map[y][x] == 'E')
-				return (init_coord(data, map,x , y));
+				return (init_coord(data, map, x, y));
 			x++;
 		}
 		y++;
@@ -64,40 +64,6 @@ void	get_map(t_data *data)
 	data->img.map[j] = NULL;
 }
 
-void	get_position_player(t_data *data)
-{
-	int		i;
-	int		j;
-	int		k;
-	char	*start_pos_player;
-
-	start_pos_player = "NSEW";
-	i = 0;
-	get_map(data);
-	while (data->img.map[i])
-	{
-		j = 0;
-		while (data->img.map[i][j])
-		{
-			k = 0;
-			while (start_pos_player[k])
-			{
-				if (start_pos_player[k] == data->img.map[i][j])
-				{
-					data->player.compass_point = data->img.map[i][j];
-					return ;
-				}
-				k++;
-			}
-			data->player.pos_x++;
-			j++;
-		}
-		data->player.pos_x = 0;
-		data->player.pos_y++;
-		i++;
-	}
-}
-
 int	get_longest_line(char **map)
 {
 	int	longest_line;
@@ -116,4 +82,14 @@ int	get_longest_line(char **map)
 		i++;
 	}
 	return (longest_line);
+}
+
+int	get_map_last_line(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }

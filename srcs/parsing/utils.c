@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 10:38:39 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/11 14:29:59 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/18 17:52:48 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,42 +30,6 @@ int	only_wspace(char *str)
 	return (1);
 }
 
-int	get_player_pos(t_data *data, char **map)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (map[y])
-	{
-		while (map[y][x])
-		{
-			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
-					|| map[y][x] == 'W' || map[y][x] == 'E')
-			{
-				data->player.p_x = x;
-				data->player.p_y = y;
-				return (1);
-			}
-			x++;
-		}
-		y++;
-		x = 0;
-	}
-	return (0);
-}
-
-int	get_map_last_line(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
-}
-
 int	get_bigger_len(char **map)
 {
 	int	y;
@@ -84,4 +48,41 @@ int	get_bigger_len(char **map)
 		y++;
 	}
 	return (bigger);
+}
+
+void	isnumber(char **rgb, char *str, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+		{
+			free_split_rgb(rgb);
+			free_map(data);
+			exit_error(E_TEXTURES);
+		}
+		i++;
+	}
+	if (ft_atoi(str) < 0 || ft_atoi(str) > 255)
+	{
+		free_split_rgb(rgb);
+		free_map(data);
+		exit_error(E_TEXTURES);
+	}
+}
+
+bool	str_isnumber(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (false);
+		i++;
+	}
+	return (true);
 }

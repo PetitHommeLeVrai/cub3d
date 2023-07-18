@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 17:31:37 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:53:49 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	get_textures(t_data *data);
 void	get_colors(t_data *data);
 
 /*	<utils.c>  */
+void	free_split_rgb(char **rgb);
+bool	str_isnumber(char *str);
 int		is_wspace(char c);
 int		only_wspace(char *str);
 

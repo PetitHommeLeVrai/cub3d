@@ -6,7 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/07/18 17:25:14 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/07/18 18:02:06 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						parse_ftc.c							\
 						get_map.c							\
 						get_texture.c						\
+						get_position_player.c				\
 						get_colors.c						\
 						init_geo.c							\
 						fill_colors.c						\
@@ -75,7 +76,6 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						get_next_line_utils.c				\
 					)										\
 					$(addprefix graphics/,					\
-						draw_map.c							\
 						calcul.c							\
 						ray.c								\
 					)										\

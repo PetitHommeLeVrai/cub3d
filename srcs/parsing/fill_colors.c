@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 16:21:47 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/19 14:25:27 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:56:15 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,43 +25,6 @@ void	free_split_rgb(char **rgb)
 	free(rgb);
 }
 
-void	isnumber(char **rgb, char *str, t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-		{
-			free_split_rgb(rgb);
-			free_map(data);
-			exit_error(E_TEXTURES);
-		}
-		i++;
-	}
-	if (ft_atoi(str) < 0 || ft_atoi(str) > 255)
-	{
-		free_split_rgb(rgb);
-		free_map(data);
-		exit_error(E_TEXTURES);
-	}
-}
-
-bool	str_isnumber(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
 static bool	rgb_is_number(char **f_rgb, char **c_rgb)
 {
 	int	i;
@@ -74,6 +37,18 @@ static bool	rgb_is_number(char **f_rgb, char **c_rgb)
 		i++;
 	}
 	return (true);
+}
+
+static void	parse_colors(t_data *data, char **f_rgb, char **c_rgb, int i)
+{
+	data->img.f_rgb[i] = ft_atoi(f_rgb[i]);
+	data->img.c_rgb[i] = ft_atoi(c_rgb[i]);
+	if ((data->img.f_rgb[i] < 0) || (data->img.f_rgb[i] > 255))
+		return (free_split_rgb(f_rgb), free_split_rgb(c_rgb),
+			exit_error(E_CVAL));
+	if ((data->img.c_rgb[i] < 0) || (data->img.c_rgb[i] > 255))
+		return (free_split_rgb(f_rgb), free_split_rgb(c_rgb),
+			exit_error(E_CVAL));
 }
 
 void	fill_colors(t_data *data)
@@ -93,14 +68,7 @@ void	fill_colors(t_data *data)
 		exit_error(E_COLORS);
 	while (f_rgb[i] && c_rgb[i])
 	{
-		data->img.f_rgb[i] = ft_atoi(f_rgb[i]);
-		data->img.c_rgb[i] = ft_atoi(c_rgb[i]);
-		if ((data->img.f_rgb[i] < 0) || (data->img.f_rgb[i] > 255))
-			return (free_split_rgb(f_rgb), free_split_rgb(c_rgb),
-				exit_error(E_CVAL));
-		if ((data->img.c_rgb[i] < 0) || (data->img.c_rgb[i] > 255))
-			return (free_split_rgb(f_rgb), free_split_rgb(c_rgb),
-				exit_error(E_CVAL));
+		parse_colors(data, f_rgb, c_rgb, i);
 		i++;
 	}
 	if (i != 3)
