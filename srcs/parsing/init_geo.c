@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_geo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:14:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 18:34:38 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 20:08:47 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ char	init_coord(t_data *data, char **map, int x, int y)
 		init_north(data);
 	if (map[y][x] == 'S')
 		init_south(data);
-	if (map[y][x] == 'E')
-		init_east(data);
 	if (map[y][x] == 'W')
+		init_east(data);
+	if (map[y][x] == 'E')
 		init_west(data);
 	return (1);
 }

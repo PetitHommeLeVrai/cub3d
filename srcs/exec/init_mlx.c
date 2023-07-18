@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:49:56 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/17 23:22:00 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 19:37:51 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@ void	init_mlx(t_data *data)
 {
 	data->img.mlx_ptr = mlx_init();
 	if (!data->img.mlx_ptr)
-		return (exit_error(E_MLX));
+		return (free_map(data), exit_error(E_MLX));
 	data->img.win_ptr = mlx_new_window(data->img.mlx_ptr, WIDTH, HEIGHT,
 			"./minimap");
 	if (!data->img.win_ptr)
-		return (exit_error(E_MLX));
+		return (free_map(data), exit_error(E_MLX));
 	data->img.img_ptr = mlx_new_image(data->img.mlx_ptr, WIDTH, HEIGHT);
 	if (!data->img.img_ptr)
-		return (exit_error(E_MLX));
+		return (free_map(data), exit_error(E_MLX));
 	data->img.addr = mlx_get_data_addr(data->img.img_ptr,
 			&data->img.bits_per_pixel, &data->img.line_length,
 			&data->img.endian);
 	if (!data->img.addr)
-		return (exit_error(E_MLX));
+		return (free_map(data), exit_error(E_MLX));
 }
 
 void	init_mlx2(t_data *data)

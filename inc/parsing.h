@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 17:53:49 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 19:59:46 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	is_map_surrouded_by_wall(t_data *data, char **map);
 void	create_map_copy(t_data *data, char **map);
 void	dfs(t_data *data, char **map, int y, int x);
 void	check_map(t_data *data, char **map);
+void	free_leak(char **map);
 
 /*	<get.c>  */
 int		get_pos(t_data *data, char **map);

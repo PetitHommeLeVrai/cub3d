@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:11:28 by aboyer            #+#    #+#             */
-/*   Updated: 2023/07/17 17:09:32 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/18 20:01:07 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_first_and_last_line(t_data *data, char **map)
 	while (map[0][x])
 	{
 		if (map[0][x] != ' ' && map[0][x] != '1')
-			return (free_map(data), exit_error(E_MAP));
+			return (free_leak(map), free_map(data), exit_error(E_MAP));
 		x++;
 	}
 	x = 0;
@@ -29,7 +29,7 @@ void	check_first_and_last_line(t_data *data, char **map)
 	while (map[i][x])
 	{
 		if (map[i][x] != ' ' && map[i][x] != '1')
-			return (free_map(data), exit_error(E_MAP));
+			return (free_leak(map), free_map(data), exit_error(E_MAP));
 		x++;
 	}
 }
@@ -47,7 +47,7 @@ void	is_map_surrouded_by_wall(t_data *data, char **map)
 			len -= 1;
 		if (map[i][0] != ' ' && map[i][0] != '1' && map[i][len] != '1'
 			&& map[i][len] != ' ')
-			return (free_map(data), exit_error(E_MAP));
+			return (free_leak(map), free_map(data), exit_error(E_MAP));
 		i++;
 	}
 	check_first_and_last_line(data, map);
@@ -62,14 +62,14 @@ void	create_map_copy(t_data *data, char **map)
 	x = get_bigger_len(map);
 	data->img.map_cp = malloc(sizeof(char *) * (get_map_last_line(map) + 1));
 	if (!data->img.map_cp)
-		return (free_map(data), exit_error(E_MAP));
+		return (free_leak(map), free_map(data), exit_error(E_MAP));
 	y = 0;
 	while (data->img.map[y])
 	{
 		i = ft_strlen(map[y]);
 		data->img.map_cp[y] = (char *)malloc(sizeof(char *) * (x + 1));
 		if (!data->img.map_cp[y])
-			return (free_map(data), exit_error(E_MAP));
+			return (free_leak(map), free_map(data), exit_error(E_MAP));
 		ft_strlcpy(data->img.map_cp[y], map[y], ft_strlen(map[y]) + 1);
 		if (i < x)
 		{
@@ -86,7 +86,7 @@ void	dfs(t_data *data, char **map, int y, int x)
 {
 	if (map[y][x] != '0' && map[y][x] != 'N' && map[y][x] != 'S'
 		&& map[y][x] != 'W' && map[y][x] != 'E')
-		return (free_map(data), exit_error(E_MAP));
+		return (free_leak(map), free_map(data), exit_error(E_MAP));
 	map[y][x] = '1';
 	if (map[y + 1][x] != '1')
 		dfs(data, map, y + 1, x);
@@ -116,11 +116,11 @@ void	check_map(t_data *data, char **map)
 				player_exist += 1;
 			else if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' '
 					&& map[i][j] != '\n')
-				return (free_map(data), exit_error(E_MAP));
+				return (free_leak(map), free_map(data), exit_error(E_MAP));
 		}
 	}
 	if (player_exist != 1)
-		return (free_map(data), exit_error(E_MAP));
+		return (free_leak(map), free_map(data), exit_error(E_MAP));
 	is_map_surrouded_by_wall(data, map);
 	create_map_copy(data, map);
 	while (get_player_pos(data, data->img.map_cp) == 1)
