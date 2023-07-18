@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/07/18 18:28:28 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:41:35 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,47 +118,29 @@ typedef struct s_txt
 
 typedef struct s_player
 {
-	double		posX;
-	double		dirX;
-	double		planeX;
-	double		planeY;
+	double		dir_x;
+	double		plane_x;
+	double		plane_y;
 	float		pos_x;
 	float		pos_y;
-	float		p_a;
-	float		pdx;
-	float		pdy;
-	int			x_offset;
-	int			y_offset;
-	int			ipx;
-	int			ipy;
-	int			ipx_add_xo;
-	int			ipx_sub_xo;
-	int			ipy_add_yo;
-	int			ipy_sub_yo;
 	char		compass_point;
 	int			case_width;
 	int			case_height;
-	int			x1;
-	int			x2;
-	int			y1;
-	int			y2;
-	int			p_x;	// Has to be delete
-	int			p_y;	// Has to be delete
+	int			p_x;
+	int			p_y;
 }				t_player;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	int				color;
 	unsigned char	wall;
 	int				case_width;
 	int				case_height;
-	int				mapX;
-	int				mapY;
 	int				mx;
 	int				my;
 	int				mp;
 	char			compass_point;
-}				t_map;
+}					t_map;
 
 typedef struct s_ray
 {
@@ -168,35 +150,24 @@ typedef struct s_ray
 	int			tex_x;
 	int			line_height;
 	int			pitch;
-	double		wallX;
-	int			texX;
+	double		wall_x;
 	int			stepx;
 	int			stepy;
 	double		pw_dist;
 	double		ddist_x;
 	double		ddist_y;
-	double		rayDirX;
-	double		rayDirY;
-	double		cameraX;
+	double		raydir_x;
+	double		raydir_y;
+	double		camara_x;
 	double		sd_x;
 	double		sd_y;
-	int			mapX;
-	int			mapY;
-	double		dirx;
+	int			map_x;
+	int			map_y;
+	double		dir_x;
 	double		diry;
-	double		planex;
-	double		planey;
-	float		wall_x;
-	float		ray_x;
-	float		ray_y;
-	float		ray_a;
-	float		vx;
-	float		vy;
-	float		x_offset;
-	float		y_offset;
-	float		disH;
-	float		disV;
-}			t_ray;
+	double		plane_x;
+	double		plane_y;
+}				t_ray;
 
 typedef struct s_data
 {

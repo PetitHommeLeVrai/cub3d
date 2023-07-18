@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 18:26:36 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:41:33 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static int	*assign_texture(t_data *data, int side)
 {
 	int	*pixels;
 
-	if (data->ray.rayDirY >= 0.0 && side == 1)
+	if (data->ray.raydir_y >= 0.0 && side == 1)
 		pixels = (int *)mlx_get_data_addr(data->txt.img_east,
 				&data->img.bpp, &data->img.size_line, &data->img.endian);
-	else if (data->ray.rayDirY <= 0.0 && side == 1)
+	else if (data->ray.raydir_y <= 0.0 && side == 1)
 		pixels = (int *)mlx_get_data_addr(data->txt.img_west,
 				&data->img.bpp, &data->img.size_line, &data->img.endian);
-	else if (data->ray.rayDirX <= 0.0 && side == 0)
+	else if (data->ray.raydir_x <= 0.0 && side == 0)
 		pixels = (int *)mlx_get_data_addr(data->txt.img_north,
 				&data->img.bpp, &data->img.size_line, &data->img.endian);
 	else
@@ -33,19 +33,19 @@ static int	*assign_texture(t_data *data, int side)
 
 static void	update_raycasting(t_data *data, int x)
 {
-	data->ray.rayDirY = data->ray.diry + data->ray.planey * data->ray.cameraX;
-	data->ray.rayDirX = data->ray.dirx + data->ray.planex * data->ray.cameraX;
-	data->ray.cameraX = (2 * x) / (double)SCREENWIDTH - 1;
-	data->ray.mapX = (int)data->player.pos_y;
-	data->ray.mapY = (int)data->player.pos_x;
-	if (data->ray.rayDirX == 0)
+	data->ray.raydir_y = data->ray.diry + data->ray.plane_y * data->ray.camara_x;
+	data->ray.raydir_x = data->ray.dir_x + data->ray.plane_x * data->ray.camara_x;
+	data->ray.camara_x = (2 * x) / (double)SCREENWIDTH - 1;
+	data->ray.map_x = (int)data->player.pos_y;
+	data->ray.map_y = (int)data->player.pos_x;
+	if (data->ray.raydir_x == 0)
 		data->ray.ddist_x = 1e30;
 	else
-		data->ray.ddist_x = fabs(1 / data->ray.rayDirX);
-	if (data->ray.rayDirY == 0)
+		data->ray.ddist_x = fabs(1 / data->ray.raydir_x);
+	if (data->ray.raydir_y == 0)
 		data->ray.ddist_y = 1e30;
 	else
-		data->ray.ddist_y = fabs(1 / data->ray.rayDirY);
+		data->ray.ddist_y = fabs(1 / data->ray.raydir_y);
 }
 
 static int	hit_detection(t_data *data, int *side)
@@ -58,16 +58,16 @@ static int	hit_detection(t_data *data, int *side)
 		if (data->ray.sd_x < data->ray.sd_y)
 		{
 			data->ray.sd_x += data->ray.ddist_x;
-			data->ray.mapX += data->ray.stepx;
+			data->ray.map_x += data->ray.stepx;
 			*side = 0;
 		}
 		else
 		{
 			data->ray.sd_y += data->ray.ddist_y;
-			data->ray.mapY += data->ray.stepy;
+			data->ray.map_y += data->ray.stepy;
 			*side = 1;
 		}
-		if (data->img.map[data->ray.mapX][data->ray.mapY] == '1')
+		if (data->img.map[data->ray.map_x][data->ray.map_y] == '1')
 		hit = 1;
 	}
 	return (hit);

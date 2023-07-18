@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:14:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 17:31:49 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:34:38 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,32 @@ char	init_coord(t_data *data, char **map, int x, int y)
 
 void	init_north(t_data *data)
 {
-	data->ray.dirx = -1.0;
+	data->ray.dir_x = -1.0;
 	data->ray.diry = 0.0;
-	data->ray.planex = 0.0;
-	data->ray.planey = 0.66;
+	data->ray.plane_x = 0.0;
+	data->ray.plane_y = 0.66;
 }
 
 void	init_south(t_data *data)
 {
-	data->ray.dirx = 1.0;
+	data->ray.dir_x = 1.0;
 	data->ray.diry = 0.0;
-	data->ray.planex = 0.0;
-	data->ray.planey = -0.66;
+	data->ray.plane_x = 0.0;
+	data->ray.plane_y = -0.66;
 }
 
 void	init_west(t_data *data)
 {
-	data->ray.dirx = 0.0;
+	data->ray.dir_x = 0.0;
 	data->ray.diry = 1.0;
-	data->ray.planex = 0.66;
-	data->ray.planey = 0.0;
+	data->ray.plane_x = 0.66;
+	data->ray.plane_y = 0.0;
 }
 
 void	init_east(t_data *data)
 {
-	data->ray.dirx = 0.0;
+	data->ray.dir_x = 0.0;
 	data->ray.diry = -1.0;
-	data->ray.planex = -0.66;
-	data->ray.planey = 0.0;
+	data->ray.plane_x = -0.66;
+	data->ray.plane_y = 0.0;
 }
