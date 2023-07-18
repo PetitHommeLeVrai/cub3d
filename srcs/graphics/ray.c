@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 18:03:02 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:18:05 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,7 @@ void	raycasting(t_data *data)
 	{
 		update_raycasting(data, x);
 		calculate_side_distances(data);
-		hit = hit_detection(data, &side);
-		if (hit == 0)
+		if (!hit_detection(data, &side))
 			continue ;
 		pixels = assign_texture(data, side);
 		if (side == 0)
