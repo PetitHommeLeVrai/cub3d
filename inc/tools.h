@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/07/18 18:41:35 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:09:11 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef enum e_err_msg
 
 typedef struct s_mlx
 {
+	char		**map_tmp;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*win2_ptr;

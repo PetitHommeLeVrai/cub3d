@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:14:26 by aboyer            #+#    #+#             */
-/*   Updated: 2023/07/18 19:58:43 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/20 15:08:40 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	main_parsing(int ac, char *file, t_data *data)
 	get_colors(data);
 	get_map(data);
 	map = data->img.map;
+	data->img.map_tmp = map;
 	get_position_player(data);
 	check_map(data, map);
 	free_leak(map);

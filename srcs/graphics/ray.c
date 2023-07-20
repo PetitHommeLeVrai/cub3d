@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 21:34:01 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 20:07:11 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/20 14:52:18 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static void	draw_pixels(t_data *data, int *pixels, int x)
 		g++;
 	}
 	g = data->ray.draw_end;
-	while (g < SCREENHEIGHT)
+	while (g < SCREENHEIGHT - 1)
 	{
 		if (g >= 0)
 			my_mlx_pixel_put2(data, x, g, data->txt.f_color);

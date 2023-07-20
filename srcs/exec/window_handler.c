@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:12 by aboyer            #+#    #+#             */
-/*   Updated: 2023/07/18 19:10:50 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/20 14:45:47 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	destroy_win2(t_data *data)
 	mlx_destroy_image(data->img.mlx_ptr, data->txt.img_east);
 	mlx_destroy_image(data->img.mlx_ptr, data->txt.img_west);
 	mlx_destroy_image(data->img.mlx_ptr, data->img.img2_ptr);
-	mlx_destroy_window(data->img.mlx_ptr, data->img.win_ptr);
 	mlx_destroy_window(data->img.mlx_ptr, data->img.win2_ptr);
 	mlx_destroy_display(data->img.mlx_ptr);
 	free(data->img.mlx_ptr);
@@ -52,7 +51,6 @@ int	destroy_win(t_data *data)
 	mlx_destroy_image(data->img.mlx_ptr, data->txt.img_east);
 	mlx_destroy_image(data->img.mlx_ptr, data->txt.img_west);
 	mlx_destroy_image(data->img.mlx_ptr, data->img.img2_ptr);
-	mlx_destroy_window(data->img.mlx_ptr, data->img.win_ptr);
 	mlx_destroy_window(data->img.mlx_ptr, data->img.win2_ptr);
 	mlx_destroy_display(data->img.mlx_ptr);
 	free(data->img.mlx_ptr);

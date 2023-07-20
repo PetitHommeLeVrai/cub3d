@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:49:56 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/07/18 19:37:51 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/20 14:46:19 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@ void	init_mlx(t_data *data)
 {
 	data->img.mlx_ptr = mlx_init();
 	if (!data->img.mlx_ptr)
-		return (free_map(data), exit_error(E_MLX));
-	data->img.win_ptr = mlx_new_window(data->img.mlx_ptr, WIDTH, HEIGHT,
-			"./minimap");
-	if (!data->img.win_ptr)
 		return (free_map(data), exit_error(E_MLX));
 	data->img.img_ptr = mlx_new_image(data->img.mlx_ptr, WIDTH, HEIGHT);
 	if (!data->img.img_ptr)

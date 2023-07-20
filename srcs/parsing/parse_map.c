@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 14:11:28 by aboyer            #+#    #+#             */
-/*   Updated: 2023/07/18 20:01:07 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/20 15:08:14 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	dfs(t_data *data, char **map, int y, int x)
 {
 	if (map[y][x] != '0' && map[y][x] != 'N' && map[y][x] != 'S'
 		&& map[y][x] != 'W' && map[y][x] != 'E')
-		return (free_leak(map), free_map(data), exit_error(E_MAP));
+		return (free_leak(data->img.map_tmp), free_map(data), exit_error(E_MAP));
 	map[y][x] = '1';
 	if (map[y + 1][x] != '1')
 		dfs(data, map, y + 1, x);

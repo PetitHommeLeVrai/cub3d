@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:43:09 by aboyer            #+#    #+#             */
-/*   Updated: 2023/07/17 23:21:33 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:45:34 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	init_data(t_data *data)
 
 static void	init_hook(t_data *data)
 {
-	mlx_hook(data->img.win_ptr, 33, 0, &destroy_win, data);
-	mlx_hook(data->img.win_ptr, KeyPress, KeyPressMask, &handle_input, data);
-	mlx_key_hook(data->img.win_ptr, move_key_hook, data);
+	mlx_hook(data->img.win2_ptr, 33, 0, &destroy_win, data);
+	mlx_hook(data->img.win2_ptr, KeyPress, KeyPressMask, &handle_input, data);
+	mlx_key_hook(data->img.win2_ptr, move_key_hook, data);
 }
 
 void	init(t_data *data, int ac, char **av)

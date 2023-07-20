@@ -6,7 +6,7 @@
 #    By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/07/18 19:56:17 by aboyer           ###   ########.fr        #
+#    Updated: 2023/07/20 15:16:22 by aboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CC			= cc
 
 # --------- Compilation flags -------------------------------------------------------
 
-CFLAGS		= -Wall -Wextra -Werror -I $(INC_PATH) -I $(MLX_PATH) -I $(LIBFT_PATH) -g3
+CFLAGS		= -Wall -Wextra -Werror -I $(INC_PATH) -I $(MLX_PATH) -I $(LIBFT_PATH)
 MLX_FLAGS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 L_FLAGS		= -L libft/ -lft
 
