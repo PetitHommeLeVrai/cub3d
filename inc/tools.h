@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 14:50:57 by aboyer            #+#    #+#             */
-/*   Updated: 2023/06/22 18:21:43 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:09:11 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,32 @@
 # include "cub3d.h"
 
 /*	Macroconstant required by the window management  */
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 640
+# define HEIGHT 480
+# define SCREENWIDTH 640
+# define SCREENHEIGHT 480
+# define TEXWIDTH 64
+# define TEXHEIGHT 64
 
 /*	Ascii codes  */
 # define NEWLINE '\n'
 # define SPACE 32
 
 /*	Hexadecimal color code for use  */
-# define BLACK	0x000000
-# define RED	0xFF0000
+# define BLACK		0x000000
+/*----------RED----------*/
+# define RED		0xFF0000
+# define RED1		0xd90000
+# define RED2		0x8a0000
+/*--------YELLOW---------*/
+# define YELLOW		0xFFDE14
+# define YELLOW1	0xf29d00
+# define YELLOW2	0xb87700
+
 # define BLUE	0x0000FF
 # define WHITE	0xFFFFFF
 # define GREEN	0x00FF00
 # define ORANGE 0xE57314
-# define YELLOW 0xFFDE14
 
 /* Key code for mlx_instance  */
 # define KEY_UP		65362
@@ -45,8 +56,6 @@
 
 # define PI 3.14159265359
 # define DR	0.0174533
-# define DISH 1 << 0
-# define DISV 1 << 1
 
 typedef enum e_err_msg
 {
@@ -63,9 +72,9 @@ typedef enum e_err_msg
 	E_LENGHT
 }				t_err_msg;
 
-
 typedef struct s_mlx
 {
+	char		**map_tmp;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*win2_ptr;
@@ -86,6 +95,8 @@ typedef struct s_mlx
 	char		**map_cp;
 	int			*i_map;
 	int			bits_per_pixel;
+	int			bpp;
+	int			size_line;
 	int			line_length;
 	int			endian;
 }				t_mlx;
@@ -96,52 +107,68 @@ typedef struct s_txt
 	void		*img_south;
 	void		*img_west;
 	void		*img_east;
+	int			fd_north;
+	int			fd_south;
+	int			fd_west;
+	int			fd_est;
+	int			c_color;
+	int			f_color;
 	int			count;
 	int			index_file;
 }				t_txt;
 
 typedef struct s_player
 {
+	double		dir_x;
+	double		plane_x;
+	double		plane_y;
 	float		pos_x;
 	float		pos_y;
-	float		p_a;
-	float		pdx;
-	float		pdy;
 	char		compass_point;
 	int			case_width;
 	int			case_height;
-	int			x1;
-	int			x2;
-	int			y1;
-	int			y2;
-	int			p_x;	// Has to be delete
-	int			p_y;	// Has to be delete
+	int			p_x;
+	int			p_y;
 }				t_player;
 
-typedef struct	s_map
+typedef struct s_map
 {
-	int			case_width;
-	int			case_height;
-	int			mapX;
-	int			mapY;
-	int			mx;
-	int			my;
-	int			mp;
-	char		compass_point;
-}				t_map;
+	int				color;
+	unsigned char	wall;
+	int				case_width;
+	int				case_height;
+	int				mx;
+	int				my;
+	int				mp;
+	char			compass_point;
+}					t_map;
 
 typedef struct s_ray
 {
-	float	ray_x;
-	float	ray_y;
-	float	ray_a;
-	float	vx;
-	float	vy;
-	float	x_offset;
-	float	y_offset;
-	float	disH;
-	float	disV;
-}			t_ray;
+	double		tex_pos;
+	int			draw_start;
+	int			draw_end;
+	int			tex_x;
+	int			line_height;
+	int			pitch;
+	double		wall_x;
+	int			stepx;
+	int			stepy;
+	double		pw_dist;
+	double		ddist_x;
+	double		ddist_y;
+	double		raydir_x;
+	double		raydir_y;
+	double		camara_x;
+	double		sd_x;
+	double		sd_y;
+	int			map_x;
+	int			map_y;
+	double		dir_x;
+	double		diry;
+	double		plane_x;
+	double		plane_y;
+}				t_ray;
 
 typedef struct s_data
 {

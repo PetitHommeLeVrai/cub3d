@@ -6,7 +6,7 @@
 /*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:16:17 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/05/31 16:56:14 by aboyer           ###   ########.fr       */
+/*   Updated: 2023/07/18 20:45:15 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,22 @@ static bool	is_in_texture_map(char *str)
 	return (false);
 }
 
+static void	set_textures(t_data *data)
+{
+	if (!data->img.n_path || !data->img.s_path || !data->img.w_path
+		|| !data->img.e_path)
+		return (free_map(data), exit_error(E_ELEMENT));
+	data->txt.fd_north = open(data->img.n_path, O_RDONLY);
+	data->txt.fd_south = open(data->img.s_path, O_RDONLY);
+	data->txt.fd_west = open(data->img.w_path, O_RDONLY);
+	data->txt.fd_est = open(data->img.e_path, O_RDONLY);
+	if (data->txt.fd_north < 0
+		|| data->txt.fd_south < 0
+		|| data->txt.fd_west < 0
+		|| data->txt.fd_est < 0)
+		return (free_map(data), exit_error(E_NOMEM));
+}
+
 void	get_textures(t_data *data)
 {
 	int	i;
@@ -66,11 +82,11 @@ void	get_textures(t_data *data)
 			j++;
 		if (is_in_texture_map(data->img.file[i] + j))
 			init_texture_path(data, data->img.file[i][j], data->img.file[i]
-					+ j);
+				+ j);
 		else if (data->img.file[i][0] != 0 && !only_wspace(data->img.file[i]))
-			exit_error(E_ELEMENT);
+			return (free_map(data), exit_error(E_ELEMENT));
 		i++;
 		data->txt.index_file++;
 	}
-	check_path_textures(data);
+	set_textures(data);
 }

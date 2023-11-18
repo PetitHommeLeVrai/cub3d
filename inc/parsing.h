@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:16:10 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/21 19:33:14 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 19:59:46 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PARSING_H
 
 /*	<main_parsing.c>  */
+void	init_mlx2(t_data *data);
+void	init_mlx(t_data *data);
 void	check_file(char *file);
 void	main_parsing(int ac, char *file, t_data *data);
 void	init_data(t_data *data);
@@ -29,23 +31,15 @@ void	is_map_surrouded_by_wall(t_data *data, char **map);
 void	create_map_copy(t_data *data, char **map);
 void	dfs(t_data *data, char **map, int y, int x);
 void	check_map(t_data *data, char **map);
+void	free_leak(char **map);
 
 /*	<get.c>  */
+int		get_pos(t_data *data, char **map);
 int		get_player_pos(t_data *data, char **map);
 int		get_map_last_line(char **map);
 int		get_bigger_len(char **map);
 
-/*	<parse_colors.c>  */
-void	free_split_rgb(char **rgb);
-void	isnumber(char **rgb, char *str, t_data *data);
-void	check_colors(t_data *data);
 void	fill_colors(t_data *data);
-
-/*	<parse_textures.c>  */
-void	get_textures(t_data *data);
-void	set_path(t_data *data, char *key, char *path);
-void	check_path_textures(t_data *data);
-char	**init_var(t_data *data);
 
 /*	<error.c>  */
 void	exit_error(int err_msg);
@@ -64,7 +58,16 @@ void	get_textures(t_data *data);
 void	get_colors(t_data *data);
 
 /*	<utils.c>  */
+void	free_split_rgb(char **rgb);
+bool	str_isnumber(char *str);
 int		is_wspace(char c);
 int		only_wspace(char *str);
+
+/*	<init_geo.c>  */
+char	init_coord(t_data *data, char **map, int x, int y);
+void	init_north(t_data *data);
+void	init_south(t_data *data);
+void	init_west(t_data *data);
+void	init_east(t_data *data);
 
 #endif

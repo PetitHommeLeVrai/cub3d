@@ -3,20 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   get_colors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 12:26:45 by mmeguedm          #+#    #+#             */
-/*   Updated: 2023/06/15 19:07:51 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/18 20:32:39 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int	create_trgb(unsigned char t, unsigned char r,
+				unsigned char g, unsigned char b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
 static char	**create_colors_map(void)
 {
 	static char	*colors_map[] = {
 		"F ",
-		"C "
+		"C ",
+		NULL
 	};
 
 	return (colors_map);
@@ -40,7 +47,7 @@ static bool	is_in_colors_map(char *str)
 	colors_map = create_colors_map();
 	if (!str || str[0] == 0)
 		return (false);
-	while (colors_map[i])
+	while (colors_map[i] != NULL)
 	{
 		if (!(ft_strncmp(colors_map[i], str, 2)))
 			return (true);
@@ -51,8 +58,8 @@ static bool	is_in_colors_map(char *str)
 
 void	get_colors(t_data *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = 0;
 	i = data->txt.index_file;
@@ -64,9 +71,13 @@ void	get_colors(t_data *data)
 		if (is_in_colors_map(data->img.file[i] + j))
 			init_colors_path(data, data->img.file[i][j], data->img.file[i] + j);
 		else if (data->img.file[i][0] != 0 && !only_wspace(data->img.file[i]))
-			exit_error(E_ELEMENT);
+			return (free_map(data), exit_error(E_ELEMENT));
 		i++;
 	}
 	data->txt.count = i;
 	fill_colors(data);
+	data->txt.c_color = create_trgb(0, data->img.c_rgb[0], data->img.c_rgb[1],
+			data->img.c_rgb[2]);
+	data->txt.f_color = create_trgb(0, data->img.f_rgb[0], data->img.f_rgb[1],
+			data->img.f_rgb[2]);
 }

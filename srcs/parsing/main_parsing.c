@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_parsing.c                                       :+:      :+:    :+:   */
+/*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aboyer <aboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:14:26 by aboyer            #+#    #+#             */
-/*   Updated: 2023/05/24 15:57:21 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:08:40 by aboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	free_leak(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
 
 void	check_file(char *file)
 {
@@ -26,6 +39,8 @@ void	check_file(char *file)
 
 void	main_parsing(int ac, char *file, t_data *data)
 {
+	char	**map;
+
 	if (ac != 2)
 		exit_error(E_ARG);
 	if (!file)
@@ -36,7 +51,9 @@ void	main_parsing(int ac, char *file, t_data *data)
 	get_textures(data);
 	get_colors(data);
 	get_map(data);
+	map = data->img.map;
+	data->img.map_tmp = map;
 	get_position_player(data);
-	check_map(data, data->img.map);
-	start_pos_to_rad(data);
+	check_map(data, map);
+	free_leak(map);
 }

@@ -6,7 +6,7 @@
 #    By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/18 14:32:06 by mmeguedm          #+#    #+#              #
-#    Updated: 2023/06/21 19:34:46 by mmeguedm         ###   ########.fr        #
+#    Updated: 2023/07/20 17:13:03 by mmeguedm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CC			= cc
 
 # --------- Compilation flags -------------------------------------------------------
 
-CFLAGS		= -Wall -Wextra -I $(INC_PATH) -I $(MLX_PATH) -I $(LIBFT_PATH) -g3
+CFLAGS		= -Wall -Wextra -Werror -I $(INC_PATH) -I $(MLX_PATH) -I $(LIBFT_PATH)
 MLX_FLAGS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 L_FLAGS		= -L libft/ -lft
 
@@ -53,9 +53,10 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						main_parsing.c						\
 						parse_ftc.c							\
 						get_map.c							\
-						parse_texture.c						\
 						get_texture.c						\
+						get_position_player.c				\
 						get_colors.c						\
+						init_geo.c							\
 						fill_colors.c						\
 						utils.c								\
 						error.c								\
@@ -66,6 +67,7 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						key_move.c							\
 						key_rotate.c						\
 						free.c								\
+						init_mlx.c							\
 						init.c								\
 						window_handler.c					\
 					)										\
@@ -74,10 +76,7 @@ SRC			=	$(addprefix $(SRC_PATH),					\
 						get_next_line_utils.c				\
 					)										\
 					$(addprefix graphics/,					\
-						utils_maths.c						\
-						draw_world.c						\
-						draw_map.c							\
-						ray_rotation.c						\
+						calcul.c							\
 						ray.c								\
 					)										\
 				)											\

@@ -33,7 +33,7 @@ void	ftc_allocator(char *file, t_data *data)
 		exit_error(E_ACCESS);
 }
 
-static char *rm_nl(char *str)
+static char	*rm_nl(char *str)
 {
 	int	i;
 
